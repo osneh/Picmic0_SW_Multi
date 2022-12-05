@@ -1,0 +1,38 @@
+Soft avec GUI sous windows XP
+
+Sous XP, la version utilisable de python est la version 3.4
+
+donc les version de paquets utilisables sous XP sont :
+python : 3.4.3
+matplotlib : 1.4.3
+numpy: 1.9.2
+pyside : 1.2.4
+pyfirmata : 1.1.0
+pyserial : 3.0.1
+
+
+
+Pour python, on peut installer Anaconda 3 ( Anaconda3-2.3.0-Windows-x86.exe)
+
+pour le designer de qt, on peut installer PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x32.exe
+
+Attention, lors de l'installation de pyfirmata, pyserial est installé en version 3.5.0, version qui est incompatible avec windows XP.
+Il faut alors downgrader pyserial en version 3.0.1
+
+Il ne faut pas oublier de modifier le fichier pyfirmata pour autoriser le bloquage du reset automatique a la connexion avec le carte arduino.
+pour ceci :
+C:\Anaconda3\Lib\site-packages\pyfirmata\pyfirmata.py
+dans la classe Board:
+    il faut surchager: la fonction __init__ avec un parametre en plus : dsrdtr = False,
+                       et la fonction serial avec : dsrdtr = dsrdtr
+    cf code suivant:
+    
+    
+    def __init__(self, port, layout=None, baudrate=57600, name=None, timeout=None, dsrdtr = False):
+        self.sp = serial.Serial(port, baudrate, timeout=timeout, dsrdtr=dsrdtr)
+
+Pour la compilation en python du fichier .ui genere par QTDesigner il faut utiliser l'executable suivant : pyside-uic    
+
+cf script suivant :
+pyside-uic ./IHM/Picmic_UI.ui -o Picmic_UI_COMPIL.py
+

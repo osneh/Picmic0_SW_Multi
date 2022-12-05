@@ -1,0 +1,42 @@
+Soft avec GUI sous Raspberry PI
+
+Le soft a ete installé et utilisé avec:
+Raspberry 3B+
+distribution : Raspbian version 11 (bullseye)
+
+Pour generer la distribution, utiliser l'executable : imager_1.7.3.exe
+
+les version verifiées sont :
+python : 3.9.2
+matplotlib : 3.3.4
+numpy: 1.9.5
+pyqt5 : 5.15.2
+pyfirmata : 1.1.0
+pyserial : 3.5b0
+
+python, pyqt5 et pyserial sont installées par defaut a l'installation
+matplotlib peut etre installé avec pip
+
+Pour avoir acces a QT Designer pour l'edition de l'interface graphique, il faut installer QTCreator:
+sudo apt-get install qtcreator
+
+Pour le soft Arduinio, il faut telecharger la version arduino-1.8.19-linux32.tar.gz 
+sur le site d'Arduino : https://www.arduino.cc/en/software
+
+Une fois la suite arduino installée, il faut ajouter la DUE au gestionaire de cartes du soft Arduino
+
+Il ne faut pas oublier de modifier le fichier pyfirmata pour autoriser le bloquage du reset automatique a la connexion avec le carte arduino.
+pour ceci :
+/home/pi/.local/lib/python3.9/site-packages/pyfirmata/pyfirmata.py
+dans la classe Board:
+    il faut surchager: la fonction __init__ avec un parametre en plus : dsrdtr = False,
+                       et la fonction serial avec : dsrdtr = dsrdtr
+    cf code suivant:
+    
+    
+    def __init__(self, port, layout=None, baudrate=57600, name=None, timeout=None, dsrdtr = False):
+        self.sp = serial.Serial(port, baudrate, timeout=timeout, dsrdtr=dsrdtr)
+
+Note: sur linux, le bloquage du reset automatique a la connexion avec la carte arduino n'est pas gérée, et est simplement ignorée.
+      Par contre, il faut l'implementer pour que le script fonctionne.
+

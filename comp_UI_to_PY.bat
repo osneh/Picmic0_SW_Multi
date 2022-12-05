@@ -1,0 +1,1 @@
+pyuic5 ./IHM/Picmic_SC_UI.ui -o Picmic_SC_UI_COMPIL.py
