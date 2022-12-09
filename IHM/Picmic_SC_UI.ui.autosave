@@ -1,0 +1,6107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1039</width>
+    <height>752</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="Tab_Pages">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1031</width>
+      <height>711</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="Main_tab">
+     <attribute name="title">
+      <string>Main</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>150</y>
+        <width>551</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Sans Unicode</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>COM INTERFACE</string>
+      </property>
+      <widget class="QPushButton" name="push_disconnect">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>60</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Disconnect</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_com">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>47</width>
+         <height>13</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lucida Sans Unicode</family>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>COM</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="menu_COM">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>401</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Default</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="push_connect">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>30</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Connect</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="con_status_txt">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>47</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lucida Sans Unicode</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Status : </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="connection_status">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>90</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lucida Sans Unicode</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color:red</string>
+       </property>
+       <property name="text">
+        <string>Disconnected</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="update">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>60</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Refresh</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBMainAutomaticResetDisable">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>90</y>
+         <width>251</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Automatic Reset Disable at connect</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupe_access_mode">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>290</y>
+        <width>221</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Lucida Sans Unicode</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">red</string>
+      </property>
+      <property name="title">
+       <string>ACCESS MODE</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <widget class="QComboBox" name="CoBMainAccessMode">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>40</y>
+         <width>121</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Software</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Hardware</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Check</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="BtEndSoftware">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>570</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:red
+</string>
+      </property>
+      <property name="text">
+       <string>End Software</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>100</y>
+        <width>531</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="logo_cnrs">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>241</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="titre">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>20</y>
+        <width>671</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+        <stylestrategy>PreferAntialias</stylestrategy>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="text">
+       <string>PICMIC Slow Control Interface</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="GBMainPrePostParams">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>300</y>
+        <width>321</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Pre / Post Params</string>
+      </property>
+      <widget class="QComboBox" name="CoBPrePostParam">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>60</y>
+         <width>221</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>No Pre or post operation</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pre operation : Reset I2C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Post operation: retry operation</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="SBMainPrePostParam">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>110</y>
+         <width>221</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtMainPrePostParamSend">
+       <property name="geometry">
+        <rect>
+         <x>54</x>
+         <y>160</y>
+         <width>221</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Send Pre / Post params</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblMainNoPreOrPostParam">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>90</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>No Param</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblMainPostParam">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>90</y>
+         <width>221</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Number of retries in case of com faillure</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblMainPreParam">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>90</y>
+         <width>211</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Pre reset duration</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Configuration</string>
+     </attribute>
+     <widget class="QGroupBox" name="GBConfLoading">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>90</y>
+        <width>331</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Loading</string>
+      </property>
+      <widget class="QLineEdit" name="leConfLoadFileName">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>281</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblConfFileName">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>File name of the configuration file</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtConfLoadLoadFile">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>270</y>
+         <width>281</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Load selected configuration file</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="TEConfFileConfLoadFileInfo">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>311</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtConfLoadFileSelection">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>281</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>File selection</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLineEdit" name="LEConfFileAuthor">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>60</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblconfAuthor">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>40</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Author</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LEConfFileDate">
+      <property name="geometry">
+       <rect>
+        <x>670</x>
+        <y>60</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblConfDate">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>40</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LEConfFileDescription">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>100</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblConfDescr">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Description</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LEconfFileComment">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>140</y>
+        <width>391</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblConfComment">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>120</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Comment</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="leConfLoadPath">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>60</y>
+        <width>281</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>C:/Python/Picmic0_SC/Conf_Files</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblConfFilePath">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>40</y>
+        <width>161</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Path for the configuration files</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BtConfSaveConf">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>250</y>
+        <width>471</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save configuration in a file</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BtConfSendConfToChip">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>520</y>
+        <width>531</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Send configuration to chip</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Steering_tab">
+     <attribute name="title">
+      <string>Steering</string>
+     </attribute>
+     <widget class="QGroupBox" name="gBSteerReset">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>50</y>
+        <width>171</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Reset</string>
+      </property>
+      <widget class="QComboBox" name="coBSteerRstState">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>30</y>
+         <width>69</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Low</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>High</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="BtSteerRstToggle">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Toggle</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="gBSteerReset_I2C">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>50</y>
+        <width>171</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Reset_I2C</string>
+      </property>
+      <widget class="QComboBox" name="coBSteerRst_I2CState">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>30</y>
+         <width>69</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Low</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>High</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="BtSteerRst_I2CToggle">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Toggle</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="gBSteerStart">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>50</y>
+        <width>171</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Start</string>
+      </property>
+      <widget class="QComboBox" name="coBSteerStartState">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>30</y>
+         <width>69</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Low</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>High</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="BtSteerStartToggle">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Toggle</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="gBSteerTestmod">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>50</y>
+        <width>171</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>TestMod</string>
+      </property>
+      <widget class="QComboBox" name="coBSteerTestmodState">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>30</y>
+         <width>69</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Low</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>High</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="BtSteerTestmodToggle">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Toggle</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Register_Tab">
+     <attribute name="title">
+      <string>Registers</string>
+     </attribute>
+     <widget class="QTabWidget" name="pages_registers">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>1121</width>
+        <height>661</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>4</number>
+      </property>
+      <widget class="QWidget" name="Global_Cmd_Tab">
+       <attribute name="title">
+        <string>Global Command</string>
+       </attribute>
+       <widget class="QGroupBox" name="Global_Cmd_Group">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>441</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="Get_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>60</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Set_Button_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>60</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_EnExtPulse_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>60</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EnExtPulse</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_ExtPulse_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>100</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ExtPulse</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="SetRstFrCnt_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>RstFrCnt</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_StartSeq_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>180</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>StartSeq</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Get_Global_Cmd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>220</x>
+           <y>60</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Global_cmd">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>200</y>
+           <width>241</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Indicator : Each element of the list is a single BIT</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_GlobalCmd">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>60</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Get_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>30</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Set_Global_Cmd">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>30</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_RstFrCnt_Global_Cmd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>140</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>RstFrCnt</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ExtPulse_Global_Cmd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>100</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ExtPulse</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_EnExtPulse_Global_Cmd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>60</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EnExtPulse</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_StartSeq_Global_Cmd">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>180</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>StartSeq</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Pix_Seq_Tab">
+       <attribute name="title">
+        <string>Pixel Sequence</string>
+       </attribute>
+       <widget class="QGroupBox" name="Pixel_Seq_Group">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>441</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QLabel" name="Indicator_Pix_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>520</y>
+           <width>241</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Indicator : Each element of the list is a whole BYTE</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="get_ind_pix">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>10</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Set_Pix_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>10</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="setPixSeq">
+         <property name="geometry">
+          <rect>
+           <x>300</x>
+           <y>450</y>
+           <width>131</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set Activated</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="get_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>300</x>
+           <y>470</y>
+           <width>131</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get Activated</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_NU1_Pix_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>60</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_NU_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>60</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_MarkedMod_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>80</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_NU2_Pix_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>100</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_PulseMod_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>120</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_LoadWidth_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>140</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Load_pLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>160</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Load_PMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>180</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Flush_PLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>200</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Flush_PMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>220</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_APulse_pLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>240</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_APulse_pMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>260</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_DPulse_pLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>280</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_DPulse_pMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>300</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_RdPixMaskLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>320</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_RdPixMaskMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>340</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_MaxFrameLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>360</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_MaxFrameMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>380</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_PolarityLSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>400</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_PolarityMSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>420</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Marker1LSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>440</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Marker1MSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>460</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Marker2LSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>480</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_Marker2MSB_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>500</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_LoadWidth_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>140</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Marker2MSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>500</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>37</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Load_PMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>180</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_RdPixMaskMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>340</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>255</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_APulse_pMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>260</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_MaxFrameLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>360</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Load_pLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>160</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_RdPixMaskLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>320</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>251</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Flush_PLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>200</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_MaxFrameMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>380</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_APulse_pLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>240</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Marker1MSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>460</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_NU2_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>100</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Marker2LSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>480</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>36</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Flush_PMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>220</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_Marker1LSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>440</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_MarkedMod_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>80</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_PulseMod_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>120</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_DPulse_pLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>280</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>100</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_PolarityMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>420</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>67</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_DPulse_pMSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>300</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_PolarityLSB_PixSeq">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>400</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>55</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Set_FlushModule_PixSeq">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>40</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>00</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_FlushModule_PixSeq">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>40</y>
+           <width>31</width>
+           <height>16</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqFlushModule">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>40</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Flush Module</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqNU0">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>60</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Unused</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqNU1">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>100</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Unused</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMarkerModule">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>80</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Marker Module</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqPulseModule">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>120</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Pulse Module</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqLoadWidth">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>140</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>LoadWidth</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqLoad_P_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>160</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Load_p LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqLoad_P_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>180</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Load_p MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqFlush_P_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>200</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>FLush_p LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqFlush_P_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>220</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>FLush_p MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqAPulse_P_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>240</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APulse_p LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqAPulse_P_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>260</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>APulse_p MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqDPulse_P_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>280</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>DPulse_p LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqDPulse_P_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>300</y>
+           <width>71</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>DPulse_p MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqRdpix_mask_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>320</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Rdpix_mask LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqRdpix_mask_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>340</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Rdpix_mask MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMaxFrame_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>360</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Max Frame LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMaxFrame_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>380</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Max Frame MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqPolarity_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>400</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Polarity LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqPolarity_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>420</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Polarity MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMarker1_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>440</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Marker1 LSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMarker1_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>460</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Marker1 MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMarker2_MSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>500</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Marker2 MSB</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="lblRegsPixSeqMarker2_LSB">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>480</y>
+           <width>81</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Marker2 LSB</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Test_Struct_Tab">
+       <attribute name="title">
+        <string>Test Structure Control</string>
+       </attribute>
+       <widget class="QGroupBox" name="Test_Struct_Group">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>441</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="Get_Test_Struct">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>60</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Set_Button_Test_Struct">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>60</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_SW0">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>60</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW0</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_SW1">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>100</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW1</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_EN_CM">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EN_CM</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_EN_CC">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>180</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EN_CC</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_ENA_CM1">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>220</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_CM1</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_ENA_D2P">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>260</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_D2P</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_ENA_D1P">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>300</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_D1P</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Get_Test_Struct">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>60</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Test_Struct">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>320</y>
+           <width>241</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Indicator : Each element of the list is a single BIT</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_Test_Struct">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>60</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Get_2">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>30</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="IndicatorSet">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>30</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_EN_CC">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>180</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EN_CC</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SW1">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>100</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW1</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SW0">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>60</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW0</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ENA_D1P">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>300</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_D1P</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ENA_D2P">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>260</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_D2P</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_EN_CM">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>140</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>EN_CM</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ENA_CM1">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>220</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_CM1</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Pix_Conf_Tab">
+       <attribute name="title">
+        <string>PIX_CONF</string>
+       </attribute>
+       <widget class="QGroupBox" name="Pix_Conf_Row_Group">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>381</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>ROW</string>
+        </property>
+        <widget class="QLabel" name="Indicator_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>170</y>
+           <width>241</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Indicator : Max for SelRow is 128 !</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="Radio_SelAllRow_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>82</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SelAllRow</string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="Radio_SelRow_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>70</y>
+           <width>111</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SelRow(Max 128)</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Set_Button_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>170</x>
+           <y>70</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SelAllRow_Row_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>70</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SelAllRow</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Get_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>70</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Get_Row_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>250</x>
+           <y>70</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="IndicatorSet_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>40</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>70</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Get_Row_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>250</x>
+           <y>40</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="Pix_Conf_Col_Group">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>10</y>
+          <width>411</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>COLUMN</string>
+        </property>
+        <widget class="QLabel" name="Indicator_PixConf1">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>160</y>
+           <width>201</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Indicator : Max for SelCol is 54  </string>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="Radio_SelCol_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>70</y>
+           <width>121</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SelCol(Max 64)</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="Radio_SelAllCol_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>141</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SellAllCol</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="IndicatorSet_Col_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>160</x>
+           <y>40</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Set_Button_Col_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>70</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Get_Col_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>280</x>
+           <y>40</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SelDeselAllCol_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>130</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SelDeselAllCol</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Get_Col_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>70</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_Col_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>70</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Get_Col_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>270</x>
+           <y>70</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="Radio_DeselAllCol_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>130</y>
+           <width>141</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>DeselAllCol</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SelSelAllCol_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>290</x>
+           <y>110</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SelSelAllCol</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="Pix_Conf_Data_Group">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>230</y>
+          <width>531</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>DATA</string>
+        </property>
+        <widget class="QCheckBox" name="Set_ENA_CM_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>70</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_CM</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_SW0_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>90</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW0</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_SW1_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>110</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW1</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_ENA_CC_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>130</y>
+           <width>81</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_CC</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Set_ActivateVpulse_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>150</y>
+           <width>91</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ActivateVpulse</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>170</y>
+           <width>241</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Indicator :IAdj is 3 bits </string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_IADJ_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>40</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>IADJ (Max 8)</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Set_Button_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>220</x>
+           <y>70</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Get_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>260</x>
+           <y>70</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ENA_CM_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>360</x>
+           <y>70</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_CM</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>70</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Get_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>300</x>
+           <y>70</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="IndicatorSet_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>40</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Get_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>310</x>
+           <y>40</y>
+           <width>21</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SW0_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>360</x>
+           <y>90</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW0</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_SW1_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>360</x>
+           <y>110</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>SW1</string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ENA_CC_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>360</x>
+           <y>130</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ENA_CC</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Get_IADJ_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>360</x>
+           <y>40</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Get_IADJ_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>30</y>
+           <width>71</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>IADJ </string>
+         </property>
+        </widget>
+        <widget class="QCheckBox" name="Check_ActVpulse_Data_PixConf">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>360</x>
+           <y>150</y>
+           <width>151</width>
+           <height>17</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>ActivateVpulse</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="Set_IADJ_Data_PixConf">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>40</y>
+           <width>42</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="maximum">
+          <number>7</number>
+         </property>
+        </widget>
+        <widget class="QPlainTextEdit" name="plainTextEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>200</y>
+           <width>511</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="palette">
+          <palette>
+           <active>
+            <colorrole role="WindowText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Text">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="ButtonText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="PlaceholderText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="WindowText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Text">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="ButtonText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="PlaceholderText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="WindowText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Text">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="ButtonText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="PlaceholderText">
+             <brush brushstyle="SolidPattern">
+              <color alpha="255">
+               <red>255</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 0, 0);
+</string>
+         </property>
+         <property name="lineWidth">
+          <number>0</number>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="plainText">
+          <string>                           !!!!!!!!  WARNING  !!!!!!!!!!!!!
+            be sure to have valid ROW and COLUMN selected
+            before try to write or read   the data register</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="BtPixConfResetPixelMatrix">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>540</y>
+          <width>781</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Reset pixel matrix memories</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="DAC_Tab">
+       <attribute name="title">
+        <string>DAC</string>
+       </attribute>
+       <widget class="QGroupBox" name="GBRegDacDacValues">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>281</width>
+          <height>611</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Dac values</string>
+        </property>
+        <widget class="QLabel" name="Indicator_Decimal_DacSW">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>550</y>
+           <width>261</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>VALUES ARE DECIMALS</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="DAC1">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>211</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>DAC1 - VrefN</string>
+         </property>
+         <widget class="QLineEdit" name="Text_Set_DAC1">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>94</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="Text_Get_DAC1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IndicatorSet_DAC1">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>20</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IndicatorGet_DAC1">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>20</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="Get_Button_All_DAC">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>520</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="DAC3">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>330</y>
+           <width>211</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>DAC3 - VBN_adj</string>
+         </property>
+         <widget class="QLineEdit" name="Text_Set_DAC3">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>62</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="Text_Get_DAC3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IndicatorSet_DAC3">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>20</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_DAC3">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>20</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="DAC0">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>50</y>
+           <width>211</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>DAC0 - VrefP</string>
+         </property>
+         <widget class="QLineEdit" name="Text_Set_DAC0">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>60</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="Text_Get_DAC0">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IndicatorSet_DAC0">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>20</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_DAC0">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>20</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="Set_Button_All_DAC">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>520</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="DAC2">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>240</y>
+           <width>211</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>DAC2 - VBN</string>
+         </property>
+         <widget class="QLineEdit" name="Text_Set_DAC2">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>62</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="Text_Get_DAC2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IndicatorSet_DAC2">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>20</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_DAC2">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>20</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="DAC4">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>420</y>
+           <width>211</width>
+           <height>91</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>DAC4 - VBP</string>
+         </property>
+         <widget class="QLineEdit" name="Text_Set_DAC4">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>81</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="Text_Get_DAC4">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>50</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="IndicatorSet_DAC4">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>20</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_DAC4">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>20</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="GBRegDacSW">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>10</y>
+          <width>361</width>
+          <height>611</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Dac Switch</string>
+        </property>
+        <widget class="QPushButton" name="Get_All_Bytes_DacSwitch">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>530</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QGroupBox" name="Byte3_DacSw_Group">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>440</y>
+           <width>331</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Byte 3 - DAC SWITCH</string>
+         </property>
+         <widget class="QCheckBox" name="Set_ENA_VBP_PAD_Byte3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>40</y>
+            <width>91</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_VBP_PAD</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RegDacText_Get_Byte3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>40</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RegDacText_Set_Byte3">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>40</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_Byte3">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>10</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Set__Byte3">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>10</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_VBP_PAD_Byte3">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>40</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_VBP_PAD</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="Byte2_DacSw_Group">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>240</y>
+           <width>331</width>
+           <height>201</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Byte 2 - DAC SWITCH</string>
+         </property>
+         <widget class="QCheckBox" name="Set_ENA_IN_ext_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>40</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IN_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_CM_ext_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>160</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_CM_ext</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_Iadj_ext_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>60</y>
+            <width>91</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_Iadj_ext</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_VBP_ext_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>100</y>
+            <width>121</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_VBP_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_IP_mes_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>120</y>
+            <width>101</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IP_mes</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_IN_mes_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>140</y>
+            <width>101</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IN_mes</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_CM_mes_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>80</y>
+            <width>91</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_CM_mes</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_Iadj_mes_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>180</y>
+            <width>101</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_Iadj_mes</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RegDacText_Get_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>40</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RegDacText_Set_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>40</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>B4</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>10</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Set_Byte2">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>10</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_Iadj_ext_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>60</y>
+            <width>101</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_Iadj_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IN_mes_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>140</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IN_mes</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_CM_ext_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>160</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_CM_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IP_mes_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>120</y>
+            <width>91</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IP_mes</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_Iadj_mes_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>180</y>
+            <width>91</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_Iadj_mes</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IN_ext_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>40</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IN_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_VBP_ext_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>100</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_VBP_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_CM_mes_Byte2">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>80</y>
+            <width>101</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_CM_mes</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="Byte1_DacSw_Group">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>331</width>
+           <height>201</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Byte 1 - DAC SWITCH</string>
+         </property>
+         <widget class="QCheckBox" name="Set_en_bg_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>40</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>en_bg</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_IREF_b0_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>60</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>IREF_b0</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_IREF_b1_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>80</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>IREF_b1</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_IREF_b2_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>100</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>IREF_b2</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_IREF_ext_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>120</y>
+            <width>101</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IREF_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_IP_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>140</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IP</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_IN_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>160</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IN</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Set_ENA_IP_ext_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>180</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IP_ext</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RegDacText_Get_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>40</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="RegDacText_Set_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>40</y>
+            <width>31</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>49</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Get_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>10</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>GET</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="Indicator_Set_Byte1">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>10</y>
+            <width>21</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>SET</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_IREF_b1_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>80</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>IREF_b1</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IP_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>140</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IP</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_IREF_b0_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>60</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>IREF_b0</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IREF_ext_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>120</y>
+            <width>91</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IREF_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IP_ext_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>180</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IP_ext</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_en_bg_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>40</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>en_bg</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_IREF_b2_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>100</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>IREF_b2</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="Check_ENA_IN_Byte1">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>160</y>
+            <width>81</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>ENA_IN</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QPushButton" name="Set_All_Bytes_DacSwitch">
+         <property name="geometry">
+          <rect>
+           <x>140</x>
+           <y>530</y>
+           <width>35</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Decimal_DacSW_2">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>560</y>
+           <width>261</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>15</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>VALUES ARE HEXADECIMALS</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="VpulseSwitch_tab">
+       <attribute name="title">
+        <string>VpulseSwitch</string>
+       </attribute>
+       <widget class="QGroupBox" name="VpulseSwitch_Group">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>351</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QPushButton" name="Set_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>50</y>
+           <width>31</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Set</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Reset_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>50</y>
+           <width>51</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Reset</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_BeginCol_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>50</x>
+           <y>50</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse6">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>10</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Beginning</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Text_Set_NumberCol_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>50</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse7">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>10</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Number </string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>20</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Col</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse1">
+         <property name="geometry">
+          <rect>
+           <x>100</x>
+           <y>20</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>of col</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="ResetAll_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>250</x>
+           <y>50</y>
+           <width>81</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Reset ALL</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="ByteState_Group">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>140</y>
+          <width>781</width>
+          <height>391</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Bytes State</string>
+        </property>
+        <widget class="QListWidget" name="ListWidget_ByteState_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>90</y>
+           <width>701</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>17</pointsize>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>00000000 00000000 00000000 00000000 00000000 00000000 000000</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QPushButton" name="Send_ByteState_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Send</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Get_ByteState_Vpulse">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>190</y>
+           <width>51</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Get</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_3">
+         <property name="geometry">
+          <rect>
+           <x>90</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>7</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="indent">
+          <number>-1</number>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_2">
+         <property name="geometry">
+          <rect>
+           <x>190</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>15</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_4">
+         <property name="geometry">
+          <rect>
+           <x>300</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>23</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_5">
+         <property name="geometry">
+          <rect>
+           <x>400</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>31</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_6">
+         <property name="geometry">
+          <rect>
+           <x>500</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>39</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_7">
+         <property name="geometry">
+          <rect>
+           <x>600</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>47</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_8">
+         <property name="geometry">
+          <rect>
+           <x>680</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>53</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Indicator_Vpulse8_9">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>60</y>
+           <width>31</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="indent">
+          <number>-1</number>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_Pulsing">
+     <attribute name="title">
+      <string>Pulsing</string>
+     </attribute>
+     <widget class="QGroupBox" name="GBPulsing_master">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>200</y>
+        <width>321</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <widget class="QComboBox" name="CoBPulsingPixelSel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>281</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Send only the pixels to be set (faster)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Send all pixels even the one not set ( longer)</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lePulsingFileName">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>160</y>
+         <width>281</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>cfg_mat128x54_08.txt</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblPulsingFileName">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>File name for the matrix setting</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtPulsingSendPulsingToChip">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>200</y>
+         <width>281</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Send pulsing to chip</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="TEPulsingFileComments">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>301</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtPulsingFileSelection">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>60</y>
+         <width>281</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>File selection</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lePulsingPath">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>110</y>
+         <width>281</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>C:\Python\Picmic0_SC\Pulsing_Files</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblPulsingFileName_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>90</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Path for the matrix setting</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="GBPulsingPlottingWindow">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>20</y>
+        <width>691</width>
+        <height>651</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Plotting </string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="GBPulsedPixelParams">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>131</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Pulsed pixel params</string>
+      </property>
+      <widget class="QLabel" name="Indicator_IADJ_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>50</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>IADJ (Max 8)</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_ENA_CC_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>140</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CC</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_Act_Pulse_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>160</y>
+         <width>91</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ActivateVpulse</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_SW1_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW1</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_SW0_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>100</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW0</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBPulsingPulsed_IADJ_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>7</number>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_ENA_CM_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CM</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LEPulsingPPRegValue">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="GBNOTPulsedParams">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>10</y>
+        <width>141</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>NOT Pulsed pixel  params</string>
+      </property>
+      <widget class="QLabel" name="Indicator_IADJ_PixConf_3">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>50</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>IADJ (Max 8)</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_ENA_CC_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CC</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_Act_Pulse_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>160</y>
+         <width>91</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ActivateVpulse</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_SW1_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>120</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW1</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_SW0_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW0</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBPulsingNOTPulsed_IADJ_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>7</number>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_ENA_CM_Data_PixConf">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CM</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LEPulsingNOTPRegValue">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Tab_Carac_dac">
+     <attribute name="title">
+      <string>Carac DAC</string>
+     </attribute>
+     <widget class="QComboBox" name="CoBCarDacDacSel">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>410</y>
+        <width>101</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Dac0:VRefP</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Dac1:VRefN</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Dac2:VBN</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Dac3:VBN-Adj</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Dac4:VBP</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QGroupBox" name="GBCDDefaultValues">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>390</y>
+        <width>161</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Default values</string>
+      </property>
+      <widget class="QLineEdit" name="LECarDacDefValDac0">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>30</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>60</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblCarDacDefValDac0">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Dac0:VRefP</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LECarDacDefValDac1">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>60</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>94</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblCarDacDefValDac1">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>60</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Dac1:VRefN</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LECarDacDefValDac2">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>90</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>62</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblCarDacDefValDac2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>90</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Dac2:VBN</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LECarDacDefValDac3">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>120</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>62</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblCarDacDefValDac3">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>120</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Dac3:VBN_adj</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LECarDacDefValDac4">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>150</y>
+         <width>31</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>81</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblCarDacDefValDac4">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>150</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Dac4:VBP</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QSpinBox" name="SBCarDacStartingValue">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>450</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblCarDacStartingValue">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>450</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Starting Value</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblCarDacEndingValue">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>480</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Ending Value</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="SBCarDacEndingValue">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>480</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblCarDacStepValue">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>510</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Step</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="SBCarDacStepValue">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>510</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>1</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BtCarDacRunCarac">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>540</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run Caracterisation</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="GBCarDacAD2Params">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>311</width>
+        <height>221</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Analog discovery params</string>
+      </property>
+      <widget class="QSpinBox" name="SBCarDacADPRes1">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>40</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+       <property name="value">
+        <number>10000</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacADPRes1">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>40</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Res1</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBCarDacADPRes2">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>70</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+       <property name="value">
+        <number>1000</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacADPRes2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>70</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Res2</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBCarDacADPNbPtsEch">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>100</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+       <property name="value">
+        <number>8192</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacADPNbrPtEch">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>100</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nbr pts ech</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBCarDacADPFreqEch">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>130</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>1000000</number>
+       </property>
+       <property name="value">
+        <number>100000</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacADPFreqEch">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>130</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Freq Ech</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacADPRange">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>160</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Range</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtCarDacADPSetParams">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>190</y>
+         <width>111</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Set Params</string>
+       </property>
+      </widget>
+      <widget class="QDoubleSpinBox" name="DSBCarDacADPRange">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>160</y>
+         <width>161</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="decimals">
+        <number>3</number>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLineEdit" name="LECarDacRunStatus">
+      <property name="geometry">
+       <rect>
+        <x>42</x>
+        <y>650</y>
+        <width>231</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblCarDacRunStatus">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>630</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Run Status</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="GBCarDacPlottingWindow">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>10</y>
+        <width>691</width>
+        <height>641</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Plotting</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="CoBCarDacPlotTypeSel">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>660</y>
+        <width>641</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Show DAC Value</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Show rms noise</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLineEdit" name="LECarDacWaitingTime">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>240</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0.5</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblCarDacWaitingTime">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>240</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Waiting time ( s)</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="CobCarDacChannelASel">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>270</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QComboBox" name="CobCarDacChannelBSel">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>300</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="LblCarDacChannelA">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>270</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ADP : Channel A</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="LblCarDacChannelB">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>300</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ADP : Channel B</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="ChBCaracDacSaveAllFiles">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>330</y>
+        <width>211</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save all files( even all points stats)</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="ChBCarDacStepByStep">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>360</y>
+        <width>281</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Step by step caracterisation</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="ChBCarDacNextStep">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>590</y>
+        <width>141</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Next Step</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1039</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMisc">
+    <property name="title">
+     <string>Misc</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuMisc"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_Config_File">
+   <property name="text">
+    <string>Open Config File</string>
+   </property>
+  </action>
+  <action name="actionSave_config_file">
+   <property name="text">
+    <string>Save config File</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>Set_FlushModule_PixSeq</tabstop>
+  <tabstop>Set_NU_PixSeq</tabstop>
+  <tabstop>Set_MarkedMod_PixSeq</tabstop>
+  <tabstop>Set_NU2_PixSeq</tabstop>
+  <tabstop>Set_PulseMod_PixSeq</tabstop>
+  <tabstop>Set_LoadWidth_PixSeq</tabstop>
+  <tabstop>Set_Load_pLSB_PixSeq</tabstop>
+  <tabstop>Set_Load_PMSB_PixSeq</tabstop>
+  <tabstop>Set_Flush_PLSB_PixSeq</tabstop>
+  <tabstop>Set_Flush_PMSB_PixSeq</tabstop>
+  <tabstop>Set_APulse_pLSB_PixSeq</tabstop>
+  <tabstop>Set_APulse_pMSB_PixSeq</tabstop>
+  <tabstop>Set_DPulse_pLSB_PixSeq</tabstop>
+  <tabstop>Set_DPulse_pMSB_PixSeq</tabstop>
+  <tabstop>Set_RdPixMaskLSB_PixSeq</tabstop>
+  <tabstop>Set_RdPixMaskMSB_PixSeq</tabstop>
+  <tabstop>Set_MaxFrameLSB_PixSeq</tabstop>
+  <tabstop>Set_MaxFrameMSB_PixSeq</tabstop>
+  <tabstop>Set_PolarityLSB_PixSeq</tabstop>
+  <tabstop>Set_PolarityMSB_PixSeq</tabstop>
+  <tabstop>Set_Marker1LSB_PixSeq</tabstop>
+  <tabstop>Set_Marker1MSB_PixSeq</tabstop>
+  <tabstop>Set_Marker2LSB_PixSeq</tabstop>
+  <tabstop>Set_Marker2MSB_PixSeq</tabstop>
+  <tabstop>Text_Set_DAC0</tabstop>
+  <tabstop>Text_Set_DAC1</tabstop>
+  <tabstop>Text_Set_DAC2</tabstop>
+  <tabstop>Text_Set_DAC3</tabstop>
+  <tabstop>Text_Set_DAC4</tabstop>
+  <tabstop>RegDacText_Set_Byte1</tabstop>
+  <tabstop>RegDacText_Set_Byte2</tabstop>
+  <tabstop>RegDacText_Set_Byte3</tabstop>
+  <tabstop>setPixSeq</tabstop>
+  <tabstop>get_PixSeq</tabstop>
+  <tabstop>Get_NU1_Pix_PixSeq</tabstop>
+  <tabstop>Get_MarkedMod_PixSeq</tabstop>
+  <tabstop>Get_NU2_Pix_PixSeq</tabstop>
+  <tabstop>Get_PulseMod_PixSeq</tabstop>
+  <tabstop>Get_LoadWidth_PixSeq</tabstop>
+  <tabstop>Get_Load_pLSB_PixSeq</tabstop>
+  <tabstop>Get_Load_PMSB_PixSeq</tabstop>
+  <tabstop>Get_Flush_PLSB_PixSeq</tabstop>
+  <tabstop>Get_Flush_PMSB_PixSeq</tabstop>
+  <tabstop>Get_APulse_pLSB_PixSeq</tabstop>
+  <tabstop>Get_APulse_pMSB_PixSeq</tabstop>
+  <tabstop>Get_DPulse_pLSB_PixSeq</tabstop>
+  <tabstop>Get_DPulse_pMSB_PixSeq</tabstop>
+  <tabstop>Get_RdPixMaskLSB_PixSeq</tabstop>
+  <tabstop>Get_RdPixMaskMSB_PixSeq</tabstop>
+  <tabstop>Get_MaxFrameLSB_PixSeq</tabstop>
+  <tabstop>Get_MaxFrameMSB_PixSeq</tabstop>
+  <tabstop>Get_PolarityLSB_PixSeq</tabstop>
+  <tabstop>Get_PolarityMSB_PixSeq</tabstop>
+  <tabstop>Get_Marker1LSB_PixSeq</tabstop>
+  <tabstop>Get_Marker1MSB_PixSeq</tabstop>
+  <tabstop>Get_Marker2LSB_PixSeq</tabstop>
+  <tabstop>Get_Marker2MSB_PixSeq</tabstop>
+  <tabstop>pages_registers</tabstop>
+  <tabstop>Set_Button_Global_Cmd</tabstop>
+  <tabstop>Tab_Pages</tabstop>
+  <tabstop>Set_StartSeq_Global_Cmd</tabstop>
+  <tabstop>Text_Get_Global_Cmd</tabstop>
+  <tabstop>Get_Global_Cmd</tabstop>
+  <tabstop>update</tabstop>
+  <tabstop>Set_EnExtPulse_Global_Cmd</tabstop>
+  <tabstop>SetRstFrCnt_Global_Cmd</tabstop>
+  <tabstop>Check_EnExtPulse_Global_Cmd</tabstop>
+  <tabstop>Check_StartSeq_Global_Cmd</tabstop>
+  <tabstop>Set_ExtPulse_Global_Cmd</tabstop>
+  <tabstop>Check_ExtPulse_Global_Cmd</tabstop>
+  <tabstop>BtEndSoftware</tabstop>
+  <tabstop>push_disconnect</tabstop>
+  <tabstop>Check_RstFrCnt_Global_Cmd</tabstop>
+  <tabstop>push_connect</tabstop>
+  <tabstop>Text_Set_GlobalCmd</tabstop>
+  <tabstop>menu_COM</tabstop>
+  <tabstop>Get_FlushModule_PixSeq</tabstop>
+  <tabstop>Get_Test_Struct</tabstop>
+  <tabstop>Set_Button_Test_Struct</tabstop>
+  <tabstop>Set_SW0</tabstop>
+  <tabstop>Set_SW1</tabstop>
+  <tabstop>Set_EN_CM</tabstop>
+  <tabstop>Set_EN_CC</tabstop>
+  <tabstop>Set_ENA_CM1</tabstop>
+  <tabstop>Set_ENA_D2P</tabstop>
+  <tabstop>Set_ENA_D1P</tabstop>
+  <tabstop>Text_Get_Test_Struct</tabstop>
+  <tabstop>Text_Set_Test_Struct</tabstop>
+  <tabstop>Check_EN_CC</tabstop>
+  <tabstop>Check_SW1</tabstop>
+  <tabstop>Check_SW0</tabstop>
+  <tabstop>Check_ENA_D1P</tabstop>
+  <tabstop>Check_ENA_D2P</tabstop>
+  <tabstop>Check_EN_CM</tabstop>
+  <tabstop>Check_ENA_CM1</tabstop>
+  <tabstop>Radio_SelAllRow_Row_PixConf</tabstop>
+  <tabstop>Radio_SelRow_Row_PixConf</tabstop>
+  <tabstop>Set_Button_Row_PixConf</tabstop>
+  <tabstop>Check_SelAllRow_Row_PixConf</tabstop>
+  <tabstop>Get_Row_PixConf</tabstop>
+  <tabstop>Text_Get_Row_PixConf</tabstop>
+  <tabstop>Text_Set_Row_PixConf</tabstop>
+  <tabstop>Radio_SelCol_PixConf</tabstop>
+  <tabstop>Radio_SelAllCol_PixConf</tabstop>
+  <tabstop>Set_Button_Col_PixConf</tabstop>
+  <tabstop>Check_SelDeselAllCol_PixConf</tabstop>
+  <tabstop>Get_Col_PixConf</tabstop>
+  <tabstop>Text_Set_Col_PixConf</tabstop>
+  <tabstop>Text_Get_Col_PixConf</tabstop>
+  <tabstop>Radio_DeselAllCol_PixConf</tabstop>
+  <tabstop>Set_ENA_CM_Data_PixConf</tabstop>
+  <tabstop>Set_SW0_Data_PixConf</tabstop>
+  <tabstop>Set_SW1_Data_PixConf</tabstop>
+  <tabstop>Set_ENA_CC_Data_PixConf</tabstop>
+  <tabstop>Set_ActivateVpulse_Data_PixConf</tabstop>
+  <tabstop>Set_Button_Data_PixConf</tabstop>
+  <tabstop>Get_Data_PixConf</tabstop>
+  <tabstop>Check_ENA_CM_Data_PixConf</tabstop>
+  <tabstop>Text_Set_Data_PixConf</tabstop>
+  <tabstop>Text_Get_Data_PixConf</tabstop>
+  <tabstop>Check_SW0_Data_PixConf</tabstop>
+  <tabstop>Check_SW1_Data_PixConf</tabstop>
+  <tabstop>Check_ENA_CC_Data_PixConf</tabstop>
+  <tabstop>Get_IADJ_Data_PixConf</tabstop>
+  <tabstop>Check_ActVpulse_Data_PixConf</tabstop>
+  <tabstop>Set_IADJ_Data_PixConf</tabstop>
+  <tabstop>Text_Get_DAC0</tabstop>
+  <tabstop>Text_Get_DAC1</tabstop>
+  <tabstop>Text_Get_DAC2</tabstop>
+  <tabstop>Text_Get_DAC3</tabstop>
+  <tabstop>Text_Get_DAC4</tabstop>
+  <tabstop>Set_en_bg_Byte1</tabstop>
+  <tabstop>Set_IREF_b0_Byte1</tabstop>
+  <tabstop>Set_IREF_b1_Byte1</tabstop>
+  <tabstop>Set_IREF_b2_Byte1</tabstop>
+  <tabstop>Set_ENA_IREF_ext_Byte1</tabstop>
+  <tabstop>Set_ENA_IP_Byte1</tabstop>
+  <tabstop>Set_ENA_IN_Byte1</tabstop>
+  <tabstop>Set_ENA_IP_ext_Byte1</tabstop>
+  <tabstop>RegDacText_Get_Byte1</tabstop>
+  <tabstop>Check_IREF_b1_Byte1</tabstop>
+  <tabstop>Check_ENA_IP_Byte1</tabstop>
+  <tabstop>Check_IREF_b0_Byte1</tabstop>
+  <tabstop>Check_ENA_IREF_ext_Byte1</tabstop>
+  <tabstop>Check_ENA_IP_ext_Byte1</tabstop>
+  <tabstop>Check_en_bg_Byte1</tabstop>
+  <tabstop>Check_IREF_b2_Byte1</tabstop>
+  <tabstop>Check_ENA_IN_Byte1</tabstop>
+  <tabstop>Set_ENA_IN_ext_Byte2</tabstop>
+  <tabstop>Set_ENA_CM_ext_Byte2</tabstop>
+  <tabstop>Set_ENA_Iadj_ext_Byte2</tabstop>
+  <tabstop>Set_ENA_VBP_ext_Byte2</tabstop>
+  <tabstop>Set_ENA_IP_mes_Byte2</tabstop>
+  <tabstop>Set_ENA_IN_mes_Byte2</tabstop>
+  <tabstop>Set_ENA_CM_mes_Byte2</tabstop>
+  <tabstop>Set_ENA_Iadj_mes_Byte2</tabstop>
+  <tabstop>RegDacText_Get_Byte2</tabstop>
+  <tabstop>Check_ENA_Iadj_ext_Byte2</tabstop>
+  <tabstop>Check_ENA_IN_mes_Byte2</tabstop>
+  <tabstop>Check_ENA_CM_ext_Byte2</tabstop>
+  <tabstop>Check_ENA_IP_mes_Byte2</tabstop>
+  <tabstop>Check_ENA_Iadj_mes_Byte2</tabstop>
+  <tabstop>Check_ENA_IN_ext_Byte2</tabstop>
+  <tabstop>Check_ENA_VBP_ext_Byte2</tabstop>
+  <tabstop>Check_ENA_CM_mes_Byte2</tabstop>
+  <tabstop>Set_ENA_VBP_PAD_Byte3</tabstop>
+  <tabstop>RegDacText_Get_Byte3</tabstop>
+  <tabstop>Check_ENA_VBP_PAD_Byte3</tabstop>
+  <tabstop>Get_Button_All_DAC</tabstop>
+  <tabstop>Set_Button_All_DAC</tabstop>
+  <tabstop>Get_All_Bytes_DacSwitch</tabstop>
+  <tabstop>Set_All_Bytes_DacSwitch</tabstop>
+  <tabstop>Set_Vpulse</tabstop>
+  <tabstop>Reset_Vpulse</tabstop>
+  <tabstop>Text_Set_BeginCol_Vpulse</tabstop>
+  <tabstop>Text_Set_NumberCol_Vpulse</tabstop>
+  <tabstop>ResetAll_Vpulse</tabstop>
+  <tabstop>ListWidget_ByteState_Vpulse</tabstop>
+  <tabstop>Send_ByteState_Vpulse</tabstop>
+  <tabstop>Get_ByteState_Vpulse</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,2 @@
+2022-11-25 09:28:46,806-ERROR <PID 19624:MainProcess> pm0_hlf.__init__().100: Logging Started
+2022-11-25 09:28:55,861-CRITICAL <PID 19624:MainProcess> pm0_GUI.StopProgClicked().725: picmic slow control now ending

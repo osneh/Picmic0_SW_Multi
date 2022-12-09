@@ -1,0 +1,220 @@
+000000 Msg : 
+000001 Msg : ===========================
+000002 Msg :  PCUC_FSysRstCallback()  
+000003 Msg : ===========================
+000004 Msg : 
+000005 Msg : Setup executed
+000006 Msg : ==================================================
+000007 Msg : Demo V9.0 I2C master controler for PICMIC
+000008 Msg : 
+000009 Msg : I2C slave address = 28 H
+000010 Msg : 
+000011 Msg : G.CLAUS Jul 25 2022
+000012 Msg : ==================================================
+000013 Msg : 
+000014 Msg : ==================================================
+000015 Msg : WARNING !!! Slave MUST be PICMIC or Protium 
+000016 Msg : 
+000017 Msg : => #define SLAVE_IS_ARDUINO for Arduino PICMIC emulator
+000018 Msg : ==================================================
+000019 Msg : 
+000020 Msg : --------------------------------------------------
+000021 Msg : Test LEDS, switch ON LEDs
+000022 Msg :  L1 (orange)
+000023 Msg :  L1 + L2 (yellow)    
+000024 Msg :  L1 + L2 + L3 (green)
+000025 Msg :  L1 + L2 +L3 + L4 (red)
+000026 Msg : Test LEDS, switch OFF LEDs
+000027 Msg : --------------------------------------------------
+
+000028 Msg : I2C SCL frequency = 400 KHz 
+
+000029 Msg : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+000030 Msg :  High SCL frequency => Risk of HW errors 
+000031 Msg : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+000032 Msg : 
+000033 Msg : ===========================
+000034 Msg : Listing I2C device on bus 
+000035 Msg : ===========================
+000036 Msg : 
+000037 Msg : 
+000038 Msg : 0 I2C device(s) found
+000039 Msg : 
+
+000040 Msg : --------------------------------------------------
+000041 Msg : Firmata seems to be ready, no crash at least ;-)
+000042 Msg : --------------------------------------------------
+
+
+
+000043 Msg : ===========================
+000044 Msg : Waiting on firmata commands
+000045 Msg : ===========================
+
+
+000046 Msg : ===========================
+000047 Msg :  Cmd PM0SC__CMD_SET_LOG    
+000048 Msg : ===========================
+
+000049 Msg : Params    
+000050 Msg : Log raw = 0
+000051 Msg : Log cmd = 2
+
+000052 Msg : Results    
+000053 Msg : Ret     = 0
+
+000054 Msg : ===============================
+000055 Msg :  Cmd PM0SC__CMD_CTRL_HW_SIG    
+000056 Msg : ===============================
+
+000057 Msg : Params    
+000058 Msg : Cmd          = 0
+000059 Msg : RstSt        = 0
+000060 Msg : RstI2CSt     = 0
+000061 Msg : StartSt      = 0
+000062 Msg : TestmodeSt   = 0
+000063 Msg : PulseWidthUs = 0
+
+000064 Msg : Results    
+000065 Msg : Ret     = 0
+000066 Msg : ---------------------------------------------------
+000067 Msg : Checking register Vpulse switch addr = 1E H size = 7 W8 is running, in mode check by increasing 0,1..255 data list  for 500 times, please wait ...
+000068 Msg : Test No 0 / 500 W/R tests done without errors
+000069 Msg : Test No 100 / 500 W/R tests done without errors
+000070 Msg : Test No 200 / 500 W/R tests done without errors
+000071 Msg : Test No 300 / 500 W/R tests done without errors
+000072 Msg : Test No 400 / 500 W/R tests done without errors
+000073 Msg : Checking No 0 register Vpulse switch in mode - check by increasing 0,1..255 data list - over 500 W/R tests done without errors : 896000 I2C transaction in total
+000074 Msg : ---------------------------------------------------
+000075 Msg : Checking register Pixel sequence addr = 2 H size = 24 W8 is running, in mode check by increasing 0,1..255 data list  for 256 times, please wait ...
+000076 Msg : Test No 0 / 256 W/R tests done without errors
+000077 Msg : Test No 100 / 256 W/R tests done without errors
+000078 Msg : Test No 200 / 256 W/R tests done without errors
+000079 Msg : Checking No 0 register Pixel sequence in mode - check by increasing 0,1..255 data list - over 256 W/R tests done without errors : 1572864 I2C transaction in total
+000080 Msg : ---------------------------------------------------
+000081 Msg : Checking register DAC values addr = 26 H size = 5 W8 is running, in mode check by increasing 0,1..255 data list  for 1000 times, please wait ...
+000082 Msg : Test No 0 / 1000 W/R tests done without errors
+000083 Msg : Test No 100 / 1000 W/R tests done without errors
+000084 Msg : Test No 200 / 1000 W/R tests done without errors
+000085 Msg : Test No 300 / 1000 W/R tests done without errors
+000086 Msg : Test No 400 / 1000 W/R tests done without errors
+000087 Msg : Test No 500 / 1000 W/R tests done without errors
+000088 Msg : Test No 600 / 1000 W/R tests done without errors
+000089 Msg : Test No 700 / 1000 W/R tests done without errors
+000090 Msg : Test No 800 / 1000 W/R tests done without errors
+000091 Msg : Test No 900 / 1000 W/R tests done without errors
+000092 Msg : Checking No 0 register DAC values in mode - check by increasing 0,1..255 data list - over 1000 W/R tests done without errors : 1280000 I2C transaction in total
+000093 Msg : ---------------------------------------------------
+000094 Msg : Checking register DAC switches addr = 2B H size = 3 W8 is running, in mode check by increasing 0,1..255 data list  for 1000 times, please wait ...
+000095 Msg : Test No 0 / 1000 W/R tests done without errors
+000096 Msg : Test No 100 / 1000 W/R tests done without errors
+000097 Msg : Test No 200 / 1000 W/R tests done without errors
+000098 Msg : Test No 300 / 1000 W/R tests done without errors
+000099 Msg : Test No 400 / 1000 W/R tests done without errors
+000100 Msg : Test No 500 / 1000 W/R tests done without errors
+000101 Msg : Test No 600 / 1000 W/R tests done without errors
+000102 Msg : Test No 700 / 1000 W/R tests done without errors
+000103 Msg : Test No 800 / 1000 W/R tests done without errors
+000104 Msg : Test No 900 / 1000 W/R tests done without errors
+000105 Msg : Checking No 0 register DAC switches in mode - check by increasing 0,1..255 data list - over 1000 W/R tests done without errors : 768000 I2C transaction in total
+000106 Msg : ---------------------------------------------------
+000107 Msg : Checking register Data emulation addr = 3C H size = 1 W8 is running, in mode check by increasing 0,1..255 data list  for 1000 times, please wait ...
+000108 Msg : Test No 0 / 1000 W/R tests done without errors
+000109 Msg : Test No 100 / 1000 W/R tests done without errors
+000110 Msg : Test No 200 / 1000 W/R tests done without errors
+000111 Msg : Test No 300 / 1000 W/R tests done without errors
+000112 Msg : Test No 400 / 1000 W/R tests done without errors
+000113 Msg : Test No 500 / 1000 W/R tests done without errors
+000114 Msg : Test No 600 / 1000 W/R tests done without errors
+000115 Msg : Test No 700 / 1000 W/R tests done without errors
+000116 Msg : Test No 800 / 1000 W/R tests done without errors
+000117 Msg : Test No 900 / 1000 W/R tests done without errors
+000118 Msg : Checking No 0 register Data emulation in mode - check by increasing 0,1..255 data list - over 1000 W/R tests done without errors : 256000 I2C transaction in total
+000119 Msg : ---------------------------------------------------
+000120 Msg : Checking register Pixel config row addr = 3D H size = 1 W8 is running, in mode check by increasing 0,1..255 data list  for 4000 times, please wait ...
+000121 Msg : Test No 0 / 4000 W/R tests done without errors
+000122 Msg : Test No 100 / 4000 W/R tests done without errors
+000123 Msg : Test No 200 / 4000 W/R tests done without errors
+000124 Msg : Test No 300 / 4000 W/R tests done without errors
+000125 Msg : Test No 400 / 4000 W/R tests done without errors
+000126 Msg : Test No 500 / 4000 W/R tests done without errors
+000127 Msg : Test No 600 / 4000 W/R tests done without errors
+000128 Msg : Test No 700 / 4000 W/R tests done without errors
+000129 Msg : Test No 800 / 4000 W/R tests done without errors
+000130 Msg : Test No 900 / 4000 W/R tests done without errors
+000131 Msg : Test No 1000 / 4000 W/R tests done without errors
+000132 Msg : Test No 1100 / 4000 W/R tests done without errors
+000133 Msg : Test No 1200 / 4000 W/R tests done without errors
+000134 Msg : Test No 1300 / 4000 W/R tests done without errors
+000135 Msg : Test No 1400 / 4000 W/R tests done without errors
+000136 Msg : Test No 1500 / 4000 W/R tests done without errors
+000137 Msg : Test No 1600 / 4000 W/R tests done without errors
+000138 Msg : Test No 1700 / 4000 W/R tests done without errors
+000139 Msg : Test No 1800 / 4000 W/R tests done without errors
+000140 Msg : Test No 1900 / 4000 W/R tests done without errors
+000141 Msg : Test No 2000 / 4000 W/R tests done without errors
+000142 Msg : Test No 2100 / 4000 W/R tests done without errors
+000143 Msg : Test No 2200 / 4000 W/R tests done without errors
+000144 Msg : Test No 2300 / 4000 W/R tests done without errors
+000145 Msg : Test No 2400 / 4000 W/R tests done without errors
+000146 Msg : Test No 2500 / 4000 W/R tests done without errors
+000147 Msg : Test No 2600 / 4000 W/R tests done without errors
+000148 Msg : Test No 2700 / 4000 W/R tests done without errors
+000149 Msg : Test No 2800 / 4000 W/R tests done without errors
+000150 Msg : Test No 2900 / 4000 W/R tests done without errors
+000151 Msg : Test No 3000 / 4000 W/R tests done without errors
+000152 Msg : Test No 3100 / 4000 W/R tests done without errors
+000153 Msg : Test No 3200 / 4000 W/R tests done without errors
+000154 Msg : Test No 3300 / 4000 W/R tests done without errors
+000155 Msg : Test No 3400 / 4000 W/R tests done without errors
+000156 Msg : Test No 3500 / 4000 W/R tests done without errors
+000157 Msg : Test No 3600 / 4000 W/R tests done without errors
+000158 Msg : Test No 3700 / 4000 W/R tests done without errors
+000159 Msg : Test No 3800 / 4000 W/R tests done without errors
+000160 Msg : Test No 3900 / 4000 W/R tests done without errors
+000161 Msg : Checking No 0 register Pixel config row in mode - check by increasing 0,1..255 data list - over 4000 W/R tests done without errors : 1024000 I2C transaction in total
+000162 Msg : ---------------------------------------------------
+000163 Msg : Checking register Pixel config col addr = 3E H size = 1 W8 is running, in mode check by increasing 0,1..255 data list  for 4000 times, please wait ...
+000164 Msg : Test No 0 / 4000 W/R tests done without errors
+000165 Msg : Test No 100 / 4000 W/R tests done without errors
+000166 Msg : Test No 200 / 4000 W/R tests done without errors
+000167 Msg : Test No 300 / 4000 W/R tests done without errors
+000168 Msg : Test No 400 / 4000 W/R tests done without errors
+000169 Msg : Test No 500 / 4000 W/R tests done without errors
+000170 Msg : Test No 600 / 4000 W/R tests done without errors
+000171 Msg : Test No 700 / 4000 W/R tests done without errors
+000172 Msg : Test No 800 / 4000 W/R tests done without errors
+000173 Msg : Test No 900 / 4000 W/R tests done without errors
+000174 Msg : Test No 1000 / 4000 W/R tests done without errors
+000175 Msg : Test No 1100 / 4000 W/R tests done without errors
+000176 Msg : Test No 1200 / 4000 W/R tests done without errors
+000177 Msg : Test No 1300 / 4000 W/R tests done without errors
+000178 Msg : Test No 1400 / 4000 W/R tests done without errors
+000179 Msg : Test No 1500 / 4000 W/R tests done without errors
+000180 Msg : Test No 1600 / 4000 W/R tests done without errors
+000181 Msg : Test No 1700 / 4000 W/R tests done without errors
+000182 Msg : Test No 1800 / 4000 W/R tests done without errors
+000183 Msg : Test No 1900 / 4000 W/R tests done without errors
+000184 Msg : Test No 2000 / 4000 W/R tests done without errors
+000185 Msg : Test No 2100 / 4000 W/R tests done without errors
+000186 Msg : Test No 2200 / 4000 W/R tests done without errors
+000187 Msg : Test No 2300 / 4000 W/R tests done without errors
+000188 Msg : Test No 2400 / 4000 W/R tests done without errors
+000189 Msg : Test No 2500 / 4000 W/R tests done without errors
+000190 Msg : Test No 2600 / 4000 W/R tests done without errors
+000191 Msg : Test No 2700 / 4000 W/R tests done without errors
+000192 Msg : Test No 2800 / 4000 W/R tests done without errors
+000193 Msg : Test No 2900 / 4000 W/R tests done without errors
+000194 Msg : Test No 3000 / 4000 W/R tests done without errors
+000195 Msg : Test No 3100 / 4000 W/R tests done without errors
+000196 Msg : Test No 3200 / 4000 W/R tests done without errors
+000197 Msg : Test No 3300 / 4000 W/R tests done without errors
+000198 Msg : Test No 3400 / 4000 W/R tests done without errors
+000199 Msg : Test No 3500 / 4000 W/R tests done without errors
+000200 Msg : Test No 3600 / 4000 W/R tests done without errors
+000201 Msg : Test No 3700 / 4000 W/R tests done without errors
+000202 Msg : Test No 3800 / 4000 W/R tests done without errors
+000203 Msg : Test No 3900 / 4000 W/R tests done without errors
+000204 Msg : Checking No 0 register Pixel config col in mode - check by increasing 0,1..255 data list - over 4000 W/R tests done without errors : 1024000 I2C transaction in total
+000205 Msg : ---------------------------------------------------
