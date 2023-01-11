@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Module permettant de contenir les fonctions de l'AD2
- modifié le 06 09 2022 par MS pour pourvoir l'utiliser avec un GUI
+Module containing the functions to allow to use the Analog Discovery 2 as an analog acquisition system
+ V1.1 06 09 2022 MS : function modification in order to allow the use of this module with a GUI
  V1.2 24 11 2022 MS : modified the importing procedure in order to have one place to change the modules names in the project
  """
 
@@ -40,9 +40,7 @@ config.read("modules/Modules.conf")
 
 
 PM0SC_Name = config['ModuleName']['slowControlLowLevel']
-#import mod_pm0_emul_func_11 as PM0EMUL # for the comment extracting of the pulsing files
 PM0SC = importlib.import_module(PM0SC_Name, package=None)
-#import mod_pm0_sc_23 as PM0SC
 
 importlib.reload(PM0SC)
 
@@ -53,28 +51,21 @@ if sys.platform.startswith("win"):
 elif (sys.platform == "linux"):
     # Load the dynamic library on linux
     dwf = cdll.LoadLibrary("libdwf.so")
-# =============================================================
-# Declaration variables
-# =============================================================
-
-sts = c_byte()
-pvoltsRange = c_double()
-cBufMax = c_int()
 
 # =============================================================
 # Settings
 # =============================================================
 
 
-global VGRes1
-global VGRes2 
+global VGRes1        # resistor value for the Dacs 0,2,3
+global VGRes2        # resistor value for the Dac 1
 
-global VGNbrePtEch              #nombre d'échantillons
-global VGFrEch#fréquence d'échantillonage
-global VGRange                   
+global VGNbrePtEch   # number of samples used for a single point
+global VGFrEch       # Sampling frequency
+global VGRange       # range of the analog inputs            
 
-VGRes1 = 10000
-VGRes2 = 1000
+VGRes1 = 4700
+VGRes2 = 4700
 VGNbrePtEch = 8192   
 VGFrEch = 100000  
 VGRange = 1.0 
@@ -84,64 +75,79 @@ VGRange = 1.0
 # =============================================================
 
 def FSetPar(Res1,Res2,NbreEch,FrEch,Range):
+    ''' 
+    ... 
+    
+    Sets the parameters used for the DAC caracterisation
+    
+    Param
+    - Res1     : Resistor value for the Dac0,2,3
+    - Res2     : Resistor value for the Dac1
+    - NbreEch  : Numbre of samples for each step
+    - FrEch    : Sampling frequenc
+    - Range    : Range of the analog inputs  of the Analog Discovery
+    
+    Returns
+    - nothing
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''
     global VGRes1
     global VGRes2
     global VGNbrePtEch     
     global VGFrEch         
     global VGRange  
     
-    #print("VRes1 = "+ str(VGRes1)+" , VRes2 = "+ str(VGRes2) + " \n VGNbrePtEch = "+ str(VGNbrePtEch) + ", VGFrEch = "+ str(VGFrEch)+" , Range = " + str(VGRange))
-    #Res1
     VGRes1 = Res1
-    #VRes1 = input("Change the value of Res1 ? | Current = "+str(VGRes1)+ " Default = 10000 \n")
-    #if VRes1 == '' or int(VRes1) == VGRes1 :
-    #    None
-    #else :
-    #    VGRes1 = int(VRes1)
-    #Res2  
     VGRes2 = Res2
-    #VRes2 = input("Change the value of Res2 ? | Current = "+str(VGRes2)+ " Default = 1000 \n")
-    #if VRes2 == '' or int(VRes2) == VGRes2 :
-    #    None
-    #else :
-    #    VGRes2 = int(VRes2)
-    #NbrePtEch
     VGNbrePtEch = NbreEch
-    #VNbrePtEch = input("Change the value of VNbrePtEch ? | Current = "+str(VGNbrePtEch)+ " Default = 8192 | 8192 max  \n")
-    #if VNbrePtEch == '' or int(VNbrePtEch) == VGNbrePtEch :
-    #    None
-    #else :
-    #    VGNbrePtEch = int(VNbrePtEch)
-    #FrEch
     VGFrEch = FrEch
-    #VFrEch = input("Change the value of VFrEch ? | Current = "+str(VGFrEch)+ " Default = 100000 \n")
-    #if VFrEch == '' or int(VFrEch) == VGFrEch :
-    #    None
-    #else :
-    #    VGFrEch = int(VFrEch)
-    #Range
     VGRange = Range
-    #VRange= input("Change the value of VRange ? | Current = "+str(VGRange)+ " Default = 1 \n")
-    #if VRange == '' or int(VRange) == VGRange :
-    #    None
-    #else :
-    #    VGRange = int(VRange)
-     
+
 def FResPar():
+    ''' 
+    ... 
+    
+    Resets the parameters used for the DAC caracterisation to the default value
+    
+    Param
+    - none
+    
+    Returns
+    - nothing
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''
     global VGRes1
     global VGRes2
     global VGNbrePtEch     
     global VGFrEch         
     global VGRange 
     
-    VGRes1 = 10000
-    VGRes2 = 1000
+    VGRes1 = 4700
+    VGRes2 = 4700
     VGNbrePtEch = 8192   
     VGFrEch = 100000  
     VGRange = 1 
-    
+
 def FConnect(UsbPortUno):
+    ''' 
+    ... 
     
+    Connects to the Arduon Uno board
+        ( used for the picmic emulation
+    
+    Param
+    - ReUsbPortUnos1     : port on whoch the arduino uno board is conneted
+    
+    Returns
+    - 0
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''    
     global VGUno
     
     VGUno = pyfirmata.Arduino(UsbPortUno)
@@ -149,16 +155,46 @@ def FConnect(UsbPortUno):
     print("Communication Successfully started - Arduino VGUno obj created")
     
     return (0)
-    
-def FDisconnect():
 
+def FDisconnect():
+    ''' 
+    ... 
+    
+    Disconnect from the Arduino Uno board
+    Param
+    - none
+    
+    Returns
+    - nothing
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''
     global VGUno
     
     VGUno.exit()
     
     del VGUno
- 
+
 def FCarac(VGRegOp, VGPrePostOp, VGPrePostParam, VGStrRegOp, VGUnoConnected):
+    ''' 
+    ... 
+    
+    Starts a dac caracterisation ( with an Arduino uno board to emulate the picmic chip)
+    
+    Param
+    - VRegOp          =  Register operation mode
+    - VPrePostOp     = Pre/post operatiion mode
+    - VPrePostParam  = Pre/post operation param
+    - VGStrRegOp     = user friendly name of the Register operation mode
+    - VGUnoConnected = if 1 : the arduino uno board is connected
+    
+    Returns
+    - status of the function
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''
     global VGUno
         
     VRegValDac = int(input("Write on the Dac number :  (Value between 0 and 4) "))  
@@ -217,7 +253,24 @@ def FCarac(VGRegOp, VGPrePostOp, VGPrePostParam, VGStrRegOp, VGUnoConnected):
 
 
 def FDacCarac(VGRegOp, VGPrePostOp, VGPrePostParam, VGStrRegOp):
-        
+    ''' 
+    ... 
+    
+    Starts a dac caracterisation 
+    
+    Param
+    - VRegOp          =  Register operation mode
+    - VPrePostOp     = Pre/post operatiion mode
+    - VPrePostParam  = Pre/post operation param
+    - VGStrRegOp     = user friendly name of the Register operation mode
+    - VGUnoConnected = if 1 : the arduino uno board is connected
+    
+    Returns
+    - status of the function
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''        
     VRegValDac = int(input("Write on the Dac number :  (Value between 0 and 4) "))  
     
     
@@ -263,25 +316,41 @@ def FDacCarac(VGRegOp, VGPrePostOp, VGPrePostParam, VGStrRegOp):
         
     
     return VStatus   
- 
 
- 
+
+
 def FInit(ChannelA,ChannelB):
-    global VGRange  
-    logger = logging.getLogger('pm0_AD2')
+    ''' 
+    ... 
+    
+    Initialise the Analog discovery device
+    
+    Param
+    - ChannelA     =  Index of the Positive input channel
+    - ChannelB     =  Index of the negative input channel
+    
+    Returns
+    - hdwf         =  handle for the Analog discovery device
+    - ChannelA     =  Index of the Positive input channel
+    - ChannelB     =  ndex of the negative input channel
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''        
 
+
+    global VGRange  
+    cBufMax = c_int()
+    logger = logging.getLogger('pm0_AD2')
+    
     VDoubleIn = c_double()
     VIntIn = c_int()
-
-
-
+    
     version = create_string_buffer(16)
     dwf.FDwfGetVersion(version)
     print("\nDWF Version: "+str(version.value))
     
     hdwf = c_int()
-    #ChannelA = 1
-    #ChannelB = 4
     
     print("\nOpening first device")
     dwf.FDwfDeviceOpen(c_int(-1), byref(hdwf))
@@ -295,8 +364,6 @@ def FInit(ChannelA,ChannelB):
     dwf.FDwfAnalogInBufferSizeInfo(hdwf, 0, byref(cBufMax))
     print("\nDevice buffer size: "+str(cBufMax.value))
     
-    #R = int(VGRange)
-    
     dwf.FDwfAnalogInFrequencySet(hdwf, c_double(float(VGFrEch)))
     dwf.FDwfAnalogInFrequencyGet(hdwf, byref(VDoubleIn))
     logger.info("\Analog Frequency : "+str(VDoubleIn.value))
@@ -304,7 +371,6 @@ def FInit(ChannelA,ChannelB):
     dwf.FDwfAnalogInBufferSizeSet(hdwf, c_int(int(VGNbrePtEch))) 
     dwf.FDwfAnalogInBufferSizeGet(hdwf, byref(VIntIn)) 
     logger.info("\Buffer size : "+str(VIntIn.value))
-    
     
     # initialise the channel 0 or maybe all channels ???
     dwf.FDwfAnalogInChannelEnableSet(hdwf, c_int(-1), c_bool(True))
@@ -318,15 +384,31 @@ def FInit(ChannelA,ChannelB):
     time.sleep(2)
     
     return hdwf, ChannelA, ChannelB
-    
-def FAcquisition(hdwf, Channel,currStep = 0,totStep=0):
 
+
+def FAcquisition(hdwf, Channel,currStep = 0,totStep=0):
+    ''' 
+    ... 
+    
+    Performs one step of acquisition
+    
+    Param
+    - hdwf         =  handle for the Analog discovery device
+    - Channel      =  Index of the input channel
+    
+    Returns
+    - rgdSamples   =  list of the samples taken for this step of acquisition
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''        
+
+    sts = c_byte()
     rgdSamplesx10 = (c_double*int(VGNbrePtEch))()
     rgdSamples = (c_double*int(VGNbrePtEch))()
     print("\nStarting oscilloscope...")
     dwf.FDwfAnalogInConfigure(hdwf, c_int(1), c_int(1))
-
-
+    
     while True:
         dwf.FDwfAnalogInStatus(hdwf, c_int(1), byref(sts))
         if sts.value == DwfStateDone.value :
@@ -337,8 +419,7 @@ def FAcquisition(hdwf, Channel,currStep = 0,totStep=0):
         print("   Acquisition done")
     
     dwf.FDwfAnalogInStatusData(hdwf, int(Channel - 1), rgdSamplesx10, int(VGNbrePtEch))
-
-
+    
     for Index in range (VGNbrePtEch):
         rgdSamples[Index] = 10 * rgdSamplesx10[Index]
     
@@ -346,14 +427,31 @@ def FAcquisition(hdwf, Channel,currStep = 0,totStep=0):
 
 
 def FDualAcquisition(hdwf, ChannelA,ChannelB,currStep = 0,totStep=0):
+    ''' 
+    ... 
+    
+    Performs one step of differential acquisition 
+    
+    Param
+    - hdwf         =  handle for the Analog discovery device
+    - ChannelA      =  Index of the positive input channel
+    - ChannelA      =  Index of the negative input channel
+    - currStep      =  index of the current step of acquisition
+    - totStep       =  Total number of steps for this acquisition
+    
+    Returns
+    - rgdSamples   =  list of the samples taken for this step of acquisition
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''        
 
+    sts = c_byte()
     rgdSamples = (c_double*int(VGNbrePtEch))()
     rgdSamplesA = (c_double*int(VGNbrePtEch))()
     rgdSamplesB = (c_double*int(VGNbrePtEch))()
     print("\nStarting oscilloscope...")
     dwf.FDwfAnalogInConfigure(hdwf, c_int(1), c_int(1))
-
-
 
     while True:
         dwf.FDwfAnalogInStatus(hdwf, c_int(1), byref(sts))
@@ -373,11 +471,27 @@ def FDualAcquisition(hdwf, ChannelA,ChannelB,currStep = 0,totStep=0):
 
 
 
-    
+
 def FCloseDevice():
+    ''' 
+    ... 
+    
+    Closes the Analog discovery device
+    
+    Param
+    - none
+    
+    Returns
+    - nothing
+    
+    09/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI    
+    
+    '''  
     dwf.FDwfDeviceCloseAll()
 
+
 def FCalcul(rgdSamples):
+
     # ajouté une multiplication de 10 pour compenser la sonde *10 du scope
     dc = sum(rgdSamples)/len(rgdSamples)
     S_ET = 0
@@ -385,16 +499,15 @@ def FCalcul(rgdSamples):
         S_ET += (value - dc)**2
         
         rms = np.sqrt((1/len(rgdSamples))*S_ET)
- 
         
     return dc, rms
-    
+
+
 def FAffichageNormal(rgdSamples, Ind, FileOut, NAdc):
     
     x = np.arange(int(VGNbrePtEch))
     Minrgd = min(rgdSamples)
     Maxrgd = max(rgdSamples)
-    
 
     if NAdc in [0,1,2,3]:
         # Units are Amps
@@ -444,8 +557,8 @@ def FAffichageNormal(rgdSamples, Ind, FileOut, NAdc):
         plt.savefig(FileOut+"Dac"+str(NAdc)+"_"+str(Ind)+"_histo.jpg")
         
         plt.cla()
-    
-    
+
+
 def FFctTrsf(lstDC, lstRMS, NbreTst, FileOut, LstRegValDac, NAdc):
         
     x = np.array(LstRegValDac)
@@ -518,9 +631,9 @@ def FFctTrsf(lstDC, lstRMS, NbreTst, FileOut, LstRegValDac, NAdc):
         plt.savefig(FileOut+"Dac"+str(NAdc)+"_graph_fct_RMS.jpg")
         
         plt.cla()
-    
-    
-    
+
+
+
 def FSeparation(LstRgdSamples, LstRegValDac, VRegValDac,SaveAllFiles):
 
     FName = 'Dac'+str(VRegValDac)+'_'
@@ -585,8 +698,10 @@ def FSeparation(LstRgdSamples, LstRegValDac, VRegValDac,SaveAllFiles):
     FFctTrsf(lstDC, lstRMS, NbreTst, FileOut, LstRegValDac, VRegValDac)   
     
     return lstDC,lstRMS
-    
+
+
 def NmF(NF, NAdc):
+
     if (sys.platform == "linux"):
         #path = 'P:\prj\win\picmic0\i2c\Analyse'
         NameFile = "chip_0_adc"+str(NAdc)+"_test"+str(NF)+".txt"
@@ -595,14 +710,16 @@ def NmF(NF, NAdc):
         path = 'P:\prj\win\picmic0\i2c\Analyse'
         NameFile = path + "\chip_0_adc"+str(NAdc)+"_test"+str(NF)+".txt"
     return NameFile
-    
+
+
 def FCptADC():
+
     for ind in range(5):
         if os.path.isfile(NmF(0, ind)) == True :
             LstRgdSamples, LstRegValDac = FFile(ind)
             FSeparation(LstRgdSamples, LstRegValDac, ind,1)
-    
-    
+
+
 def FFile(NAdc):
     NF = 0
     LstRgdSamples = []
@@ -627,12 +744,15 @@ def FFile(NAdc):
         VNmF = NmF(NF, NAdc)
         
     return LstRgdSamples, LstRegValDac
-        
+
+
 def FWrite(Text, FileName, FileOut):
     fichier = open(FileOut+FileName+".txt", "w", encoding = "utf8")
     fichier.write(str(Text))
     fichier.close
-    
+
+
+
 if __name__ == "__main__":
     if sys.platform.startswith("win"):
         dwf = cdll.dwf

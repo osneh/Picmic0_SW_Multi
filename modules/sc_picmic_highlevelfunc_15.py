@@ -23,16 +23,6 @@ Module containing the class for the high level functions for the picmic slow con
 # ===========================================================================
 
 
-#import sys
-#import os
-
-#from pyfirmata import Arduino
-#import time
-
-#import pyfirmata 
-
-#from enum import Enum, unique
-
 import logging
 import logging.config
 
@@ -55,13 +45,6 @@ PM0SC = importlib.import_module(PM0SC_Name, package=None)
 
 importlib.reload(PM0SC)
 importlib.reload(PM0EMUL)
-#importlib.reload (PM0FC)
-
-#import datetime as dt
-#import ctypes as ct
-
-
-
 
 
 
@@ -438,7 +421,6 @@ class Picmic_HighLevelFuncts():
         """
 
 
-
         VErr, VARead = PM0SC.FCmdGetRdReg ( PM0SC.TRegId.VPULSE_SW.value, self.VGRegOp, self.VGPrePostOp, self.VGPrePostParam )
         VStatus = "Read error = {:d} - Read values dec = {}".format (VErr, VARead)
         if VErr >= 0:
@@ -550,7 +532,6 @@ class Picmic_HighLevelFuncts():
         """
 
 
-
         VErr, VARead = PM0SC.FCmdGetRdReg ( PM0SC.TRegId.DATA_EMUL.value, self.VGRegOp, self.VGPrePostOp, self.VGPrePostParam )
         VStatus = "Read error = {:d} - Read values dec = {}".format (VErr, VARead)
         if VErr >= 0:
@@ -630,7 +611,7 @@ class Picmic_HighLevelFuncts():
                 VErr:   Error code for he execution of  the function :  - 0 : successfull
                                                                         - negative : failed
                 VARead:  read value ( 1 bytes)
-
+                
         09/09/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
                 
         """
@@ -666,7 +647,7 @@ class Picmic_HighLevelFuncts():
                             -1 : connection already established, nothing done
                             -2 : Connection could not be established
                             any positive number : connection established, but communication errors with arduino board
-
+                            
         09/09/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
                 
         """
@@ -678,7 +659,6 @@ class Picmic_HighLevelFuncts():
             self.logger.error(VStatus)
             #return ( False, False, VStatus ) # return ( VQuit, VBadCmd, VStatus )
             VErr = -1
-
 
         else:
             VUsbPort = ComPortParam
@@ -713,8 +693,6 @@ class Picmic_HighLevelFuncts():
 
 
 
-    # Disconnect
-
     def FDisconnectFromDueBoard (self):
         """
             Disconnect from the Due Board
@@ -723,12 +701,10 @@ class Picmic_HighLevelFuncts():
                 none
             Returns
                 none
-
+            
         09/09/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
                 
         """
-
-
 
         PM0SC.FCmdDeactivateOutputs ( 0 ) # FCmdDeactivateOutputs ( LogRaw, LogCmd )
 
@@ -741,8 +717,6 @@ class Picmic_HighLevelFuncts():
             self.logger.info(VStatus)
 
 
-    # Register operation mode
-
     def FSetRegisterOpMode (self,RegOpParam):
         """
             Set the Register operation mode
@@ -753,20 +727,16 @@ class Picmic_HighLevelFuncts():
                                2 : Check, all operation are made on the chip and each register written is read back and checked
             Returns
                 nothing
-
+            
         09/09/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
                 
         """
-
-
         
         self.VGRegOp = int (RegOpParam)
 
         VStatus = "Register operation mode sets to {:s}".format ( self.VGStrRegOp[self.VGRegOp] )
         self.logger.info(VStatus)
 
-
-    # Ardunio DUE console log level  
 
     def FSetDueConsoleLogLevel (self,LogRaw,LogCmd):
         ''' 
@@ -783,7 +753,6 @@ class Picmic_HighLevelFuncts():
         
         '''
 
-
         self.VGLogRaw    = LogRaw
         self.VGLogCmd    = LogCmd
 
@@ -798,8 +767,6 @@ class Picmic_HighLevelFuncts():
             self.logger.error(VStatus)
         return VErr
 
-
-    # PC errors messages printing mode
 
     def FSetPCLogErrMode (self,VLogErrMode): 
         ''' 
@@ -822,7 +789,6 @@ class Picmic_HighLevelFuncts():
         VStatus = "Error messages mode sets to {:d}".format (VLogErrMode)
         self.logger.info(VStatus)
          
-    # Loggin level setting
 
     def FSetLoggingLevelSetting (self,VLogLevel):
         """

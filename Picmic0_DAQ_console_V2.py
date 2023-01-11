@@ -84,6 +84,17 @@ PM0_DAQ_Func= importlib.import_module(PM0_DAQ_Func_Name, package=None)
 PM0_DF = PM0_DAQ_Func.Picmic_DAQ_Functs()
 
 
+
+Matrix_plottingName = config['ModuleName']['matrixPlotting']
+#import import Matrix_plotting as MPlot
+MPlot= importlib.import_module(Matrix_plottingName, package=None)
+
+DataReadingName = config['ModuleName']['dataReading']
+#import DataReading
+DataReading= importlib.import_module(DataReadingName, package=None)
+
+
+
 #from Picmic_Daq_Func_10 import Picmic_DAQ_Functs as PM0_DF
 #import DataReading
 #import Matrix_plotting as MPlot
@@ -142,6 +153,7 @@ VGFrameToPlot = ct.c_int(0)
 VGFirstFrameToPlot = ct.c_int(0)
 VGLastFrameToPlot = ct.c_int(0)
 VGPlotType = ct.c_int(0)
+VGSaveNormData = ct.c_int(0)
 
 
 VGChipSelected = 0
@@ -211,7 +223,11 @@ def FMenu1Print ( Status ) :
     print ( "22 - Acquisition polling" )	
     print ( "23 - Generate Header and data csv files " )    
     print ( "24 - Print the data from file " )  
-    print ( "25 - Plot Frame ")    
+    print ( "25 - Plot Frame ")  
+    print ( "26 - Generate Normalised data from file")
+    print ( "-----------------------" )
+    print ( "30 - Take run and generates normalised data" )
+    print ( "31 - Take several runs and generates normalised data" )
     print ( "-----------------------" )
     print ( "90 - Free DLL" )
 
@@ -248,6 +264,7 @@ def FMenu1Exec ( Choice ) :
     global VGFrameNbByAcq
     global VGTotalFrameNb
     global VGFrameLength
+    global VGSaveNormData
 
     global VGFilePath
     global VGFilePrefix
@@ -379,8 +396,30 @@ def FMenu1Exec ( Choice ) :
         else:
             AcqType = int(AcqTypeStr,10)
             
-        PM0_DF.Acq_Polling(AcqType)
-            
+        #PM0_DF.Acq_Polling(AcqType)
+
+        if AcqType in [0,3]:
+            # Acquisition with only data saving
+            VErr,TotalSmpNbByAcq = PM0_DF.Acq_Polling(AcqType)
+            VStatus = "Acq polling done - result = {:d}".format ( VErr)
+            if (VErr >= 0):
+                logger.info(VStatus)
+            else:
+                logger.error(VStatus)
+        elif AcqType in [1,2] :
+            # acquisition with data saving and return 
+            VErr,TotalSmpNbByAcq,Data = PM0_DF.Acq_Polling(AcqType)
+            if (VErr >= 0):
+                logger.info(VStatus)
+                PM0_DF.PlotDataFromBuffer( Data,0)
+                #DataReading.FPrintFrameListFromBuffer(Data, VGFrameLength, VGTotalFrameNb)
+            else:
+                logger.error(VStatus)
+
+
+
+
+        
 
     # Generate header and data csv files
 
@@ -480,8 +519,113 @@ def FMenu1Exec ( Choice ) :
 
         PM0_DF.PlotDataFromFile(VGFilePath,VGFilePrefix,VGRunNb,VGPlotType.value)
 
+   # Generate normalised data from file
 
+    elif Choice == 26 :
 
+        print( "FilePath: directory where the data saving file ")
+        print("previous was :{:s}".format(VGFilePath))
+        FilePath = input ("Choice :")
+        if FilePath != "" :
+            VGFilePath = FilePath
+        print( "Prefix: prefix of the save file name ")
+        print("previous was :{:s}".format(VGFilePrefix))
+        FilePrefix = input ("Choice :")
+        if FilePrefix != "" :
+            VGFilePrefix = FilePrefix
+        print( "Run No : Number of the run to be taken")
+        print("previous was :{:d}".format(VGRunNb))
+        RunNb = input ("Choice :")
+        if RunNb != "" :
+            VGRunNb = int(RunNb,10)
+        
+        print( "Save data on disk ?  ")
+        print (" 0: No")
+        print (" 1: Save data on disk")
+        print (" 2: Save only touched pixels data on disk")
+        print("previous was :{:d}".format(VGSaveNormData.value))
+        SaveData = input ("Choice :")
+        if SaveData != "" :
+            VGSaveNormData.value = int(SaveData,10)
+
+        #VGSaveNormData.value = -1
+
+        NormMatrix,VPixelList = PM0_DF.GetNormalisedDataFromFile(VGFilePath,VGFilePrefix,VGRunNb,VGSaveNormData.value)
+        input('Press return to continue')
+        #MPlot.PlotMatrix2D (NormMatrix)  
+        
+        
+   # Generate normalised data from file
+
+    elif Choice == 30 :
+
+        print( "FilePath: directory where the data saving file ")
+        print("previous was :{:s}".format(VGFilePath))
+        FilePath = input ("Choice :")
+        if FilePath != "" :
+            VGFilePath = FilePath
+        print( "Prefix: prefix of the save file name ")
+        print("previous was :{:s}".format(VGFilePrefix))
+        FilePrefix = input ("Choice :")
+        if FilePrefix != "" :
+            VGFilePrefix = FilePrefix
+        print( "Run No : Number of the run to be taken")
+        print("previous was :{:d}".format(VGRunNb))
+        RunNb = input ("Choice :")
+        if RunNb != "" :
+            VGRunNb = int(RunNb,10)
+            
+        print( "Framelength  ")
+        print("previous was :{:d}".format(VGFrameLength))
+        Framelength = input ("Choice :")
+        if Framelength != "" :
+            VGFrameLength = int(Framelength,10)
+            
+        VResult, VPixelList = PM0_DF.SCurveTakeOneStep(VGFilePath,VGRunNb,VGFilePrefix,VGFrameLength)
+        if VResult < 0:
+            print('ERROR :{}'.format(VResult))
+        else:
+            print('Pixel list :{}'.format(VPixelList))
+        
+        input('Press return to continue')
+        
+   # Generate normalised data from file several consecutive runs
+
+    elif Choice == 31 :
+
+        print( "FilePath: directory where the data saving file ")
+        print("previous was :{:s}".format(VGFilePath))
+        FilePath = input ("Choice :")
+        if FilePath != "" :
+            VGFilePath = FilePath
+        print( "Prefix: prefix of the save file name ")
+        print("previous was :{:s}".format(VGFilePrefix))
+        FilePrefix = input ("Choice :")
+        if FilePrefix != "" :
+            VGFilePrefix = FilePrefix
+        print( "Run No : Number of the run to be taken")
+        print("previous was :{:d}".format(VGRunNb))
+        RunNb = input ("Choice :")
+        if RunNb != "" :
+            VGRunNb = int(RunNb,10)
+        
+        print( "Framelength  ")
+        print("previous was :{:d}".format(VGFrameLength))
+        Framelength = input ("Choice :")
+        if Framelength != "" :
+            VGFrameLength = int(Framelength,10)
+
+        #VGSaveNormData.value = -1
+        for VRunIndex in range (VGRunNb):
+            VResult, VPixelList = PM0_DF.SCurveTakeOneStep(VGFilePath,VRunIndex,VGFilePrefix,VGFrameLength)
+            if VResult < 0:
+                print('ERROR :{}'.format(VResult))
+            else:
+                print('run {} out of {} done'.format(VRunIndex,VGRunNb))
+        
+        input('Press return to continue')
+        
+        
 
     # Free DLL
 
@@ -493,7 +637,7 @@ def FMenu1Exec ( Choice ) :
         else:
             logger.error(VStatus)
 
- 
+
 
     elif Choice == 100 :
     
@@ -529,15 +673,13 @@ def FMenu1Exec ( Choice ) :
 
 
 
-    
-
 
 # ===========================================================================
 # Main "function" executed at script startup
 #
 # 04/02/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
 # ===========================================================================
-  
+
 
 
 if __name__ == '__main__':
@@ -610,4 +752,4 @@ if __name__ == '__main__':
    
     logging.shutdown() 
     sys.path.remove('..')
-    
+

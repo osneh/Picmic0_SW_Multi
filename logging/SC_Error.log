@@ -1,2 +1,28 @@
-2022-11-25 09:28:46,806-ERROR <PID 19624:MainProcess> pm0_hlf.__init__().100: Logging Started
-2022-11-25 09:28:55,861-CRITICAL <PID 19624:MainProcess> pm0_GUI.StopProgClicked().725: picmic slow control now ending
+2023-01-03 23:15:47,515-ERROR <PID 3392:MainProcess> pm0_hlf.__init__().83: Logging Started
+2023-01-03 23:15:48,796-ERROR <PID 3392:MainProcess> pm0ddf.__init__().92: Logging Started
+2023-01-03 23:16:46,875-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:2 is a dummy pixel , total 1 dummies pixels!!
+2023-01-03 23:16:46,875-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:20, Col:2 is a dummy pixel , total 2 dummies pixels!!
+2023-01-03 23:16:46,875-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:3 is a dummy pixel , total 3 dummies pixels!!
+2023-01-03 23:16:46,875-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:3 is a dummy pixel , total 4 dummies pixels!!
+2023-01-03 23:16:46,906-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:6 is a dummy pixel , total 5 dummies pixels!!
+2023-01-03 23:28:29,687-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:2 is a dummy pixel , total 1 dummies pixels!!
+2023-01-03 23:28:29,687-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:20, Col:2 is a dummy pixel , total 2 dummies pixels!!
+2023-01-03 23:28:29,703-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:3 is a dummy pixel , total 3 dummies pixels!!
+2023-01-03 23:28:29,703-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:3 is a dummy pixel , total 4 dummies pixels!!
+2023-01-03 23:28:29,718-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:6 is a dummy pixel , total 5 dummies pixels!!
+2023-01-03 23:35:43,093-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:2 is a dummy pixel , total 1 dummies pixels!!
+2023-01-03 23:35:43,093-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:20, Col:2 is a dummy pixel , total 2 dummies pixels!!
+2023-01-03 23:35:43,109-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:3 is a dummy pixel , total 3 dummies pixels!!
+2023-01-03 23:35:43,109-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:3 is a dummy pixel , total 4 dummies pixels!!
+2023-01-03 23:35:43,140-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:6 is a dummy pixel , total 5 dummies pixels!!
+2023-01-03 23:41:47,828-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:2 is a dummy pixel , total 1 dummies pixels!!
+2023-01-03 23:41:47,828-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:20, Col:2 is a dummy pixel , total 2 dummies pixels!!
+2023-01-03 23:41:47,828-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:3 is a dummy pixel , total 3 dummies pixels!!
+2023-01-03 23:41:47,828-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:3 is a dummy pixel , total 4 dummies pixels!!
+2023-01-03 23:41:47,859-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:6 is a dummy pixel , total 5 dummies pixels!!
+2023-01-03 23:48:02,000-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:2 is a dummy pixel , total 1 dummies pixels!!
+2023-01-03 23:48:02,015-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:20, Col:2 is a dummy pixel , total 2 dummies pixels!!
+2023-01-03 23:48:02,015-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:3 is a dummy pixel , total 3 dummies pixels!!
+2023-01-03 23:48:02,015-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:19, Col:3 is a dummy pixel , total 4 dummies pixels!!
+2023-01-03 23:48:02,046-ERROR <PID 3392:MainProcess> pm0_emul.FSetBitMapFromFile().510: Pixel Row:18, Col:6 is a dummy pixel , total 5 dummies pixels!!
+2023-01-04 01:30:29,265-CRITICAL <PID 3392:MainProcess> pm0_GUI.StopProgClicked().723: picmic slow control now ending

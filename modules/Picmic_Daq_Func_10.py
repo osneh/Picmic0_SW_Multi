@@ -278,10 +278,6 @@ class Picmic_DAQ_Functs():
         self.VGFrameLength = FrameLength
         self.VGFrameNbByAcq = FrameNbByAcq
         self.VGTotalFrameNb = TotalFrameNb
-        #testvalue = ct.c_int()
-        #Instrument_Initialized = ct.c_byte()
-        #MSIS0LV.GetGlobalVar(Instrument_Initialized,testvalue)
-        #self.logger.info('Before acq:Instrument iniftialized :%d', Instrument_Initialized.value)
 
         StatusBufferLength.value = self.VGMaxStatusBufferSize
         if ((FrameNbByAcq  * FrameLength) > self.VGMaxDataBufferSize):
@@ -307,8 +303,6 @@ class Picmic_DAQ_Functs():
             else :
                 print('Start_acq_ext successfull')
                 self.logger.info('Start_acq_ext successfull :%s', StatusBuffer.value)
-            #MSIS0LV.GetGlobalVar(Instrument_Initialized,testvalue)
-            #self.logger.info('After  acq start :Instrument iniftialized :%d', Instrument_Initialized.value)
             return 0
 
 
@@ -563,6 +557,6 @@ class Picmic_DAQ_Functs():
         MatrixToPlot = DataReading.FCreateMatrixFromBuffer(BufferArray,VTotalFrameNb.value, VFrameSize.value, self.VGFrameToPlot.value)
         
         MPlot.PlotMatrix (MatrixToPlot,PlotType)  
-
-
-
+        
+        
+        

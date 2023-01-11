@@ -266,8 +266,8 @@
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>110</y>
-        <width>621</width>
+        <y>100</y>
+        <width>531</width>
         <height>21</height>
        </rect>
       </property>
@@ -275,7 +275,7 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_main_logo_C4PI">
+     <widget class="QLabel" name="logo_cnrs">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -415,25 +415,6 @@
         <string>Pre reset duration</string>
        </property>
       </widget>
-     </widget>
-     <widget class="QLabel" name="lbl_main_logo_cnrs">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>410</y>
-        <width>361</width>
-        <height>231</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Configuration_tab">
@@ -869,7 +850,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Global_Cmd_Tab">
        <attribute name="title">
@@ -5882,8 +5863,8 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>70</y>
-        <width>451</width>
+        <y>20</y>
+        <width>411</width>
         <height>151</height>
        </rect>
       </property>
@@ -5916,7 +5897,7 @@
         <string>Path for the saved files</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="LECarDisSPFileName">
+      <widget class="QLineEdit" name="leCarDisSavePath_2">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -5968,30 +5949,14 @@
         <number>10000</number>
        </property>
       </widget>
-      <widget class="QPushButton" name="BtCarDisPathSel">
-       <property name="geometry">
-        <rect>
-         <x>320</x>
-         <y>40</y>
-         <width>91</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Select directory</string>
-       </property>
-      </widget>
      </widget>
-     <widget class="QGroupBox" name="GBCarDisRunParams">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
+     <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>350</y>
-        <width>451</width>
-        <height>281</height>
+        <y>180</y>
+        <width>411</width>
+        <height>361</height>
        </rect>
       </property>
       <property name="title">
@@ -6272,142 +6237,6 @@
         <string>Ending Value</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="SBCarDisRPFrameLength">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>40</y>
-         <width>91</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>16500</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="LblCarDisRPFrameLength">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>20</y>
-         <width>91</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Frame length</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="BtCarDisInitAcquisition">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>451</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Init Acquisition</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="LECarDisRunStatus">
-      <property name="geometry">
-       <rect>
-        <x>42</x>
-        <y>650</y>
-        <width>231</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="LblCarDisRunStatus">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>630</y>
-        <width>111</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Run Status</string>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="GBCarDisPulsingFile">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>220</y>
-        <width>451</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Pulsing File</string>
-      </property>
-      <widget class="QLineEdit" name="leCarDisPulsingPath">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>30</y>
-         <width>281</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>C:\Python\Picmic0_SC\Pulsing_Files</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="LbCarDislPulsingFilePath">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>10</y>
-         <width>161</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Path for the matrix setting</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="LblCarDisPulsingFileName">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>60</y>
-         <width>161</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>File name for the matrix setting</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="leCarDisPulsingFileName">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>80</y>
-         <width>281</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>cfg_mat128x54_08.txt</string>
-       </property>
-      </widget>
      </widget>
     </widget>
    </widget>
@@ -6418,7 +6247,7 @@
      <x>0</x>
      <y>0</y>
      <width>1039</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMisc">

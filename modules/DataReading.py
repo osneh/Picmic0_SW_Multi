@@ -11,7 +11,6 @@ import numpy as np
 from DLL.Mimosis0_dll_wrapper import VLib as MSIS0  # wrapper for the functions of the Mimosis0_dll.dll 
 
 
-
 ErrFileFullName = "c:\\tmp\\log\\Msis0_DAQ_err_log.txt"
 ErrLogLevel = 1
 MsgFileFullName ="c:\\tmp\\log\\Msis0_DAQ_msg_log.txt"
@@ -19,8 +18,6 @@ MsgLogLevel = 1
 
 ## int: Result of the SSCI_FBegin function
 VIntFuncResult = MSIS0._MIMOSIS0__FBegin(ErrLogLevel, ErrFileFullName.encode (),MsgLogLevel,MsgFileFullName.encode ())
-
-
 
 
 
@@ -49,7 +46,7 @@ def Generates_data_header_CSV(FilePath,Prefix,RunNo,OneFileByAcq):
     logger = logging.getLogger('datareading')
     
     logger.info('PArams: {:s} / {:s} /{:d}'.format(FilePath,Prefix,RunNo))
-        
+    
     #Generates the header file
     VRet = MSIS0._MIMOSIS0__FSaveCSVHeaderFile ( FilePath.encode(), Prefix.encode(), RunNo )
     if VRet < 0:
@@ -59,15 +56,15 @@ def Generates_data_header_CSV(FilePath,Prefix,RunNo,OneFileByAcq):
     
     #Generates the data file
     VRet = MSIS0._MIMOSIS0__FSaveCSVDataFile ( FilePath.encode(), Prefix.encode(), RunNo, OneFileByAcq )
-
+    
     if VRet < 0:
         logger.error('_MIMOSIS0__FSaveCSVDataFile failed, error:  /%d',VRet)
         return VRet
     logger.error('_MIMOSIS0__FSaveCSVDataFile successfull')
     
     return 0
-    
-    
+
+
 def FPrintFrameListFromBuffer(DataBuffer, VFrameSize, VTotalFrameNb):
     '''
     ...
@@ -87,17 +84,16 @@ def FPrintFrameListFromBuffer(DataBuffer, VFrameSize, VTotalFrameNb):
     '''
     logger = logging.getLogger('datareading')
     ArraySize = VFrameSize * VTotalFrameNb
-   
+    
     logger.info('VFrameSize:{:d},VTotalFrameNb:{:d}'.format(VFrameSize,VTotalFrameNb))
     for FrameIndex in range (VTotalFrameNb):
         FrameList = []
         for VectorIndex in range (VFrameSize):
             FrameList.append(DataBuffer[FrameIndex][VectorIndex])
         logger.info('frame[{:04d}]:{}'.format(FrameIndex,','.join("{:04X}".format(Element) for Element in FrameList)))
-    
-    
-    
-    
+
+
+
 def FPrintFrameListFromBufferCoords(DataBuffer, VFrameSize, VTotalFrameNb):
     '''
     ...
@@ -117,7 +113,7 @@ def FPrintFrameListFromBufferCoords(DataBuffer, VFrameSize, VTotalFrameNb):
     '''
     logger = logging.getLogger('datareading')
     ArraySize = VFrameSize * VTotalFrameNb
-   
+    
     logger.info('VFrameSize:{:d},VTotalFrameNb:{:d}'.format(VFrameSize,VTotalFrameNb))
     #for FrameIndex in range (VTotalFrameNb):
     if 1==1:
@@ -148,17 +144,17 @@ def FCreateMatrixFromBuffer(DataBuffer, VTotalFrameNumber, VFrameSize, VFrameNo)
         - matrix : a 128 x 54 array55
     
     03/03/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
-    5
+
     '''
     logger = logging.getLogger('datareading')
-   
+    
     logger.info('VFrameSize:{:d},VFrameNo:{:d}'.format(VFrameSize,VFrameNo))
     if (VFrameNo < 0 ):
         # VFrameNo negative : plot all frames
         Matrix = np.zeros((128,54,VTotalFrameNumber),dtype=int)
-
+        
         for VFrameIndex in range (VTotalFrameNumber):
-            for VectorIndex in range (1,VFrameSize):
+            for VectorIndex in range (0,VFrameSize):
                 if ((DataBuffer[VFrameIndex][VectorIndex]) & 0x8000) != 0:
                     Row = (DataBuffer[VFrameIndex][VectorIndex]) & 0x007F
                     Col = ((DataBuffer[VFrameIndex][VectorIndex]) & 0x1F80)>>7
@@ -167,12 +163,11 @@ def FCreateMatrixFromBuffer(DataBuffer, VTotalFrameNumber, VFrameSize, VFrameNo)
                         Matrix[Row,Col,VFrameIndex] = 1
                     except : 
                         logger.error("trying to write to  Row :{:d} / Col :{:d}".format(Row,Col))
-
-
+    
     else:
         # VFrameNo positive : plot only one frame
         Matrix = np.zeros((128,54),dtype=int)
-
+        
         for VectorIndex in range (1,VFrameSize):
             if ((DataBuffer[VFrameNo][VectorIndex]) & 0x8000) != 0:
                 Row = (DataBuffer[VFrameNo][VectorIndex]) & 0x007F
@@ -182,5 +177,6 @@ def FCreateMatrixFromBuffer(DataBuffer, VTotalFrameNumber, VFrameSize, VFrameNo)
                     Matrix[Row,Col] = 1
                 except : 
                     logger.error("trying to write to  Row :{:d} / Col :{:d}".format(Row,Col))
-
+    
     return Matrix
+

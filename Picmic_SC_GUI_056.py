@@ -9,10 +9,10 @@ Maintained by Matthieu Specht
 """
 
 __author__ = "Hugo Schott,Matthieu Specht"
-__version__ = '0.5.5'
+__version__ = '0.5.7'
 __maintainer__ = "Matthieu Specht"
 __email__ = "matthieu.specht@iphc.cnrs.fr"
-__date__ = "2022-11-25"
+__date__ = "2022-12-08"
 
 
 # in order to use the Dac caracterisation feature, set the ANALOG_DISCOVERY_DISABLED to False
@@ -20,7 +20,7 @@ __date__ = "2022-11-25"
 ANALOG_DISCOVERY_DISABLED = False
 
 #in order to use the DAQ function in the slow control software, set the DAQ_FUNC_ENABLED to True
-DAQ_FUNC_ENABLED = False
+DAQ_FUNC_ENABLED = True
 
 import platform # for the detection of the OS version
 
@@ -443,9 +443,18 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.GBCarDacPlottingWindow.setLayout(layoutCarDac)
 
 
-    #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    #//////////////////////////////////////  FONCTIONS PAGE PRINCIPALE  /////////////////////////////////////////////////////
-    #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ########################################################################################################################
+        ############################################ Discri caracterisation Tab   ##############################################
+        ########################################################################################################################
+
+        self.ui.BtCarDisRunCarac.clicked.connect(self.BtCarDisRunCaracClicked)
+        self.ui.BtCarDisInitAcquisition.clicked.connect(self.CarDisInitAcq)
+        self.ui.BtCarDisPathSel.clicked.connect(self.CarDisPathSelect)
+        if (DAQ_FUNC_ENABLED == True ):
+            pass
+        else:
+            self.ui.Tab_Pages.removeTab(self.ui.Tab_Pages.indexOf(self.ui.Carac_discri_tab))
+            
 
 
     def MenuLoadPicmicConfFile(self):
@@ -496,9 +505,23 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
 
     def showdialog(self,MessSelect):
-        """
-            Shows a dialog to remind that the connection is not established with the target board
-        """
+        '''
+        ...
+        
+        Shows a dialog to display a warning 
+        
+        Param
+        - MessSelect : if 0 : Target is not connected
+                       if 1 : Win XP => Dac caratcterisation is not possible
+                       if 2 : AD2 board not enabled => Dac caratcterisation is not possible
+        
+        Returns
+        - none
+        
+        08/12/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
+        
+        '''
+
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
         if (MessSelect == 0):
@@ -881,6 +904,17 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                 self.ui.RegDacText_Set_Byte3.setText('{:s}'.format(self.config['Dac_sw']['Byte2'][2::]))
             else:
                 self.ui.RegDacText_Set_Byte3.setText('{:s}'.format(self.config['Dac_sw']['Byte2']))
+                
+            # Pulsing params
+            if self.config.has_section('Pulsing'):
+                if '0x' in self.config['Pulsing']['Pulsed_Params']:
+                    self.ui.LEPulsingPPRegValue.setText('{:s}'.format(self.config['Pulsing']['Pulsed_Params'][2::]))
+                else:
+                    self.ui.LEPulsingPPRegValue.setText('{:s}'.format(self.config['Pulsing']['Pulsed_Params']))
+                if '0x' in self.config['Pulsing']['Not_Pulsed_Params']:
+                    self.ui.LEPulsingNOTPRegValue.setText('{:s}'.format(self.config['Pulsing']['Not_Pulsed_Params'][2::]))
+                else:
+                    self.ui.LEPulsingNOTPRegValue.setText('{:s}'.format(self.config['Pulsing']['Not_Pulsed_Params']))
 
             self.ui.statusbar.setStyleSheet("QStatusBar{background:white;color:black;font-weight:normal;}")      
             self.ui.statusbar.showMessage('Config file loading  Successfull',0) # le 0 est un temps en seconde 
@@ -899,6 +933,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.config.add_section('Tst_St_Global_bias')
             self.config.add_section('Dac_values')
             self.config.add_section('Dac_sw')
+            self.config.add_section('Pulsing')
         else:
             # configuration existing
             pass
@@ -952,6 +987,10 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.config['Dac_sw']['Byte0'] = self.ui.RegDacText_Set_Byte1.text()
         self.config['Dac_sw']['Byte1'] = self.ui.RegDacText_Set_Byte2.text()
         self.config['Dac_sw']['Byte2'] = self.ui.RegDacText_Set_Byte3.text()
+
+        self.config['Pulsing']['Pulsed_Params'] = '0x' + self.ui.LEPulsingPPRegValue.text()
+        self.config['Pulsing']['Not_Pulsed_Params'] = '0x' + self.ui.LEPulsingNOTPRegValue.text()
+
         
         VOldFilePath = self.ui.leConfLoadPath.text()
 
@@ -1445,7 +1484,9 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.TEPulsingFileComments.append("")
             self.ui.TEPulsingFileComments.append("")
             self.ui.TEPulsingFileComments.append("Total hit sent :{:d}".format(HitNb))
-
+            # refresh the CaracDiscri Tab fields for of the pulsing file name and path
+            self.ui.leCarDisPulsingPath.setText(self.ui.lePulsingPath.text())
+            self.ui.leCarDisPulsingFileName.setText(self.ui.lePulsingFileName.text())
             if (platform.release() != 'XP'):
                 self.plotPulsing.matshow(BitMap,cmap='Greys')
                 self.canvasPulsing.draw()
@@ -2775,8 +2816,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.Check_ENA_CM_mes_Byte2.setChecked((number2 & 0x04) == 0x04)
         self.ui.Check_ENA_VBP_ext_Byte2.setChecked((number2 & 0x08) == 0x05)
         self.ui.Check_ENA_IP_mes_Byte2.setChecked((number2 & 0x10) == 0x10)
-        self.ui.Check_ENA_CM_ext_Byte2.setChecked((number2 & 0x20) == 0x20)
-        self.ui.Check_ENA_IN_mes_Byte2.setChecked((number2 & 0x40) == 0x40)
+        self.ui.Check_ENA_IN_mes_Byte2.setChecked((number2 & 0x20) == 0x20)
+        self.ui.Check_ENA_CM_ext_Byte2.setChecked((number2 & 0x40) == 0x40)
         self.ui.Check_ENA_Iadj_mes_Byte2.setChecked((number2 & 0x80) == 0x80)
    
         #Byte 3
@@ -3214,7 +3255,157 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             # system is XP
             self.logger.error("DAc caracterisation is not operationnal under win XP")
 
+    def BtCarDisRunCaracClicked(self):
+        """
+            Carac Discri tab
+                run a discri caracterisation
+                saves the caracterisation in two files :
+                   - one with _DC suffix : the floating values use a comma as separator
+                   - one with _DD suffix : the floating values use a dot as separator
+        
+        """
+        VStartValue = self.ui.SBCarDisStartingValue.value()
+        VEndValue = self.ui.SBCarDisEndingValue.value()
+        VStepValue = self.ui.SBCarDisStepValue.value()
+        VFilePath = self.ui.leCarDisSavePath.text()
+        
+        VRunNb = self.ui.sBCarDisTestNo.value()
+        VFrameLength = self.ui.SBCarDisRPFrameLength.value()
+        VFileName = self.ui.LECarDisSPFileName.text()+'_'+str(VRunNb)+'step'
 
+
+        VCurrStep = 0
+        totalPixelList = []
+        
+        # set the dac registers with the starting values
+        VDacRegIndex = self.ui.CoBCarDisDacSel.currentIndex()
+
+        # set all default values for the DAC registers
+        Dac0 = int(self.ui.LECarDisStValDac0.text(),10)
+        Dac1 = int(self.ui.LECarDisStValDac1.text(),10)
+        Dac2 = int(self.ui.LECarDisStValDac2.text(),10)
+        Dac3 = int(self.ui.LECarDisStValDac3.text(),10)
+        Dac4 = int(self.ui.LECarDisStValDac4.text(),10)
+
+        LstValDac = [Dac0,Dac1,Dac2,Dac3,Dac4]
+
+        VErr = PicmicHLF.FSetDacRegs(LstValDac)
+        # create the configuration file for the results
+        ConfFileName = VFilePath +'/'+ VFileName+str(VRunNb)+'.conf'
+        ConfFile = open (ConfFileName,'w')
+        ConfFile.writelines('[Pulsing]\n')
+        ConfFile.writelines('PulsingPath = '+self.ui.leCarDisPulsingPath.text()+'\n')
+        ConfFile.writelines('PulsingName = '+self.ui.leCarDisPulsingFileName.text()+'\n')
+        ConfFile.writelines('PulsedReg = 0x' + str(self.ui.LEPulsingPPRegValue.text())+'\n')
+        ConfFile.writelines('NoPulsedReg = 0x' + str(self.ui.LEPulsingNOTPRegValue.text())+'\n')
+        ConfFile.writelines('\n[Registers]\n')
+        ConfFile.writelines('VRefP = '+self.ui.LECarDisStValDac0.text()+'\n')
+        ConfFile.writelines('VRefN = '+self.ui.LECarDisStValDac1.text()+'\n')
+        ConfFile.writelines('VBN = '+self.ui.LECarDisStValDac2.text()+'\n')
+        ConfFile.writelines('VBN_adj = '+self.ui.LECarDisStValDac3.text()+'\n')
+        ConfFile.writelines('VBP = ' +self.ui.LECarDisStValDac4.text()+'\n')  
+        ConfFile.writelines('RegIndex = ' + str(self.ui.CoBCarDisDacSel.currentIndex())+'\n')
+        ConfFile.writelines('StartVal = ' + str(self.ui.SBCarDisStartingValue.value())+'\n')
+        ConfFile.writelines('StopVal = ' + str(self.ui.SBCarDisEndingValue.value())+'\n')
+        ConfFile.writelines('StepVal = ' + str(self.ui.SBCarDisStepValue.value())+'\n')
+        ConfFile.close()
+        
+        #loop for the caracterisation 
+        for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
+            #set dac value
+            LstValDac[VDacRegIndex] = VCurrentDacValue
+            VErr = PicmicHLF.FSetDacRegs(LstValDac)
+            self.ui.LECarDisRunStatus.setText("step:{:d} out of {}".format(VCurrStep,((VEndValue-VStartValue)//VStepValue)))
+            QApplication.processEvents() # update the GUI
+            
+            #start caracterisation
+            VResult,VPixelList = PM0_DF.SCurveTakeOneStep(VFilePath,VCurrStep,VFileName,VFrameLength)
+            if VResult < 0:
+                self.logger.error('Error in caracterisation step {}'.format(VCurrStep))
+            # append the pixel list to the total pixel list
+            if len(VPixelList) > 0:
+                for VIndex in range (len(VPixelList)):
+                    if VPixelList[VIndex] not in totalPixelList:
+                        totalPixelList.append(VPixelList[VIndex])
+            VCurrStep +=1
+
+        #Generate the global result file
+        ResultArray = np.zeros(shape =(len(totalPixelList),VCurrStep),dtype=float)
+        ResultFileNameDC = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DC.txt'
+        ResultFileNameDD = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DD.txt'
+        ResultFileDC = open (ResultFileNameDC,'w')
+        ResultFileDD = open (ResultFileNameDD,'w')
+        # list of pixels:
+        rowLine = "R"
+        colLine = "C"
+        if len(totalPixelList) > 0:
+            for VIndex in range (len(totalPixelList)):
+                Row = totalPixelList[VIndex][0]
+                Col = totalPixelList[VIndex][1]
+                rowLine += ";" + str(Row)
+                colLine += ";" + str(Col) 
+        rowLine += ';\n'
+        colLine += ';\n'
+        ResultFileDD.writelines(rowLine)
+        ResultFileDD.writelines(colLine)
+        ResultFileDC.writelines(rowLine)
+        ResultFileDC.writelines(colLine)
+        VCurrentIndex = 0
+        # generate array from the saving files
+        for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
+            #open save text file
+            currentFileName = VFilePath +'/'+ VFileName+str(VCurrentIndex)+'Norm.txt'
+            try:
+                currentFile = open(currentFileName,'r')
+            except :
+                self.logger.error('Error opening file :{}'.format(currentFileName))
+            lines = currentFile.readlines()
+            for line in lines:
+                Data = line.split(';')
+                Row=int(Data[0])
+                Col =int(Data[1])
+                PixData=float(Data[2])
+                HitIndex = totalPixelList.index([Row,Col])
+                ResultArray[HitIndex,VCurrentIndex] = PixData
+            VCurrentIndex += 1
+        # write array into file
+        for VLineIndex in range (VCurrentIndex):
+            LineToSaveDD = str(VStartValue + (VStepValue * VLineIndex))
+            for VColIndex in range (len(totalPixelList)):
+                LineToSaveDD += ';'+str(ResultArray[VColIndex,VLineIndex])
+            LineToSaveDD += ';\n'  
+            LineToSaveDC = LineToSaveDD.replace('.',',') 
+            ResultFileDD.writelines(LineToSaveDD)
+            ResultFileDC.writelines(LineToSaveDC)
+        ResultFileDC.close()
+        ResultFileDD.close()
+        self.ui.LECarDisRunStatus.setText('Discri caracterisation ended')
+
+
+    def CarDisInitAcq(self):
+        """
+            Carac Discri tab
+                Initialise the Acquisition
+        
+        """
+        self.ui.GBCarDisRunParams.setEnabled(True)
+        VErr = PM0_DF.Init_DLL()
+        VStatus = "Init DLL done - Result = {:d}".format (VErr)
+        if (VErr >= 0):
+            self.logger.info(VStatus)
+        else:
+            self.logger.error(VStatus)
+
+    def CarDisPathSelect(self):
+        """
+            Carac Discri tab
+                Select the directory where the discri caracterisation files will be saved
+        
+        """
+        FolderPath = QFileDialog.getExistingDirectory(self,'Discri caracterisation Saving directory',os.getcwd())
+        self.ui.leCarDisSavePath.setText(FolderPath)
+        
+        
     def closeEvent(self, event):
         """
             Catch an event ( the closing of the GUI )

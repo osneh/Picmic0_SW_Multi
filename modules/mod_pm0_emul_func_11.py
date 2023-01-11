@@ -8,6 +8,9 @@
 # 21/02/2022 V10 M.SPECHT CNRS/IN2P3/IPHC/C4PI 
 #- moved the FSetBitMapFromFile fonction from the sc_picmic_gc_22.py script
 #
+# 24/11/2022 V11 M.SPECHT CNRS/IN2P3/IPHC/C4PI 
+# - modified the importing procedure in order to have one place to change the modules names in the project
+#
 # Can be loaded as a module under python interpreter and used in interactive mode
 # python
 # >>> import module
@@ -24,7 +27,7 @@
 __author__ = "M.SPECHT CNRS/IPHC/C4PI"
 __author_email__ = "matthieu.specht@iphc.cnrs.fr"
 __version__ = '1.1.0'
-__vdate__ = "16/02/2022" # Module version &date
+__vdate__ = "24/11/2022" # Module version &date
 
 
 # ===========================================================================
@@ -64,7 +67,7 @@ PM0SC = importlib.import_module(PM0SC_Name, package=None)
 # BitMap for the pixel emulation for picmic
 #
 # 17/02/2022 M.SPECHT CNRS/IN2P3/IPHC/C4PI
-BitMap = []
+#BitMap = []
 
 # For registers operation
 
@@ -537,8 +540,6 @@ def FSetBitMapFromFile(Param,VFileName,VPulsingReg,VNotPulsingReg,VRegOp, VPrePo
                 logger.error(VStatus)
                 FuncResult = -2
 
-    logger.setLevel(logging.INFO)
-
     return FuncResult, BitMap, HitIndex
 
 
@@ -585,21 +586,19 @@ def FLoadBitmapFromFile(FileName):
                             BitMap[RowIndex.value,ColIndex.value] = int(line[ColLineIndex])
                             if line[ColLineIndex] in ["1"]:
                                 HitNb += 1
-                    #BitMap.append(BitMapLine)
                             ColIndex.value += 1
                     RowIndex.value += 1 
         Result = 0
     except IOError as e:
-       print ("I/O error({0}): {1}".format(e.errno, e.strerror))
-       logger.error("I/O error({0}): {1}".format(e.errno, e.strerror))
-       Result = -1
+        print ("I/O error({0}): {1}".format(e.errno, e.strerror))
+        logger.error("I/O error({0}): {1}".format(e.errno, e.strerror))
+        Result = -1
     except: #handle other exceptions such as attribute errors
-       print ("Unexpected error:", sys.exc_info()[0])
-       logger.error ("Unexpected error:", sys.exc_info()[0])
-       print ("RowIndex:{:d}".format(RowIndex.value))
-       print ("ColIndex:{:d}".format(ColIndex.value))
-
-       Result = -2
+        print ("Unexpected error:", sys.exc_info()[0])
+        logger.error ("Unexpected error:", sys.exc_info()[0])
+        print ("RowIndex:{:d}".format(RowIndex.value))
+        print ("ColIndex:{:d}".format(ColIndex.value))
+        Result = -2
     logger.info("FLoadBitmapFromFile done,result:{:d}".format(Result))
     return Result, BitMap, HitNb
 
@@ -665,7 +664,7 @@ def FPrintBitmap(EntBitMap):
     
     '''
     logger = logging.getLogger('pm0_emul')
-    global BitMap
+    #global BitMap
     #if EntBitMap == []:
     #    EntBitMap = BitMap
     #    logger.info("Using the global BitMap var")
@@ -704,10 +703,7 @@ def FTestPicMicI2CTrans(Param,VRegOp,VPrePostOp, VPrePostParam):
     logger = logging.getLogger('pm0_emul')
     VErrorNb = 0
     VCompError = 0
-
-
-            
-
+ 
     # set the bitmap to the matrix
     for Col in range (Param):
         # write col value :
@@ -729,10 +725,6 @@ def FTestPicMicI2CTrans(Param,VRegOp,VPrePostOp, VPrePostParam):
                 logger.error(VStatus)
                 VErrorNb += 1
             
-            
-            
-            
-            
         #VARead = []
         # send the reset-I2C signal for WaitTime ms
 #        WaitTime = 500
@@ -750,8 +742,6 @@ def FTestPicMicI2CTrans(Param,VRegOp,VPrePostOp, VPrePostParam):
                 VCompError +=1
             else :
                 logger.info("Step :{:d}/{:d}  written value:{:d} / readback value :{}".format(Col,Param,Col%255,VARead))
-
-
     # deselect all col : write 0x80 in col_cfg
     VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.CONF_COL.value, VRegOp,VPrePostOp, VPrePostParam, [0x80] )
     VStatus = "Write col, Reg op = {:s} - Write error = {:d}".format (VGStrRegOp[VRegOp], VErr)
@@ -834,8 +824,6 @@ def FExtractConnectedPixels(Filename):
         logger.info("Bitmap: {}".format(BitMap))    
     except :
         logger.error("bitmap not existing")
-
-
             
             
     if (Filename.find('.csv')!= -1):

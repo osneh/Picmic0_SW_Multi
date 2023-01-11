@@ -1,0 +1,42 @@
+Slow control software for Picmic
+authors: Hugo Schott, Matthieu Specht
+maintainer : Matthieu Specht
+email : matthieu.specht@iphc.cnrs.fr
+
+versions:
+- 0.0.1 : Initial version written by Hugo Schott
+            almost working.
+
+- 0.2.1 : Software now modified and maintained by Matthieu Specht
+            removed several bugs : bits order in bytes were swapped
+
+- 0.2.2 : moved all the global variables in the head class
+            changed the name of the script to sc_picmic_GUI_022
+
+- 0.3.0 : made a new module : sc_picmic_highlevelfunc_10.py to get rid of all the global variables
+            implemented the picmic dac caracterisation
+
+- 0.4.0 : Software modified to be able to run on win XP (RQ: the DAC caracterisation is not possible under win XP)
+
+- 0.4.1 : added disable of the steering signals and the I2C buffer at startup and release of the USB link
+
+- 0.4.2 : added the possibility to select the registers sent for the pulsing for both the pulsing and not pulsing pixels
+
+- 0.5.0 / 04/11/2022: added the Picmic_Daq_Func_10 module in order to be able to include the acquisition of picmic in the slow control softwre to be able to perform automatic S curves plotting
+
+- 0.5.1 / 10/11/2022 : modified the code to be able to run the slow control software on linux ( on Raspberry PI). The Picmic_Dac_Func-10 module has been disabled in this version,
+                       because in the current state it is only functionnal in a windows environment.
+
+- 0.5.2 / 17/11/2022 : modified the main script to disable the implementation of the Analog discovery use ( which resulted in script crashing when the analog discovery is not installed)
+                       added function result return for the FConnectToDueBoard function from the sc_picmic_highlevelfunc module
+
+- 0.5.3 / 22/11/2022 : fixed the bug on the TestMod Toggle button in the Steering tab
+                       fixed the bug in the pulsing when sending all the pixels
+
+- 0.5.5 / 24/11/2022 : added a Modules.conf file storing the modules to be imported names in order to have only one name to modify in the whole software for each module ( multiple calling in differents modules)
+                       Merged the Slow control and the DAQ sowtwares, in order to have a cleaner software.
+
+- 0.5.6 / 02/12/2022 : updated the docstrings of all modules
+                        added a discri caracterisation feature
+                        
+- 0.5.7 / 08/12/2022 : added the saving of the pulsing registers values in the configuration file ( only usefull for the Carac Discri feature)

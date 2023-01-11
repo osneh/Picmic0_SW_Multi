@@ -1,0 +1,5 @@
+2022-12-18 19:50:02 - pm0ddaq - ERROR - Logging Started
+2022-12-18 19:50:10 - pm0ddf - ERROR - Logging Started
+2022-12-18 19:50:10 - pm0ddaq - ERROR - VGFilePath:C:\Python\Picmic0_SW\data
+2022-12-18 19:50:16 - pm0ddaq - INFO - Quit has been selected
+2022-12-18 19:50:17 - pm0ddaq - CRITICAL - Picmic0 DAQ now ending

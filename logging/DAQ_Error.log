@@ -1,0 +1,4 @@
+2022-12-18 19:50:02,796-ERROR <PID 3884:MainProcess> pm0ddaq.<module>().69: Logging Started
+2022-12-18 19:50:10,109-ERROR <PID 3884:MainProcess> pm0ddf.__init__().92: Logging Started
+2022-12-18 19:50:10,953-ERROR <PID 3884:MainProcess> pm0ddaq.<module>().700: VGFilePath:C:\Python\Picmic0_SW\data
+2022-12-18 19:50:17,187-CRITICAL <PID 3884:MainProcess> pm0ddaq.<module>().728: Picmic0 DAQ now ending
