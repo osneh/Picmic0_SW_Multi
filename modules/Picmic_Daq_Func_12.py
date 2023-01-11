@@ -686,7 +686,8 @@ class Picmic_DAQ_Functs():
             else:
                 self.logger.info('Run started, acquisition polling')
                 # Acq polling
-                VResult,GlobalValidSmpNb = self.Acq_Polling( GetDataBack = 0, verbose = 0)
+                ## VResult,GlobalValidSmpNb = self.Acq_Polling( GetDataBack = 0, verbose = 0) # previous 10.01.2023
+                VResult,GlobalValidSmpNb,GlobalBufferArray = self.Acq_Polling( GetDataBack = 2, verbose = 0) 
                 if VResult < 0 :
                     self.logger.error('Error while starting the run:{}'.format(VResult))
                 else:

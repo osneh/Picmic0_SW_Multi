@@ -420,13 +420,13 @@ def FSetBitMapFromFile(Param,VFileName,VPulsingReg,VNotPulsingReg,VRegOp, VPrePo
             
 #  MS 18 05 22  test the increasing of the frame size            
 #            VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.PIX_SEQ.value, VRegOp, VPrePostOp, VPrePostParam, [0,0,0,0,0,16,2,3,0,1,12,1,100,12,251,255,0,0,55,67,3,4,36,37] )
-            VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.PIX_SEQ.value, VRegOp, VPrePostOp, VPrePostParam, [0,0,0,0,0,100,2,3,0,1,0,0,200,12,251,255,0,0,55,67,3,4,200,201] )
-            VStatus = "Reg op = {:s} - Write error = {:d}".format (VGStrRegOp[VRegOp], VErr)
-            if VErr >= 0:
-                logger.debug(VStatus)
-            else:
-                logger.error(VStatus)
-                VErrorNb += 1
+            ##VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.PIX_SEQ.value, VRegOp, VPrePostOp, VPrePostParam, [0,0,0,0,0,100,2,3,0,1,0,0,200,12,251,255,0,0,55,67,3,4,200,201] )
+            ##VStatus = "Reg op = {:s} - Write error = {:d}".format (VGStrRegOp[VRegOp], VErr)
+            ##if VErr >= 0:
+            ##    logger.debug(VStatus)
+            ##else:
+            ##    logger.error(VStatus)
+            ##    VErrorNb += 1
             # Set Global command to 0x08 (soft start)
             VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.GLB_CMD.value, VRegOp, VPrePostOp, VPrePostParam, [8] )
             VStatus = "Reg op = {:s} - Wr val = {:X} Hex - Write error = {:d}".format (VGStrRegOp[VRegOp], 8, VErr)

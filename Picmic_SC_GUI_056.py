@@ -2120,7 +2120,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                     Set Row pixel conf register button  callback
         """
     
-        self.byte_input_PixConfRow = int(self.ui.Text_Set_Row_PixConf.text(),16)
+        self.byte_input_PixConfRow = int(self.ui.Text_Set_Row_PixConf.text(),10) ## 16) comment to set row,col in decimal
         VErr = PicmicHLF.FSetPixConfRowReg(self.byte_input_PixConfRow) 
         if VErr < 0 :
             #Error
@@ -2154,7 +2154,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.statusbar.setStyleSheet("QStatusBar{background:MidLight;color:black;font-weight:normal;}")      
             self.ui.statusbar.showMessage('Get Pix row conf successfull',0) # le 0 est un temps en seconde 
 
-            self.ui.Text_Get_Row_PixConf.setText('{:X}'.format( returned_value[0] ))
+            self.ui.Text_Get_Row_PixConf.setText('{:d}'.format( returned_value[0] )) # to set row,col to decimal '{:X}' changed by '{:d}'
             self.ui.Check_SelAllRow_Row_PixConf.setChecked((returned_value[0] & 0x80)==0x80)
         
             if(self.Flag_Set_PixSeqRow == 1):
