@@ -8,11 +8,12 @@ GUI written by Hugo Schott and Matthieu Specht
 Maintained by Matthieu Specht
 """
 
-__author__ = "Hugo Schott,Matthieu Specht"
+__author__ = "Hugo Schott,Matthieu Specht, Henso Abreu"
 __version__ = '0.5.7'
-__maintainer__ = "Matthieu Specht"
-__email__ = "matthieu.specht@iphc.cnrs.fr"
-__date__ = "2022-12-08"
+__maintainer__ = "Matthieu Specht, Henso Abreu"
+__email__ = "matthieu.specht@iphc.cnrs.fr, h.abreu@ip2i.in2p3.fr"
+__date__ = "2023-01-23"
+__comment__ = "new version, performaing two-dimensional scan in DAC values"
 
 
 # in order to use the Dac caracterisation feature, set the ANALOG_DISCOVERY_DISABLED to False
@@ -3264,21 +3265,29 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                    - one with _DD suffix : the floating values use a dot as separator
         
         """
-        VStartValue = self.ui.SBCarDisStartingValue.value()
+        # loop parameters
+        VStartValue1 = self.ui.SBCarDisStartingValue1.value()   ## Henso 13.01.2023
+        VEndValue1 = self.ui.SBCarDisEndingValue1.value()       ## Henso 13.01.2023
+        VStepValue1 = self.ui.SBCarDisStepValue1.value()        ## Henso 13.01.2023
+        VStartValue = self.ui.SBCarDisStartingValue.value()     
         VEndValue = self.ui.SBCarDisEndingValue.value()
         VStepValue = self.ui.SBCarDisStepValue.value()
         VFilePath = self.ui.leCarDisSavePath.text()
-        
+
         VRunNb = self.ui.sBCarDisTestNo.value()
         VFrameLength = self.ui.SBCarDisRPFrameLength.value()
-        VFileName = self.ui.LECarDisSPFileName.text()+'_'+str(VRunNb)+'step'
-
 
         VCurrStep = 0
         totalPixelList = []
         
         # set the dac registers with the starting values
         VDacRegIndex = self.ui.CoBCarDisDacSel.currentIndex()
+        VDacRegIndex1 = self.ui.CoBCarDisDacSel1.currentIndex() # Henso 13.01.2023
+
+        innerLoop = 'DAC'+str(VDacRegIndex)
+        currentLoop = 'DAC'+str(VDacRegIndex1)
+
+        #VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
 
         # set all default values for the DAC registers
         Dac0 = int(self.ui.LECarDisStValDac0.text(),10)
@@ -3290,95 +3299,114 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         LstValDac = [Dac0,Dac1,Dac2,Dac3,Dac4]
 
         VErr = PicmicHLF.FSetDacRegs(LstValDac)
-        # create the configuration file for the results
-        ConfFileName = VFilePath +'/'+ VFileName+str(VRunNb)+'.conf'
-        ConfFile = open (ConfFileName,'w')
-        ConfFile.writelines('[Pulsing]\n')
-        ConfFile.writelines('PulsingPath = '+self.ui.leCarDisPulsingPath.text()+'\n')
-        ConfFile.writelines('PulsingName = '+self.ui.leCarDisPulsingFileName.text()+'\n')
-        ConfFile.writelines('PulsedReg = 0x' + str(self.ui.LEPulsingPPRegValue.text())+'\n')
-        ConfFile.writelines('NoPulsedReg = 0x' + str(self.ui.LEPulsingNOTPRegValue.text())+'\n')
-        ConfFile.writelines('\n[Registers]\n')
-        ConfFile.writelines('VRefP = '+self.ui.LECarDisStValDac0.text()+'\n')
-        ConfFile.writelines('VRefN = '+self.ui.LECarDisStValDac1.text()+'\n')
-        ConfFile.writelines('VBN = '+self.ui.LECarDisStValDac2.text()+'\n')
-        ConfFile.writelines('VBN_adj = '+self.ui.LECarDisStValDac3.text()+'\n')
-        ConfFile.writelines('VBP = ' +self.ui.LECarDisStValDac4.text()+'\n')  
-        ConfFile.writelines('RegIndex = ' + str(self.ui.CoBCarDisDacSel.currentIndex())+'\n')
-        ConfFile.writelines('StartVal = ' + str(self.ui.SBCarDisStartingValue.value())+'\n')
-        ConfFile.writelines('StopVal = ' + str(self.ui.SBCarDisEndingValue.value())+'\n')
-        ConfFile.writelines('StepVal = ' + str(self.ui.SBCarDisStepValue.value())+'\n')
-        ConfFile.close()
-        
-        #loop for the caracterisation 
-        for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
-            #set dac value
-            LstValDac[VDacRegIndex] = VCurrentDacValue
-            VErr = PicmicHLF.FSetDacRegs(LstValDac)
-            self.ui.LECarDisRunStatus.setText("step:{:d} out of {}".format(VCurrStep,((VEndValue-VStartValue)//VStepValue)))
-            QApplication.processEvents() # update the GUI
-            
-            #start caracterisation
-            VResult,VPixelList = PM0_DF.SCurveTakeOneStep(VFilePath,VCurrStep,VFileName,VFrameLength)
-            if VResult < 0:
-                self.logger.error('Error in caracterisation step {}'.format(VCurrStep))
-            # append the pixel list to the total pixel list
-            if len(VPixelList) > 0:
-                for VIndex in range (len(VPixelList)):
-                    if VPixelList[VIndex] not in totalPixelList:
-                        totalPixelList.append(VPixelList[VIndex])
-            VCurrStep +=1
+        # current loop for the caracterisation
+        LstKeysDac = ['VRefP','VRefN','VBN','VBN_adj','VBP']
 
-        #Generate the global result file
-        ResultArray = np.zeros(shape =(len(totalPixelList),VCurrStep),dtype=float)
-        ResultFileNameDC = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DC.txt'
-        ResultFileNameDD = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DD.txt'
-        ResultFileDC = open (ResultFileNameDC,'w')
-        ResultFileDD = open (ResultFileNameDD,'w')
-        # list of pixels:
-        rowLine = "R"
-        colLine = "C"
-        if len(totalPixelList) > 0:
-            for VIndex in range (len(totalPixelList)):
-                Row = totalPixelList[VIndex][0]
-                Col = totalPixelList[VIndex][1]
-                rowLine += ";" + str(Row)
-                colLine += ";" + str(Col) 
-        rowLine += ';\n'
-        colLine += ';\n'
-        ResultFileDD.writelines(rowLine)
-        ResultFileDD.writelines(colLine)
-        ResultFileDC.writelines(rowLine)
-        ResultFileDC.writelines(colLine)
-        VCurrentIndex = 0
-        # generate array from the saving files
-        for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
-            #open save text file
-            currentFileName = VFilePath +'/'+ VFileName+str(VCurrentIndex)+'Norm.txt'
-            try:
-                currentFile = open(currentFileName,'r')
-            except :
-                self.logger.error('Error opening file :{}'.format(currentFileName))
-            lines = currentFile.readlines()
-            for line in lines:
-                Data = line.split(';')
-                Row=int(Data[0])
-                Col =int(Data[1])
-                PixData=float(Data[2])
-                HitIndex = totalPixelList.index([Row,Col])
-                ResultArray[HitIndex,VCurrentIndex] = PixData
-            VCurrentIndex += 1
-        # write array into file
-        for VLineIndex in range (VCurrentIndex):
-            LineToSaveDD = str(VStartValue + (VStepValue * VLineIndex))
-            for VColIndex in range (len(totalPixelList)):
-                LineToSaveDD += ';'+str(ResultArray[VColIndex,VLineIndex])
-            LineToSaveDD += ';\n'  
-            LineToSaveDC = LineToSaveDD.replace('.',',') 
-            ResultFileDD.writelines(LineToSaveDD)
-            ResultFileDC.writelines(LineToSaveDC)
-        ResultFileDC.close()
-        ResultFileDD.close()
+        ##lstValDacConf = [Dac0,Dac1,Dac2,Dac3,Dac4]
+        for VCurrentDacValue1 in range(VStartValue1,VEndValue1+1,VStepValue1):
+            # set dac value
+            LstValDac[VDacRegIndex1] = VCurrentDacValue1
+            VErr = PicmicHLF.FSetDacRegs(LstValDac)
+
+            dictDac = dict(zip(LstKeysDac, LstValDac))
+            
+            # create outfile with scan vlues        
+            VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_'+currentLoop+'_'+\
+                str(VCurrentDacValue1)+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
+
+
+            # create the configuration file for the results
+            ConfFileName = VFilePath +'/'+ VFileName+'.conf'
+            ConfFile = open (ConfFileName,'w')
+            ConfFile.writelines('[Configurables]\n')
+            ConfFile.writelines('FrameLenght = '+str(VFrameLenght)+'\n')
+            ConfFile.writelines('Scan = '+innerLoop+'\n')
+            ConfFile.writelines('[Pulsing]\n')
+            ConfFile.writelines('PulsingPath = '+self.ui.leCarDisPulsingPath.text()+'\n')
+            ConfFile.writelines('PulsingName = '+self.ui.leCarDisPulsingFileName.text()+'\n')
+            ConfFile.writelines('PulsedReg = 0x' + str(self.ui.LEPulsingPPRegValue.text())+'\n')
+            ConfFile.writelines('NoPulsedReg = 0x' + str(self.ui.LEPulsingNOTPRegValue.text())+'\n')
+            ConfFile.writelines('\n[Registers]\n')
+            ConfFile.writelines('VRefP = '+str(dictDac['VRefP'])+'\n')
+            ConfFile.writelines('VRefN = '+str(dictDac['VRefN'])+'\n')
+            ConfFile.writelines('VBN = '+str(dictDac['VBN'])+'\n')
+            ConfFile.writelines('VBN_adj = '+str(dictDac['VBN_adj'])+'\n')
+            ConfFile.writelines('VBP = ' +str(dictDac['VBP'])+'\n')  
+            ConfFile.writelines('RegIndex = ' + str(self.ui.CoBCarDisDacSel.currentIndex())+'\n')
+            ConfFile.writelines('StartVal = ' + str(self.ui.SBCarDisStartingValue.value())+'\n')
+            ConfFile.writelines('StopVal = ' + str(self.ui.SBCarDisEndingValue.value())+'\n')
+            ConfFile.writelines('StepVal = ' + str(self.ui.SBCarDisStepValue.value())+'\n')
+            ConfFile.close()
+
+            #inner loop for the caracterisation 
+            for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
+                #set dac value
+                LstValDac[VDacRegIndex] = VCurrentDacValue
+                VErr = PicmicHLF.FSetDacRegs(LstValDac)
+                self.ui.LECarDisRunStatus.setText("{:s} ,step:{:d} out of {}".format(innerLoop, VCurrStep,((VEndValue-VStartValue)//VStepValue)))
+                QApplication.processEvents() # update the GUI
+                
+                #start caracterisation
+                VResult,VPixelList = PM0_DF.SCurveTakeOneStep(VFilePath,VCurrStep,VFileName,VFrameLength)
+                if VResult < 0:
+                    self.logger.error('Error in caracterisation step {}'.format(VCurrStep))
+                # append the pixel list to the total pixel list
+                if len(VPixelList) > 0:
+                    for VIndex in range (len(VPixelList)):
+                        if VPixelList[VIndex] not in totalPixelList:
+                            totalPixelList.append(VPixelList[VIndex])
+                VCurrStep +=1
+
+            #Generate the global result file
+            ResultArray = np.zeros(shape =(len(totalPixelList),VCurrStep),dtype=float)
+            ResultFileNameDC = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DC.txt'
+            ResultFileNameDD = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DD.txt'
+            ResultFileDC = open (ResultFileNameDC,'w')
+            ResultFileDD = open (ResultFileNameDD,'w')
+            # list of pixels:
+            rowLine = "R"
+            colLine = "C"
+            if len(totalPixelList) > 0:
+                for VIndex in range (len(totalPixelList)):
+                    Row = totalPixelList[VIndex][0]
+                    Col = totalPixelList[VIndex][1]
+                    rowLine += ";" + str(Row)
+                    colLine += ";" + str(Col) 
+            rowLine += ';\n'
+            colLine += ';\n'
+            ResultFileDD.writelines(rowLine)
+            ResultFileDD.writelines(colLine)
+            ResultFileDC.writelines(rowLine)
+            ResultFileDC.writelines(colLine)
+            VCurrentIndex = 0
+            # generate array from the saving files
+            for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
+                #open save text file
+                currentFileName = VFilePath +'/'+ VFileName+str(VCurrentIndex)+'Norm.txt'
+                try:
+                    currentFile = open(currentFileName,'r')
+                except :
+                    self.logger.error('Error opening file :{}'.format(currentFileName))
+                lines = currentFile.readlines()
+                for line in lines:
+                    Data = line.split(';')
+                    Row=int(Data[0])
+                    Col =int(Data[1])
+                    PixData=float(Data[2])
+                    HitIndex = totalPixelList.index([Row,Col])
+                    ResultArray[HitIndex,VCurrentIndex] = PixData
+                VCurrentIndex += 1
+            # write array into file
+            for VLineIndex in range (VCurrentIndex):
+                LineToSaveDD = str(VStartValue + (VStepValue * VLineIndex))
+                for VColIndex in range (len(totalPixelList)):
+                    LineToSaveDD += ';'+str(ResultArray[VColIndex,VLineIndex])
+                LineToSaveDD += ';\n'  
+                LineToSaveDC = LineToSaveDD.replace('.',',') 
+                ResultFileDD.writelines(LineToSaveDD)
+                ResultFileDC.writelines(LineToSaveDC)
+            ResultFileDC.close()
+            ResultFileDD.close()
         self.ui.LECarDisRunStatus.setText('Discri caracterisation ended')
 
 
