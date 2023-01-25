@@ -9,7 +9,7 @@ Maintained by Matthieu Specht
 """
 
 __author__ = "Hugo Schott,Matthieu Specht, Henso Abreu"
-__version__ = '0.5.7'
+__version__ = '0.5.8'
 __maintainer__ = "Matthieu Specht, Henso Abreu"
 __email__ = "matthieu.specht@iphc.cnrs.fr, h.abreu@ip2i.in2p3.fr"
 __date__ = "2023-01-23"

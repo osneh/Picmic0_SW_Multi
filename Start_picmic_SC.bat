@@ -1,1 +1,1 @@
-python Picmic_SC_GUI_056.py
+python Picmic_SC_GUI.py
