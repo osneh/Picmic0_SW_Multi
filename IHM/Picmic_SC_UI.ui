@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>6</number>
     </property>
     <property name="tabsClosable">
      <bool>false</bool>
@@ -871,7 +871,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Global_Cmd_Tab">
        <attribute name="title">
@@ -5910,7 +5910,7 @@
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>570</x>
         <y>70</y>
         <width>451</width>
         <height>151</height>
@@ -6017,9 +6017,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>570</x>
         <y>350</y>
-        <width>981</width>
+        <width>451</width>
         <height>281</height>
        </rect>
       </property>
@@ -6029,7 +6029,7 @@
       <widget class="QPushButton" name="BtCarDisRunCarac">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>130</x>
          <y>230</y>
          <width>121</width>
          <height>31</height>
@@ -6042,7 +6042,7 @@
       <widget class="QSpinBox" name="SBCarDisEndingValue">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>180</x>
          <y>170</y>
          <width>42</width>
          <height>22</height>
@@ -6058,9 +6058,9 @@
       <widget class="QLabel" name="LblCarDacStepValue_2">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>130</x>
          <y>200</y>
-         <width>71</width>
+         <width>45</width>
          <height>16</height>
         </rect>
        </property>
@@ -6071,7 +6071,7 @@
       <widget class="QSpinBox" name="SBCarDisStepValue">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>180</x>
          <y>200</y>
          <width>42</width>
          <height>22</height>
@@ -6087,9 +6087,9 @@
       <widget class="QComboBox" name="CoBCarDisDacSel">
        <property name="geometry">
         <rect>
-         <x>220</x>
+         <x>130</x>
          <y>100</y>
-         <width>101</width>
+         <width>91</width>
          <height>22</height>
         </rect>
        </property>
@@ -6122,9 +6122,9 @@
       <widget class="QGroupBox" name="GBCarDisRegsValues">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>80</y>
-         <width>161</width>
+         <x>10</x>
+         <y>70</y>
+         <width>111</width>
          <height>191</height>
         </rect>
        </property>
@@ -6134,7 +6134,7 @@
        <widget class="QLineEdit" name="LECarDisStValDac0">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>77</x>
           <y>30</y>
           <width>31</width>
           <height>20</height>
@@ -6147,7 +6147,7 @@
        <widget class="QLabel" name="lblCarDiscStValDac0">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>5</x>
           <y>30</y>
           <width>61</width>
           <height>16</height>
@@ -6160,7 +6160,7 @@
        <widget class="QLineEdit" name="LECarDisStValDac1">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>77</x>
           <y>60</y>
           <width>31</width>
           <height>20</height>
@@ -6173,7 +6173,7 @@
        <widget class="QLabel" name="lblCarDiscStValDac1">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>5</x>
           <y>60</y>
           <width>61</width>
           <height>16</height>
@@ -6186,20 +6186,20 @@
        <widget class="QLineEdit" name="LECarDisStValDac2">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>77</x>
           <y>90</y>
           <width>31</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>62</string>
+         <string>61</string>
         </property>
        </widget>
        <widget class="QLabel" name="lblCarDiscStValDac2">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>5</x>
           <y>90</y>
           <width>61</width>
           <height>16</height>
@@ -6212,20 +6212,20 @@
        <widget class="QLineEdit" name="LECarDisStValDac3">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>77</x>
           <y>120</y>
           <width>31</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>62</string>
+         <string>128</string>
         </property>
        </widget>
        <widget class="QLabel" name="lblCarDiscStValDac3">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>5</x>
           <y>120</y>
           <width>71</width>
           <height>16</height>
@@ -6238,20 +6238,20 @@
        <widget class="QLineEdit" name="LECarDisStValDac4">
         <property name="geometry">
          <rect>
-          <x>100</x>
+          <x>77</x>
           <y>150</y>
           <width>31</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>81</string>
+         <string>91</string>
         </property>
        </widget>
        <widget class="QLabel" name="lblCarDiscStValDac4">
         <property name="geometry">
          <rect>
-          <x>30</x>
+          <x>5</x>
           <y>150</y>
           <width>61</width>
           <height>16</height>
@@ -6265,7 +6265,7 @@
       <widget class="QSpinBox" name="SBCarDisStartingValue">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>180</x>
          <y>140</y>
          <width>42</width>
          <height>22</height>
@@ -6278,33 +6278,33 @@
       <widget class="QLabel" name="LblCarDacStartingValue_2">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>130</x>
          <y>140</y>
-         <width>71</width>
+         <width>45</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Starting Value</string>
+        <string>Starting</string>
        </property>
       </widget>
       <widget class="QLabel" name="LblCarDacEndingValue_2">
        <property name="geometry">
         <rect>
-         <x>190</x>
+         <x>130</x>
          <y>170</y>
-         <width>71</width>
+         <width>45</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Ending Value</string>
+        <string>Ending</string>
        </property>
       </widget>
       <widget class="QSpinBox" name="SBCarDisRPFrameLength">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>210</x>
          <y>40</y>
          <width>91</width>
          <height>22</height>
@@ -6317,7 +6317,7 @@
       <widget class="QLabel" name="LblCarDisRPFrameLength">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>210</x>
          <y>20</y>
          <width>91</width>
          <height>16</height>
@@ -6330,9 +6330,9 @@
       <widget class="QComboBox" name="CoBCarDisDacSel1">
        <property name="geometry">
         <rect>
-         <x>370</x>
+         <x>235</x>
          <y>100</y>
-         <width>101</width>
+         <width>91</width>
          <height>22</height>
         </rect>
        </property>
@@ -6365,7 +6365,7 @@
       <widget class="QSpinBox" name="SBCarDisEndingValue1">
        <property name="geometry">
         <rect>
-         <x>420</x>
+         <x>285</x>
          <y>170</y>
          <width>42</width>
          <height>22</height>
@@ -6381,22 +6381,22 @@
       <widget class="QLabel" name="LblCarDacStartingValue_5">
        <property name="geometry">
         <rect>
-         <x>340</x>
+         <x>235</x>
          <y>140</y>
-         <width>71</width>
+         <width>45</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Starting Value</string>
+        <string>Starting</string>
        </property>
       </widget>
       <widget class="QLabel" name="LblCarDacStepValue_5">
        <property name="geometry">
         <rect>
-         <x>340</x>
+         <x>235</x>
          <y>200</y>
-         <width>71</width>
+         <width>45</width>
          <height>16</height>
         </rect>
        </property>
@@ -6407,20 +6407,20 @@
       <widget class="QLabel" name="LblCarDacEndingValue_5">
        <property name="geometry">
         <rect>
-         <x>340</x>
+         <x>235</x>
          <y>170</y>
-         <width>71</width>
+         <width>45</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>Ending Value</string>
+        <string>Ending</string>
        </property>
       </widget>
       <widget class="QSpinBox" name="SBCarDisStepValue1">
        <property name="geometry">
         <rect>
-         <x>420</x>
+         <x>285</x>
          <y>200</y>
          <width>42</width>
          <height>22</height>
@@ -6436,7 +6436,7 @@
       <widget class="QSpinBox" name="SBCarDisStartingValue1">
        <property name="geometry">
         <rect>
-         <x>420</x>
+         <x>285</x>
          <y>140</y>
          <width>42</width>
          <height>22</height>
@@ -6446,11 +6446,130 @@
         <number>255</number>
        </property>
       </widget>
+      <widget class="QLabel" name="LblCarDacEndingValue_6">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>170</y>
+         <width>45</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ending</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBCarDisStartingValue1_2">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>140</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacStepValue_6">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>200</y>
+         <width>45</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Step</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblCarDacStartingValue_6">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>140</y>
+         <width>45</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Starting</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBCarDisEndingValue1_2">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>170</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>255</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="CoBCarDisDacSel1_2">
+       <property name="geometry">
+        <rect>
+         <x>345</x>
+         <y>100</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Dac0:VRefP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dac1:VRefN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dac2:VBN</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dac3:VBN-Adj</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dac4:VBP</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="SBCarDisStepValue1_2">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>200</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
      </widget>
      <widget class="QPushButton" name="BtCarDisInitAcquisition">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>570</x>
         <y>40</y>
         <width>451</width>
         <height>31</height>
@@ -6463,7 +6582,7 @@
      <widget class="QLineEdit" name="LECarDisRunStatus">
       <property name="geometry">
        <rect>
-        <x>42</x>
+        <x>580</x>
         <y>650</y>
         <width>231</width>
         <height>21</height>
@@ -6476,7 +6595,7 @@
      <widget class="QLabel" name="LblCarDisRunStatus">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>578</x>
         <y>630</y>
         <width>111</width>
         <height>16</height>
@@ -6489,7 +6608,7 @@
      <widget class="QGroupBox" name="GBCarDisPulsingFile">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>570</x>
         <y>220</y>
         <width>451</width>
         <height>131</height>
@@ -6554,6 +6673,364 @@
        </property>
        <property name="text">
         <string>cfg_mat128x54_08.txt</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="GBPulsing_master_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>250</y>
+        <width>321</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>GroupBox</string>
+      </property>
+      <widget class="QComboBox" name="CoBPulsingPixelSel_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>281</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Send all pixels even the one not set ( longer)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Send only the pixels to be set (faster)</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="lePulsingFileName_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>160</y>
+         <width>281</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>cfg_mat128x54_08.txt</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblPulsingFileName_3">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>File name for the matrix setting</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtPulsingSendPulsingToChip_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>200</y>
+         <width>281</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Send pulsing to chip</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="TEPulsingFileComments_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>301</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtPulsingFileSelection_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>60</y>
+         <width>281</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>File selection</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lePulsingPath_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>110</y>
+         <width>281</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>C:\Python\Picmic0_SW_Multi\Pulsing_Files</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LblPulsingFileName_4">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>90</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Path for the matrix setting</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="GBNOTPulsedParams_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>60</y>
+        <width>141</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>NOT Pulsed pixel  params</string>
+      </property>
+      <widget class="QLabel" name="Indicator_IADJ_PixConf_4">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>50</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>IADJ (Max 8)</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_ENA_CC_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CC</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_Act_Pulse_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>160</y>
+         <width>91</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ActivateVpulse</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_SW1_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>120</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW1</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_SW0_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW0</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBPulsingNOTPulsed_IADJ_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>7</number>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingNOTP_ENA_CM_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CM</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LEPulsingNOTPRegValue_2">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="GBPulsedPixelParams_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>60</y>
+        <width>131</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Pulsed pixel params</string>
+      </property>
+      <widget class="QLabel" name="Indicator_IADJ_PixConf_5">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>50</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>IADJ (Max 8)</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_ENA_CC_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>140</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CC</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_Act_Pulse_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>160</y>
+         <width>91</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ActivateVpulse</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_SW1_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW1</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_SW0_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>100</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SW0</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="SBPulsingPulsed_IADJ_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>42</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>7</number>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ChBPulsingPP_ENA_CM_Data_PixConf_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ENA_CM</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LEPulsingPPRegValue_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>31</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>0</string>
        </property>
       </widget>
      </widget>

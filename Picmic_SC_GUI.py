@@ -216,7 +216,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         
         self.ui.BtEndSoftware.clicked.connect(self.StopProgClicked)
         
-        self.ui.Tab_Pages.currentChanged.connect(self.TabPageChanged)
+        #self.ui.Tab_Pages.currentChanged.connect(self.TabPageChanged) # remember to uncomment Henso 25.01.2023
 
         ########################################################################################################################
         ############################################ Configuration Tab  ################################################
@@ -1212,7 +1212,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         VFDialog.setFileMode(QFileDialog.ExistingFile)
         
         if VFDialog.exec_() == QDialog.Accepted:
-            VFileName = str(VFDialog.selectedFiles()[0])
+        #    VFileName = str(VFDialog.selectedFiles()[0])
+            VFileName = str(VFDialog.selectedFiles())
             if os.path.isfile(VFileName):
                 self.ui.lePulsingPath.setText(str(VFDialog.directory().path()))
                 self.ui.lePulsingFileName.setText(os.path.basename(VFileName))

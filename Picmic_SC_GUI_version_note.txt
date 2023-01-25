@@ -40,3 +40,5 @@ versions:
                         added a discri caracterisation feature
                         
 - 0.5.7 / 08/12/2022 : added the saving of the pulsing registers values in the configuration file ( only usefull for the Carac Discri feature)
+
+- 0.5.7 / 25/01/2023 : added two dimensional scan in DAC Values. More information addded in conf file
