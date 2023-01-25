@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="tabsClosable">
      <bool>false</bool>
@@ -4884,12 +4884,12 @@
        </property>
        <item>
         <property name="text">
-         <string>Send only the pixels to be set (faster)</string>
+         <string>Send all pixels even the one not set ( longer)</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Send all pixels even the one not set ( longer)</string>
+         <string>Send only the pixels to be set (faster)</string>
         </property>
        </item>
       </widget>
@@ -6095,12 +6095,12 @@
        </property>
        <item>
         <property name="text">
-         <string>Dac1:VRefN</string>
+         <string>Dac0:VRefP</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Dac0:VRefP</string>
+         <string>Dac1:VRefN</string>
         </property>
        </item>
        <item>

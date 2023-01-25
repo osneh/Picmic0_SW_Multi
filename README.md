@@ -1,3 +1,3 @@
 # Picmic0_SW
 
-- picmic slow control software (HMI)
+- picmic slow control software (HMI), multidimensional scan

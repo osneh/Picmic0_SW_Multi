@@ -1464,6 +1464,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             callback for the send pulsing button of the Pulsing Tab
         """
         self.logger.info("Send pulsing to chip")
+        # combo box index initilization
+        self.ui.CoBPulsingPixelSel.setCurrentIndex(1)
 
         VPixelToSend = self.ui.CoBPulsingPixelSel.currentIndex()
         VPulsingFileName = self.ui.lePulsingPath.text()+"/"+self.ui.lePulsingFileName.text()
@@ -3277,15 +3279,21 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         VRunNb = self.ui.sBCarDisTestNo.value()
         VFrameLength = self.ui.SBCarDisRPFrameLength.value()
 
-        VCurrStep = 0
         totalPixelList = []
         
+        # Combox box index initialization
+        #self.ui.CoBCarDacDacSel.setCurrentIndex(1)
+        #self.ui.CoBCarDacDacSel1.setCurrentIndex(0)
+
         # set the dac registers with the starting values
         VDacRegIndex = self.ui.CoBCarDisDacSel.currentIndex()
         VDacRegIndex1 = self.ui.CoBCarDisDacSel1.currentIndex() # Henso 13.01.2023
 
-        innerLoop = 'DAC'+str(VDacRegIndex)
-        currentLoop = 'DAC'+str(VDacRegIndex1)
+        # current loop for the caracterisation
+        LstKeysDac = ['VRefP','VRefN','VBN','VBN_adj','VBP']
+
+        innerLoop = LstKeysDac[VDacRegIndex]
+        currentLoop = LstKeysDac[VDacRegIndex1]
 
         #VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
 
@@ -3299,16 +3307,15 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         LstValDac = [Dac0,Dac1,Dac2,Dac3,Dac4]
 
         VErr = PicmicHLF.FSetDacRegs(LstValDac)
-        # current loop for the caracterisation
-        LstKeysDac = ['VRefP','VRefN','VBN','VBN_adj','VBP']
 
-        ##lstValDacConf = [Dac0,Dac1,Dac2,Dac3,Dac4]
+        #VCurrStep1 = 0
         for VCurrentDacValue1 in range(VStartValue1,VEndValue1+1,VStepValue1):
             # set dac value
             LstValDac[VDacRegIndex1] = VCurrentDacValue1
             VErr = PicmicHLF.FSetDacRegs(LstValDac)
 
             dictDac = dict(zip(LstKeysDac, LstValDac))
+            
             
             # create outfile with scan vlues        
             VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_'+currentLoop+'_'+\
@@ -3319,7 +3326,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             ConfFileName = VFilePath +'/'+ VFileName+'.conf'
             ConfFile = open (ConfFileName,'w')
             ConfFile.writelines('[Configurables]\n')
-            ConfFile.writelines('FrameLenght = '+str(VFrameLenght)+'\n')
+            ConfFile.writelines('FrameLenght = '+str(VFrameLength)+'\n')
             ConfFile.writelines('Scan = '+innerLoop+'\n')
             ConfFile.writelines('[Pulsing]\n')
             ConfFile.writelines('PulsingPath = '+self.ui.leCarDisPulsingPath.text()+'\n')
@@ -3339,11 +3346,12 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             ConfFile.close()
 
             #inner loop for the caracterisation 
+            VCurrStep = 0
             for VCurrentDacValue in range (VStartValue,VEndValue+1,VStepValue):
                 #set dac value
                 LstValDac[VDacRegIndex] = VCurrentDacValue
                 VErr = PicmicHLF.FSetDacRegs(LstValDac)
-                self.ui.LECarDisRunStatus.setText("{:s} ,step:{:d} out of {}".format(innerLoop, VCurrStep,((VEndValue-VStartValue)//VStepValue)))
+                self.ui.LECarDisRunStatus.setText("{:s}:{:d} | {:s} step:{:d} out of {}".format(currentLoop, VCurrentDacValue1, innerLoop, VCurrStep,((VEndValue-VStartValue)//VStepValue)))
                 QApplication.processEvents() # update the GUI
                 
                 #start caracterisation
@@ -3359,8 +3367,10 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
             #Generate the global result file
             ResultArray = np.zeros(shape =(len(totalPixelList),VCurrStep),dtype=float)
-            ResultFileNameDC = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DC.txt'
-            ResultFileNameDD = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DD.txt'
+            #ResultFileNameDC = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DC.txt'
+            #ResultFileNameDD = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DD.txt'
+            ResultFileNameDC = VFilePath +'/'+ VFileName+'_DC.txt'
+            ResultFileNameDD = VFilePath +'/'+ VFileName+'_DD.txt'
             ResultFileDC = open (ResultFileNameDC,'w')
             ResultFileDD = open (ResultFileNameDD,'w')
             # list of pixels:
