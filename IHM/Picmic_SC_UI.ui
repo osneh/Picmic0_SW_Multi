@@ -5911,7 +5911,7 @@
       <property name="geometry">
        <rect>
         <x>570</x>
-        <y>70</y>
+        <y>40</y>
         <width>451</width>
         <height>151</height>
        </rect>
@@ -5929,7 +5929,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>C:/Python/Picmic0_SC/Conf_Files</string>
+        <string>C:/Python/Picmic0_SW_Multi/data/car_dis/</string>
        </property>
       </widget>
       <widget class="QLabel" name="LblCarDisFilePath">
@@ -6018,7 +6018,7 @@
       <property name="geometry">
        <rect>
         <x>570</x>
-        <y>350</y>
+        <y>320</y>
         <width>451</width>
         <height>281</height>
        </rect>
@@ -6141,7 +6141,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>60</string>
+         <string>0</string>
         </property>
        </widget>
        <widget class="QLabel" name="lblCarDiscStValDac0">
@@ -6167,7 +6167,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>94</string>
+         <string>0</string>
         </property>
        </widget>
        <widget class="QLabel" name="lblCarDiscStValDac1">
@@ -6570,7 +6570,7 @@
       <property name="geometry">
        <rect>
         <x>570</x>
-        <y>40</y>
+        <y>10</y>
         <width>451</width>
         <height>31</height>
        </rect>
@@ -6583,7 +6583,7 @@
       <property name="geometry">
        <rect>
         <x>580</x>
-        <y>650</y>
+        <y>620</y>
         <width>231</width>
         <height>21</height>
        </rect>
@@ -6596,7 +6596,7 @@
       <property name="geometry">
        <rect>
         <x>578</x>
-        <y>630</y>
+        <y>600</y>
         <width>111</width>
         <height>16</height>
        </rect>
@@ -6609,7 +6609,7 @@
       <property name="geometry">
        <rect>
         <x>570</x>
-        <y>220</y>
+        <y>190</y>
         <width>451</width>
         <height>131</height>
        </rect>
@@ -6680,9 +6680,9 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>250</y>
-        <width>321</width>
-        <height>381</height>
+        <y>230</y>
+        <width>291</width>
+        <height>371</height>
        </rect>
       </property>
       <property name="title">
@@ -6691,9 +6691,9 @@
       <widget class="QComboBox" name="CoBPulsingPixelSel_2">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>20</x>
          <y>30</y>
-         <width>281</width>
+         <width>251</width>
          <height>22</height>
         </rect>
        </property>
@@ -6711,9 +6711,9 @@
       <widget class="QLineEdit" name="lePulsingFileName_2">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>20</x>
          <y>160</y>
-         <width>281</width>
+         <width>251</width>
          <height>20</height>
         </rect>
        </property>
@@ -6724,7 +6724,7 @@
       <widget class="QLabel" name="LblPulsingFileName_3">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>20</x>
          <y>140</y>
          <width>161</width>
          <height>16</height>
@@ -6737,9 +6737,9 @@
       <widget class="QPushButton" name="BtPulsingSendPulsingToChip_2">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>200</y>
-         <width>281</width>
+         <x>20</x>
+         <y>190</y>
+         <width>251</width>
          <height>23</height>
         </rect>
        </property>
@@ -6750,9 +6750,9 @@
       <widget class="QTextEdit" name="TEPulsingFileComments_2">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>230</y>
-         <width>301</width>
+         <x>20</x>
+         <y>220</y>
+         <width>251</width>
          <height>141</height>
         </rect>
        </property>
@@ -6763,9 +6763,9 @@
       <widget class="QPushButton" name="BtPulsingFileSelection_2">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>20</x>
          <y>60</y>
-         <width>281</width>
+         <width>251</width>
          <height>23</height>
         </rect>
        </property>
@@ -6776,9 +6776,9 @@
       <widget class="QLineEdit" name="lePulsingPath_2">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>20</x>
          <y>110</y>
-         <width>281</width>
+         <width>251</width>
          <height>20</height>
         </rect>
        </property>
@@ -6789,7 +6789,7 @@
       <widget class="QLabel" name="LblPulsingFileName_4">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>20</x>
          <y>90</y>
          <width>161</width>
          <height>16</height>
@@ -6803,8 +6803,8 @@
      <widget class="QGroupBox" name="GBNOTPulsedParams_2">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>60</y>
+        <x>170</x>
+        <y>40</y>
         <width>141</width>
         <height>191</height>
        </rect>
@@ -6920,8 +6920,8 @@
      <widget class="QGroupBox" name="GBPulsedPixelParams_2">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>60</y>
+        <x>20</x>
+        <y>40</y>
         <width>131</width>
         <height>191</height>
        </rect>
@@ -7033,6 +7033,19 @@
         <string>0</string>
        </property>
       </widget>
+     </widget>
+     <widget class="QPushButton" name="BtCarDisInitSetParaCarDisRun">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>650</y>
+        <width>1001</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Set Parameters and Run Caracterisation</string>
+      </property>
      </widget>
     </widget>
    </widget>
