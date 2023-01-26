@@ -445,9 +445,41 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
 
         ########################################################################################################################
-        ############################################ Discri caracterisation Tab   ##############################################
+        ######################################### Discri caracterisation Tab Multi  ############################################
         ########################################################################################################################
+        ####################
+        ## Initialization ##
+        #################### 
+        self.ui.CoBPulsingPixelSel_2.setCurrentIndex(1)         # PulsePixel combo box index
+        self.ui.CoBCarDisDacSel.setCurrentIndex(1)              # DAC1 combo box index
+        self.ui.CoBCarDisDacSel1.setCurrentIndex(0)             # DAC0 combo box index
+        self.ui.CoBCarDisDacSel1_2.setCurrentIndex(2)           # DAC2 combo box index
+        
+        ####################
+        ##  Pulsing Part  ##
+        ####################
+        self.ui.BtPulsingSendPulsingToChip_2.clicked.connect(self.SendPulsingToChipMulti)
+        self.ui.BtPulsingFileSelection_2.clicked.connect(self.PulsingFileSelectionMulti)
+         
+        self.ui.LEPulsingPPRegValue_2.textChanged.connect(self.LEPulsingPPRegValue_ChangedMulti)
+        self.ui.SBPulsingPulsed_IADJ_Data_PixConf_2.valueChanged.connect(self.SBPulsingPulsed_IADJ_Data_PixConfValueChangedMulti)
+        self.ui.ChBPulsingPP_ENA_CM_Data_PixConf_2.clicked.connect(self.ChBPulsingPP_ENA_CM_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingPP_SW0_Data_PixConf_2.clicked.connect(self.ChBPulsingPP_SW0_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingPP_SW1_Data_PixConf_2.clicked.connect(self.ChBPulsingPP_SW1_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingPP_ENA_CC_Data_PixConf_2.clicked.connect(self.ChBPulsingPP_ENA_CC_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingPP_Act_Pulse_Data_PixConf_2.clicked.connect(self.ChBPulsingPP_Act_Pulse_Data_PixConf_ClickedMulti)
 
+        self.ui.LEPulsingNOTPRegValue_2.textChanged.connect(self.LEPulsingNOTPRegValue_ChangedMulti)
+        self.ui.SBPulsingNOTPulsed_IADJ_Data_PixConf_2.valueChanged.connect(self.SBPulsingNOTPulsed_IADJ_Data_PixConfValueChangedMulti)
+        self.ui.ChBPulsingNOTP_ENA_CM_Data_PixConf_2.clicked.connect(self.ChBPulsingNOTP_ENA_CM_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingNOTP_SW0_Data_PixConf_2.clicked.connect(self.ChBPulsingNOTP_SW0_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingNOTP_SW1_Data_PixConf_2.clicked.connect(self.ChBPulsingNOTP_SW1_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingNOTP_ENA_CC_Data_PixConf_2.clicked.connect(self.ChBPulsingNOTP_ENA_CC_Data_PixConf_ClickedMulti)
+        self.ui.ChBPulsingNOTP_Act_Pulse_Data_PixConf_2.clicked.connect(self.ChBPulsingNOTP_Act_Pulse_Data_PixConf_ClickedMulti)
+         
+        ####################
+        ##  Scan Part  ##
+        ####################
         self.ui.BtCarDisRunCarac.clicked.connect(self.BtCarDisRunCaracClicked)
         self.ui.BtCarDisInitAcquisition.clicked.connect(self.CarDisInitAcq)
         self.ui.BtCarDisPathSel.clicked.connect(self.CarDisPathSelect)
@@ -802,6 +834,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.logger.error ('File Selection CANCELLED ')
 
         pass
+    
     def LoadSelectedConfigurationFile(self):
         """
             Load the selected configuration file
@@ -910,12 +943,16 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             if self.config.has_section('Pulsing'):
                 if '0x' in self.config['Pulsing']['Pulsed_Params']:
                     self.ui.LEPulsingPPRegValue.setText('{:s}'.format(self.config['Pulsing']['Pulsed_Params'][2::]))
+                    self.ui.LEPulsingPPRegValue_2.setText('{:s}'.format(self.config['Pulsing']['Pulsed_Params'][2::]))
                 else:
                     self.ui.LEPulsingPPRegValue.setText('{:s}'.format(self.config['Pulsing']['Pulsed_Params']))
+                    self.ui.LEPulsingPPRegValue_2.setText('{:s}'.format(self.config['Pulsing']['Pulsed_Params']))
                 if '0x' in self.config['Pulsing']['Not_Pulsed_Params']:
                     self.ui.LEPulsingNOTPRegValue.setText('{:s}'.format(self.config['Pulsing']['Not_Pulsed_Params'][2::]))
+                    self.ui.LEPulsingNOTPRegValue_2.setText('{:s}'.format(self.config['Pulsing']['Not_Pulsed_Params'][2::]))
                 else:
                     self.ui.LEPulsingNOTPRegValue.setText('{:s}'.format(self.config['Pulsing']['Not_Pulsed_Params']))
+                    self.ui.LEPulsingNOTPRegValue_2.setText('{:s}'.format(self.config['Pulsing']['Not_Pulsed_Params']))
 
             self.ui.statusbar.setStyleSheet("QStatusBar{background:white;color:black;font-weight:normal;}")      
             self.ui.statusbar.showMessage('Config file loading  Successfull',0) # le 0 est un temps en seconde 
@@ -1212,14 +1249,39 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         VFDialog.setFileMode(QFileDialog.ExistingFile)
         
         if VFDialog.exec_() == QDialog.Accepted:
-        #    VFileName = str(VFDialog.selectedFiles()[0])
-            VFileName = str(VFDialog.selectedFiles())
+            VFileName = str(VFDialog.selectedFiles()[0])
             if os.path.isfile(VFileName):
                 self.ui.lePulsingPath.setText(str(VFDialog.directory().path()))
                 self.ui.lePulsingFileName.setText(os.path.basename(VFileName))
                 Result, CommentsFromFile = PM0EMUL.FGetCommentsFromFile(VFileName)
                 self.ui.TEPulsingFileComments.clear()
                 self.ui.TEPulsingFileComments.append(CommentsFromFile)
+            else:
+                self.logger.error('File does not exist :%s',VFileName)
+        else:
+            self.logger.error ('File Reading CANCELLED ')
+            
+    
+    def PulsingFileSelectionMulti(self):
+        """
+            callback for the File selection button of the pulsing tab MultiScan
+        """
+        VOldFilePath = os.path.join(os.getcwd(),  'Pulsing_Files')
+
+        VFDialog = QFileDialog(self)
+        VFDialog.setWindowTitle('Open Conf file')
+        VFDialog.setNameFilter('text Files (*.txt)')
+        VFDialog.setDirectory(VOldFilePath)
+        VFDialog.setFileMode(QFileDialog.ExistingFile)
+        
+        if VFDialog.exec_() == QDialog.Accepted:
+            VFileName = str(VFDialog.selectedFiles()[0])
+            if os.path.isfile(VFileName):
+                self.ui.lePulsingPath_2.setText(str(VFDialog.directory().path()))
+                self.ui.lePulsingFileName_2.setText(os.path.basename(VFileName))
+                Result, CommentsFromFile = PM0EMUL.FGetCommentsFromFile(VFileName)
+                self.ui.TEPulsingFileComments_2.clear()
+                self.ui.TEPulsingFileComments_2.append(CommentsFromFile)
             else:
                 self.logger.error('File does not exist :%s',VFileName)
         else:
@@ -1239,25 +1301,48 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.ChBPulsingPP_ENA_CC_Data_PixConf.setChecked((PPixelsReg & 0x40) == 0x40)
             self.ui.ChBPulsingPP_Act_Pulse_Data_PixConf.setChecked((PPixelsReg & 0x80) == 0x80)
 
+    def LEPulsingPPRegValue_ChangedMulti(self) : #Bit 0 à 2
+        """
+            Callback for the modification of the Pulsed pixel Line edit for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() != ''):
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+            self.ui.SBPulsingPulsed_IADJ_Data_PixConf_2.setValue(PPixelsReg & 0x07)
+            self.ui.ChBPulsingPP_ENA_CM_Data_PixConf_2.setChecked((PPixelsReg & 0x08) == 0x08)
+            self.ui.ChBPulsingPP_SW0_Data_PixConf_2.setChecked((PPixelsReg & 0x10) == 0x10)
+            self.ui.ChBPulsingPP_SW1_Data_PixConf_2.setChecked((PPixelsReg & 0x20) == 0x20)
+            self.ui.ChBPulsingPP_ENA_CC_Data_PixConf_2.setChecked((PPixelsReg & 0x40) == 0x40)
+            self.ui.ChBPulsingPP_Act_Pulse_Data_PixConf_2.setChecked((PPixelsReg & 0x80) == 0x80)
+
  
     def SBPulsingPulsed_IADJ_Data_PixConfValueChanged(self):
         """
             Callback for the modification of the IADJ Line edit for the pulsed pixels params
         """
-    
         if (self.ui.LEPulsingPPRegValue.text() == ''):
             PPixelsReg = 0
         else:
             PPixelsReg = int(self.ui.LEPulsingPPRegValue.text(),16)
         PPixelsReg = (PPixelsReg & 0xF8) | self.ui.SBPulsingPulsed_IADJ_Data_PixConf.value()
         self.ui.LEPulsingPPRegValue.setText('{:X}'.format(PPixelsReg))
+    
+    
+    def SBPulsingPulsed_IADJ_Data_PixConfValueChangedMulti(self):
+        """
+            Callback for the modification of the IADJ Line edit for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() == ''):
+            PPixelsReg = 0
+        else:
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+        PPixelsReg = (PPixelsReg & 0xF8) | self.ui.SBPulsingPulsed_IADJ_Data_PixConf_2.value()
+        self.ui.LEPulsingPPRegValue_2.setText('{:X}'.format(PPixelsReg))
+    
 
-            
     def ChBPulsingPP_ENA_CM_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the ENA_CM Checkbox for the pulsed pixels params
         """
-         
         if (self.ui.LEPulsingPPRegValue.text() == ''):
             PPixelsReg = 0
         else:
@@ -1270,12 +1355,28 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
         self.ui.LEPulsingPPRegValue.setText('{:X}'.format(PPixelsReg))
 
+
+    def ChBPulsingPP_ENA_CM_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the ENA_CM Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() == ''):
+            PPixelsReg = 0
+        else:
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingPP_ENA_CM_Data_PixConf_2.isChecked():
+            PPixelsReg = PPixelsReg | 0x08
+        else : 
+            PPixelsReg = PPixelsReg & 0xF7
+            
+        self.ui.LEPulsingPPRegValue_2.setText('{:X}'.format(PPixelsReg))
+            
             
     def ChBPulsingPP_SW0_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the SW0 Checkbox for the pulsed pixels params
         """
-         
         if (self.ui.LEPulsingPPRegValue.text() == ''):
             PPixelsReg = 0
         else:
@@ -1287,13 +1388,29 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             PPixelsReg = PPixelsReg & 0xEF
             
         self.ui.LEPulsingPPRegValue.setText('{:X}'.format(PPixelsReg))
+        
+        
+    def ChBPulsingPP_SW0_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the SW0 Checkbox for the pulsed pixels params Multi
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() == ''):
+            PPixelsReg = 0
+        else:
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingPP_SW0_Data_PixConf_2.isChecked():
+            PPixelsReg = PPixelsReg | 0x10
+        else : 
+            PPixelsReg = PPixelsReg & 0xEF
+            
+        self.ui.LEPulsingPPRegValue_2.setText('{:X}'.format(PPixelsReg))
 
         
     def ChBPulsingPP_SW1_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the SW1 Checkbox for the pulsed pixels params
         """
-
         if (self.ui.LEPulsingPPRegValue.text() == ''):
             PPixelsReg = 0
         else:
@@ -1305,13 +1422,29 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             PPixelsReg = PPixelsReg & 0xDF
             
         self.ui.LEPulsingPPRegValue.setText('{:X}'.format(PPixelsReg))
-         
+    
+    
+    def ChBPulsingPP_SW1_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the SW1 Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() == ''):
+            PPixelsReg = 0
+        else:
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingPP_SW1_Data_PixConf_2.isChecked():
+            PPixelsReg = PPixelsReg | 0x20
+        else : 
+            PPixelsReg = PPixelsReg & 0xDF
+            
+        self.ui.LEPulsingPPRegValue_2.setText('{:X}'.format(PPixelsReg))     
+            
             
     def ChBPulsingPP_ENA_CC_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the ENA_CC Checkbox for the pulsed pixels params
         """
-
         if (self.ui.LEPulsingPPRegValue.text() == ''):
             PPixelsReg = 0
         else:
@@ -1324,12 +1457,28 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
         self.ui.LEPulsingPPRegValue.setText('{:X}'.format(PPixelsReg))
          
-             
+         
+    def ChBPulsingPP_ENA_CC_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the ENA_CC Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() == ''):
+            PPixelsReg = 0
+        else:
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingPP_ENA_CC_Data_PixConf_2.isChecked():
+            PPixelsReg = PPixelsReg | 0x40
+        else : 
+            PPixelsReg = PPixelsReg & 0xBF
+            
+        self.ui.LEPulsingPPRegValue_2.setText('{:X}'.format(PPixelsReg))
+    
+    
     def ChBPulsingPP_Act_Pulse_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the ActivatePulse Checkbox for the pulsed pixels params
         """
-         
         if (self.ui.LEPulsingPPRegValue.text() == ''):
             PPixelsReg = 0
         else:
@@ -1342,6 +1491,22 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
         self.ui.LEPulsingPPRegValue.setText('{:X}'.format(PPixelsReg))
 
+
+    def ChBPulsingPP_Act_Pulse_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the ActivatePulse Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingPPRegValue_2.text() == ''):
+            PPixelsReg = 0
+        else:
+            PPixelsReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingPP_Act_Pulse_Data_PixConf_2.isChecked():
+            PPixelsReg = PPixelsReg | 0x80
+        else : 
+            PPixelsReg = PPixelsReg & 0x7F
+            
+        self.ui.LEPulsingPPRegValue_2.setText('{:X}'.format(PPixelsReg))
 
     
     def LEPulsingNOTPRegValue_Changed(self) : #Bit 0 à 2
@@ -1357,11 +1522,26 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.ChBPulsingNOTP_ENA_CC_Data_PixConf.setChecked((NOTPixelsReg & 0x40) == 0x40)
             self.ui.ChBPulsingNOTP_Act_Pulse_Data_PixConf.setChecked((NOTPixelsReg & 0x80) == 0x80)
  
+ 
+    def LEPulsingNOTPRegValue_ChangedMulti(self) : #Bit 0 à 2
+        """
+            Callback for the modification of the Pulsed pixel Line edit for the pulsed pixels params MultiScan
+        """
+        
+        if (self.ui.LEPulsingNOTPRegValue_2.text() != ''):
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+            self.ui.SBPulsingNOTPulsed_IADJ_Data_PixConf_2.setValue(NOTPixelsReg & 0x07)
+            self.ui.ChBPulsingNOTP_ENA_CM_Data_PixConf_2.setChecked((NOTPixelsReg & 0x08) == 0x08)
+            self.ui.ChBPulsingNOTP_SW0_Data_PixConf_2.setChecked((NOTPixelsReg & 0x10) == 0x10)
+            self.ui.ChBPulsingNOTP_SW1_Data_PixConf_2.setChecked((NOTPixelsReg & 0x20) == 0x20)
+            self.ui.ChBPulsingNOTP_ENA_CC_Data_PixConf_2.setChecked((NOTPixelsReg & 0x40) == 0x40)
+            self.ui.ChBPulsingNOTP_Act_Pulse_Data_PixConf_2.setChecked((NOTPixelsReg & 0x80) == 0x80)
+ 
+ 
     def SBPulsingNOTPulsed_IADJ_Data_PixConfValueChanged(self):
         """
             Callback for the modification of the IADJ Line edit for the pulsed pixels params
         """
-    
         if (self.ui.LEPulsingNOTPRegValue.text() == ''):
             NOTPixelsReg = 0
         else:
@@ -1369,7 +1549,19 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         NOTPixelsReg = (NOTPixelsReg & 0xF8) | self.ui.SBPulsingNOTPulsed_IADJ_Data_PixConf.value()
         self.ui.LEPulsingNOTPRegValue.setText('{:X}'.format(NOTPixelsReg))
 
-            
+
+    def SBPulsingNOTPulsed_IADJ_Data_PixConfValueChangedMulti(self):
+        """
+            Callback for the modification of the IADJ Line edit for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingNOTPRegValue_2.text() == ''):
+            NOTPixelsReg = 0
+        else:
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+        NOTPixelsReg = (NOTPixelsReg & 0xF8) | self.ui.SBPulsingNOTPulsed_IADJ_Data_PixConf_2.value()
+        self.ui.LEPulsingNOTPRegValue_2.setText('{:X}'.format(NOTPixelsReg))
+ 
+ 
     def ChBPulsingNOTP_ENA_CM_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the ENA_CM Checkbox for the pulsed pixels params
@@ -1387,12 +1579,28 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
         self.ui.LEPulsingNOTPRegValue.setText('{:X}'.format(NOTPixelsReg))
 
+
+    def ChBPulsingNOTP_ENA_CM_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the ENA_CM Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingNOTPRegValue_2.text() == ''):
+            NOTPixelsReg = 0
+        else:
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingNOTP_ENA_CM_Data_PixConf_2.isChecked():
+            NOTPixelsReg = NOTPixelsReg | 0x08
+        else : 
+            NOTPixelsReg = NOTPixelsReg & 0xF7
+            
+        self.ui.LEPulsingNOTPRegValue_2.setText('{:X}'.format(NOTPixelsReg))
+ 
             
     def ChBPulsingNOTP_SW0_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the SW0 Checkbox for the pulsed pixels params
         """
-         
         if (self.ui.LEPulsingNOTPRegValue.text() == ''):
             NOTPixelsReg = 0
         else:
@@ -1405,12 +1613,28 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
         self.ui.LEPulsingNOTPRegValue.setText('{:X}'.format(NOTPixelsReg))
 
+
+    def ChBPulsingNOTP_SW0_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the SW0 Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingNOTPRegValue_2.text() == ''):
+            NOTPixelsReg = 0
+        else:
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingNOTP_SW0_Data_PixConf_2.isChecked():
+            NOTPixelsReg = NOTPixelsReg | 0x10
+        else : 
+            NOTPixelsReg = NOTPixelsReg & 0xEF
+            
+        self.ui.LEPulsingNOTPRegValue_2.setText('{:X}'.format(NOTPixelsReg))
+
         
     def ChBPulsingNOTP_SW1_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the SW1 Checkbox for the pulsed pixels params
         """
-
         if (self.ui.LEPulsingNOTPRegValue.text() == ''):
             NOTPixelsReg = 0
         else:
@@ -1422,13 +1646,29 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             NOTPixelsReg = NOTPixelsReg & 0xDF
             
         self.ui.LEPulsingNOTPRegValue.setText('{:X}'.format(NOTPixelsReg))
-         
+  
+          
+    def ChBPulsingNOTP_SW1_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the SW1 Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingNOTPRegValue_2.text() == ''):
+            NOTPixelsReg = 0
+        else:
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingNOTP_SW1_Data_PixConf_2.isChecked():
+            NOTPixelsReg = NOTPixelsReg | 0x20
+        else : 
+            NOTPixelsReg = NOTPixelsReg & 0xDF
+            
+        self.ui.LEPulsingNOTPRegValue_2.setText('{:X}'.format(NOTPixelsReg))
+            
             
     def ChBPulsingNOTP_ENA_CC_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the ENA_CC Checkbox for the pulsed pixels params
         """
-
         if (self.ui.LEPulsingNOTPRegValue.text() == ''):
             NOTPixelsReg = 0
         else:
@@ -1442,11 +1682,27 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.LEPulsingNOTPRegValue.setText('{:X}'.format(NOTPixelsReg))
          
              
+    def ChBPulsingNOTP_ENA_CC_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the ENA_CC Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingNOTPRegValue_2.text() == ''):
+            NOTPixelsReg = 0
+        else:
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingNOTP_ENA_CC_Data_PixConf_2.isChecked():
+            NOTPixelsReg = NOTPixelsReg | 0x40
+        else : 
+            NOTPixelsReg = NOTPixelsReg & 0xBF
+            
+        self.ui.LEPulsingNOTPRegValue_2.setText('{:X}'.format(NOTPixelsReg))
+ 
+             
     def ChBPulsingNOTP_Act_Pulse_Data_PixConf_Clicked(self) :
         """
             Callback for the modification of the ActivatePulse Checkbox for the pulsed pixels params
-        """
-         
+        """ 
         if (self.ui.LEPulsingNOTPRegValue.text() == ''):
             NOTPixelsReg = 0
         else:
@@ -1459,6 +1715,23 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
         self.ui.LEPulsingNOTPRegValue.setText('{:X}'.format(NOTPixelsReg))
 
+             
+    def ChBPulsingNOTP_Act_Pulse_Data_PixConf_ClickedMulti(self) :
+        """
+            Callback for the modification of the ActivatePulse Checkbox for the pulsed pixels params MultiScan
+        """
+        if (self.ui.LEPulsingNOTPRegValue_2.text() == ''):
+            NOTPixelsReg = 0
+        else:
+            NOTPixelsReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)
+        #If checked 
+        if self.ui.ChBPulsingNOTP_Act_Pulse_Data_PixConf_2.isChecked():
+            NOTPixelsReg = NOTPixelsReg | 0x80
+        else : 
+            NOTPixelsReg = NOTPixelsReg & 0x7F
+            
+        self.ui.LEPulsingNOTPRegValue_2.setText('{:X}'.format(NOTPixelsReg))
+
 
     def SendPulsingToChip(self):
         """
@@ -1470,8 +1743,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
         VPixelToSend = self.ui.CoBPulsingPixelSel.currentIndex()
         VPulsingFileName = self.ui.lePulsingPath.text()+"/"+self.ui.lePulsingFileName.text()
-        VPulsingReg = int(self.ui.LEPulsingPPRegValue.text(),16)
-        VNotPulsingReg = int(self.ui.LEPulsingNOTPRegValue.text(),16)
+        VPulsingReg = int(self.ui.LEPulsingPPRegValue.text(),16)        # Parameters pulse pixels
+        VNotPulsingReg = int(self.ui.LEPulsingNOTPRegValue.text(),16)   # Parameters masked pixels
         VErr, BitMap,Comments,HitNb = PicmicHLF.FSetBitmapInPixMemFromFile(VPixelToSend,VPulsingFileName,VPulsingReg,VNotPulsingReg)
         
         if VErr < 0 :
@@ -1504,6 +1777,39 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                 MatrixShow = PlotAx.matshow(BitMap)
                 fig.canvas.draw()
                 plt.show()
+    
+                
+    def SendPulsingToChipMulti(self):
+        """
+            callback for the send pulsing button of the Pulsing Tab
+        """
+        self.logger.info("Send pulsing to chip")
+
+        VPixelToSend = self.ui.CoBPulsingPixelSel_2.currentIndex()
+        VPulsingFileName = self.ui.lePulsingPath_2.text()+"/"+self.ui.lePulsingFileName_2.text()
+        VPulsingReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)        # Parameters pulse pixels
+        VNotPulsingReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)   # Parameters masked pixels
+        #VErr, BitMap,Comments,HitNb = PicmicHLF.FSetBitmapInPixMemFromFile(VPixelToSend,VPulsingFileName,VPulsingReg,VNotPulsingReg)
+        VErr = 1
+        Comments ='OK'
+        HitNb = 4
+        if VErr < 0 :
+            #Error
+            self.ui.statusbar.setStyleSheet("QStatusBar{background:red;color:white;font-weight:bold;}")      
+            self.ui.statusbar.showMessage('Pulsing sending FAILED',0) # le 0 est un temps en seconde 
+        else:
+            # OK
+            self.ui.statusbar.setStyleSheet("QStatusBar{background:MidLight;color:black;font-weight:normal;}")      
+            self.ui.statusbar.showMessage('Pulsing sending successfull',0) # le 0 est un temps en seconde 
+        
+            self.ui.TEPulsingFileComments_2.clear()
+            self.ui.TEPulsingFileComments_2.append(Comments)
+            self.ui.TEPulsingFileComments_2.append("")
+            self.ui.TEPulsingFileComments_2.append("")
+            self.ui.TEPulsingFileComments_2.append("Total hit sent :{:d}".format(HitNb))
+            # refresh the CaracDiscri Tab fields for of the pulsing file name and path
+            self.ui.leCarDisPulsingPath.setText(self.ui.lePulsingPath_2.text())
+            self.ui.leCarDisPulsingFileName.setText(self.ui.lePulsingFileName_2.text())
 
     
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
