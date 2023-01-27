@@ -6681,7 +6681,7 @@
        <rect>
         <x>20</x>
         <y>230</y>
-        <width>291</width>
+        <width>511</width>
         <height>371</height>
        </rect>
       </property>
@@ -6797,6 +6797,16 @@
        </property>
        <property name="text">
         <string>Path for the matrix setting</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="CoBoPulsingFileName">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>160</y>
+         <width>181</width>
+         <height>22</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -7050,9 +7060,9 @@
      <widget class="QPushButton" name="BtCarDisInitSetParaCarDisRun">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>40</x>
         <y>645</y>
-        <width>1001</width>
+        <width>241</width>
         <height>35</height>
        </rect>
       </property>
@@ -7176,15 +7186,15 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
         <underline>false</underline>
         <strikeout>false</strikeout>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:green</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Matrix Set Parameters and Run Caracterisation</string>
