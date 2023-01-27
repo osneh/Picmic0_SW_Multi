@@ -6681,7 +6681,7 @@
        <rect>
         <x>20</x>
         <y>230</y>
-        <width>511</width>
+        <width>541</width>
         <height>371</height>
        </rect>
       </property>
@@ -6802,12 +6802,17 @@
       <widget class="QComboBox" name="CoBoPulsingFileName">
        <property name="geometry">
         <rect>
-         <x>300</x>
+         <x>280</x>
          <y>160</y>
-         <width>181</width>
+         <width>251</width>
          <height>22</height>
         </rect>
        </property>
+       <item>
+        <property name="text">
+         <string>cfg_mat128x54_08.txt</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QGroupBox" name="GBNOTPulsedParams_2">
