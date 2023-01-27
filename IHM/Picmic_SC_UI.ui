@@ -6681,12 +6681,15 @@
        <rect>
         <x>20</x>
         <y>230</y>
-        <width>541</width>
+        <width>291</width>
         <height>371</height>
        </rect>
       </property>
       <property name="title">
        <string>GroupBox</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
       <widget class="QComboBox" name="CoBPulsingPixelSel_2">
        <property name="geometry">
@@ -6707,19 +6710,6 @@
          <string>Send only the pixels to be set (faster)</string>
         </property>
        </item>
-      </widget>
-      <widget class="QLineEdit" name="lePulsingFileName_2">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>160</y>
-         <width>251</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>cfg_mat128x54_08.txt</string>
-       </property>
       </widget>
       <widget class="QLabel" name="LblPulsingFileName_3">
        <property name="geometry">
@@ -6802,7 +6792,7 @@
       <widget class="QComboBox" name="CoBoPulsingFileName">
        <property name="geometry">
         <rect>
-         <x>280</x>
+         <x>20</x>
          <y>160</y>
          <width>251</width>
          <height>22</height>
@@ -7215,13 +7205,13 @@
        </rect>
       </property>
       <property name="autoFillBackground">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>0</string>
       </property>
       <property name="frame">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="readOnly">
        <bool>true</bool>
