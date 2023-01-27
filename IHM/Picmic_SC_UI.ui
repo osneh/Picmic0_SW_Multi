@@ -6679,7 +6679,7 @@
      <widget class="QGroupBox" name="GBPulsing_master_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>230</y>
         <width>291</width>
         <height>371</height>
@@ -6808,7 +6808,7 @@
      <widget class="QGroupBox" name="GBNOTPulsedParams_2">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>160</x>
         <y>40</y>
         <width>141</width>
         <height>191</height>
@@ -6938,7 +6938,7 @@
      <widget class="QGroupBox" name="GBPulsedPixelParams_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>40</y>
         <width>131</width>
         <height>191</height>
@@ -7216,6 +7216,1026 @@
       <property name="readOnly">
        <bool>true</bool>
       </property>
+     </widget>
+     <widget class="QGroupBox" name="Pixel_Seq_Group_2">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>10</y>
+        <width>211</width>
+        <height>591</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Registers:Pixel Sequence</string>
+      </property>
+      <widget class="QLabel" name="get_ind_pix_2">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>10</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>GET</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Indicator_Set_Pix_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>10</y>
+         <width>21</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>SET</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="setPixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>530</y>
+         <width>131</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Set Activated</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="get_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>560</y>
+         <width>131</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Get Activated</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_NU1_Pix_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>60</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_NU_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>60</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_MarkedMod_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>80</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_NU2_Pix_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>100</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_PulseMod_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>120</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_LoadWidth_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>140</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Load_pLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>160</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Load_PMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>180</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Flush_PLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>200</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Flush_PMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>220</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_APulse_pLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>240</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_APulse_pMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>260</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_DPulse_pLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>280</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_DPulse_pMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>300</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_RdPixMaskLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>320</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_RdPixMaskMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>340</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_MaxFrameLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>360</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_MaxFrameMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>380</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_PolarityLSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>400</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_PolarityMSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>420</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Marker1LSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>440</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Marker1MSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>460</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Marker2LSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>480</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_Marker2MSB_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>500</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_LoadWidth_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>16</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Marker2MSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>500</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>37</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Load_PMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>180</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_RdPixMaskMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>340</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>255</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_APulse_pMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>260</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_MaxFrameLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>360</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Load_pLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>160</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_RdPixMaskLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>251</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Flush_PLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>200</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_MaxFrameMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>380</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_APulse_pLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>240</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>12</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Marker1MSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>460</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_NU2_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Marker2LSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>480</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>36</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Flush_PMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>220</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_Marker1LSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>440</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_MarkedMod_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>80</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_PulseMod_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>120</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_DPulse_pLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>280</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>100</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_PolarityMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>420</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>67</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_DPulse_pMSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>300</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>12</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_PolarityLSB_PixSeq_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>400</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>55</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Set_FlushModule_PixSeq_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>00</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Get_FlushModule_PixSeq_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>40</y>
+         <width>31</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqFlushModule_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>40</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Flush Module</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqNU0_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>60</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Unused</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqNU1_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>100</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Unused</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMarkerModule_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>80</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Marker Module</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqPulseModule_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>120</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Pulse Module</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqLoadWidth_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>140</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>LoadWidth</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqLoad_P_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>160</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Load_p LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqLoad_P_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>180</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Load_p MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqFlush_P_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>200</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>FLush_p LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqFlush_P_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>220</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>FLush_p MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqAPulse_P_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>240</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>APulse_p LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqAPulse_P_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>260</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>APulse_p MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqDPulse_P_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>280</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>DPulse_p LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqDPulse_P_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>300</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>DPulse_p MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqRdpix_mask_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>320</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Rdpix_mask LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqRdpix_mask_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>340</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Rdpix_mask MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMaxFrame_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>360</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Max Frame LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMaxFrame_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>380</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Max Frame MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqPolarity_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>400</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Polarity LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqPolarity_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>420</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Polarity MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMarker1_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>440</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Marker1 LSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMarker1_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>460</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Marker1 MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMarker2_MSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>500</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Marker2 MSB</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblRegsPixSeqMarker2_LSB_2">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>480</y>
+         <width>81</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Marker2 LSB</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </widget>
