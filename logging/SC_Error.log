@@ -1,3 +1,2 @@
-2023-01-24 13:43:49,171-ERROR <PID 3576:MainProcess> pm0_hlf.__init__().83: Logging Started
-2023-01-24 13:43:50,406-ERROR <PID 3576:MainProcess> pm0ddf.__init__().92: Logging Started
-2023-01-24 17:03:36,281-CRITICAL <PID 3576:MainProcess> pm0_GUI.StopProgClicked().724: picmic slow control now ending
+2023-01-27 16:40:15,334-ERROR <PID 27352:MainProcess> pm0_hlf.__init__().83: Logging Started
+2023-01-27 16:46:57,188-CRITICAL <PID 27352:MainProcess> pm0_GUI.StopProgClicked().767: picmic slow control now ending

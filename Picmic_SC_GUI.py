@@ -478,8 +478,15 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.ChBPulsingNOTP_Act_Pulse_Data_PixConf_2.clicked.connect(self.ChBPulsingNOTP_Act_Pulse_Data_PixConf_ClickedMulti)
          
         ####################
+        ## Pixel Sequence ##
+        ####################
+        self.ui.get_PixSeq_2.clicked.connect(self.get_PixSeq_ClickedMulti)    # Set Button
+        self.ui.setPixSeq_2.clicked.connect(self.setPixSeq_ClickedMulti)      # Get Button
+         
+        ####################
         ##  Scan Part  ##
         ####################
+        self.ui.SBCarDisRPFrameLength.setValue(100)
         self.ui.BtCarDisRunCarac.clicked.connect(self.BtCarDisRunCaracClicked)
         self.ui.BtCarDisInitAcquisition.clicked.connect(self.CarDisInitAcq)
         self.ui.BtCarDisPathSel.clicked.connect(self.CarDisPathSelect)
@@ -487,8 +494,12 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             pass
         else:
             self.ui.Tab_Pages.removeTab(self.ui.Tab_Pages.indexOf(self.ui.Carac_discri_tab))
-            
-
+        
+        ####################
+        ##   Mega Button  ##
+        ####################
+        self.ui.BtCarDisInitSetParaCarDisRun.clicked.connect(self.MegaButtonClicked)               
+        #self.ui.BtCarDisInitSetParaCarDisRun
 
     def MenuLoadPicmicConfFile(self):
         """
@@ -878,6 +889,31 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.Set_Marker1MSB_PixSeq.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker1_MSB'] ))
             self.ui.Set_Marker2LSB_PixSeq.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker2_LSB'] ))
             self.ui.Set_Marker2MSB_PixSeq.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker2_MSB'] ))
+            # set all the pixel sequencer regs MultiScan (Added by Henso 27.01.2023)
+            self.ui.Set_FlushModule_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Flush_mod'] ))
+            self.ui.Set_NU_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['NU0'] ))
+            self.ui.Set_MarkedMod_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker_mod'] ))
+            self.ui.Set_NU2_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['NU1'] ))
+            self.ui.Set_PulseMod_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Pulse_Mod'] ))
+            self.ui.Set_LoadWidth_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Load_Width'] ))
+            self.ui.Set_Load_pLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Load_p_LSB'] ))
+            self.ui.Set_Load_PMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Load_p_MSB'] ))
+            self.ui.Set_Flush_PLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Flush_p_LSB'] ))
+            self.ui.Set_Flush_PMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Flush_p_MSB'] ))
+            self.ui.Set_APulse_pLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['APulse_LSB'] ))
+            self.ui.Set_APulse_pMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['APulse_MSB'] ))
+            self.ui.Set_DPulse_pLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['DPulse_LSB'] ))
+            self.ui.Set_DPulse_pMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['DPulse_MSB'] ))
+            self.ui.Set_RdPixMaskLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['RdpixMask_LSB'] ))
+            self.ui.Set_RdPixMaskMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['RdpixMask_MSB'] ))
+            self.ui.Set_MaxFrameLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['MaxFrame_LSB'] ))
+            self.ui.Set_MaxFrameMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['MaxFrame_MSB'] ))
+            self.ui.Set_PolarityLSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Polarity_LSB'] ))
+            self.ui.Set_PolarityMSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Polarity_MSB'] ))
+            self.ui.Set_Marker1LSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker1_LSB'] ))
+            self.ui.Set_Marker1MSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker1_MSB'] ))
+            self.ui.Set_Marker2LSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker2_LSB'] ))
+            self.ui.Set_Marker2MSB_PixSeq_2.setText('{:s}'.format( self.config['Pixel_Sequencer']['Marker2_MSB'] ))
             # set all the VPulse SW registers
             if '0x' in self.config['VPulseSW']['byte0']:
                 self.binary_input_VpulseSwitch1 = int(self.config['VPulseSW']['byte0'][2::],16)
@@ -1272,14 +1308,22 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         VFDialog.setWindowTitle('Open Conf file')
         VFDialog.setNameFilter('text Files (*.txt)')
         VFDialog.setDirectory(VOldFilePath)
-        VFDialog.setFileMode(QFileDialog.ExistingFile)
+        VFDialog.setFileMode(QFileDialog.ExistingFiles)
         
         if VFDialog.exec_() == QDialog.Accepted:
             VFileName = str(VFDialog.selectedFiles()[0])
+            self.ui.LENbFiles.setText('{:d}'.format(len(VFDialog.selectedFiles())))
+            self.ui.CoBoPulsingFileName.clear()
+            
             if os.path.isfile(VFileName):
                 self.ui.lePulsingPath_2.setText(str(VFDialog.directory().path()))
-                self.ui.lePulsingFileName_2.setText(os.path.basename(VFileName))
+                #self.ui.lePulsingFileName_2.setText(os.path.basename(VFileName))
+                ## Fill comboBox selected Files
+                for f in VFDialog.selectedFiles() :
+                    self.ui.CoBoPulsingFileName.addItem(os.path.basename(f))
                 Result, CommentsFromFile = PM0EMUL.FGetCommentsFromFile(VFileName)
+                thisFile = self.ui.lePulsingPath_2.text()+"/"+self.ui.CoBoPulsingFileName.currentText()
+                Result, CommentsFromFile = PM0EMUL.FGetCommentsFromFile(thisFile)
                 self.ui.TEPulsingFileComments_2.clear()
                 self.ui.TEPulsingFileComments_2.append(CommentsFromFile)
             else:
@@ -1738,8 +1782,6 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             callback for the send pulsing button of the Pulsing Tab
         """
         self.logger.info("Send pulsing to chip")
-        # combo box index initilization
-        self.ui.CoBPulsingPixelSel.setCurrentIndex(1)
 
         VPixelToSend = self.ui.CoBPulsingPixelSel.currentIndex()
         VPulsingFileName = self.ui.lePulsingPath.text()+"/"+self.ui.lePulsingFileName.text()
@@ -1786,7 +1828,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.logger.info("Send pulsing to chip")
 
         VPixelToSend = self.ui.CoBPulsingPixelSel_2.currentIndex()
-        VPulsingFileName = self.ui.lePulsingPath_2.text()+"/"+self.ui.lePulsingFileName_2.text()
+        VPulsingFileName = self.ui.lePulsingPath_2.text()+"/"+self.ui.CoBoPulsingFileName.currentText()
         VPulsingReg = int(self.ui.LEPulsingPPRegValue_2.text(),16)        # Parameters pulse pixels
         VNotPulsingReg = int(self.ui.LEPulsingNOTPRegValue_2.text(),16)   # Parameters masked pixels
         #VErr, BitMap,Comments,HitNb = PicmicHLF.FSetBitmapInPixMemFromFile(VPixelToSend,VPulsingFileName,VPulsingReg,VNotPulsingReg)
@@ -1809,7 +1851,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.TEPulsingFileComments_2.append("Total hit sent :{:d}".format(HitNb))
             # refresh the CaracDiscri Tab fields for of the pulsing file name and path
             self.ui.leCarDisPulsingPath.setText(self.ui.lePulsingPath_2.text())
-            self.ui.leCarDisPulsingFileName.setText(self.ui.lePulsingFileName_2.text())
+            self.ui.leCarDisPulsingFileName.setText(self.ui.CoBoPulsingFileName.currentText())
 
     
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2035,13 +2077,69 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         
         self.Flag_Set_PixelSequence = 1
     
+   
+       #Execute when "Set Activated" is clicked MultiScan
+    def setPixSeq_ClickedMulti(self) :
+        """
+            Registers Tab 
+                Pixel Sequencer Tab
+                    Set button callback MultiScan
+        """
+    
+        Byte0_converti = int(self.ui.Set_FlushModule_PixSeq_2.text(),10)
+        Byte1_converti = int(self.ui.Set_NU_PixSeq_2.text(),10)
+        Byte2_converti = int(self.ui.Set_MarkedMod_PixSeq_2.text(),10)
+        Byte3_converti = int(self.ui.Set_NU2_PixSeq_2.text(),10)
+        Byte4_converti = int(self.ui.Set_PulseMod_PixSeq_2.text(),10)
+        Byte5_converti = int(self.ui.Set_LoadWidth_PixSeq_2.text(),10)
+        Byte6_converti = int(self.ui.Set_Load_pLSB_PixSeq_2.text(),10)
+        Byte7_converti = int(self.ui.Set_Load_PMSB_PixSeq_2.text(),10)
+        Byte8_converti = int(self.ui.Set_Flush_PLSB_PixSeq_2.text(),10)
+        Byte9_converti = int(self.ui.Set_Flush_PMSB_PixSeq_2.text(),10)
+        Byte10_converti = int(self.ui.Set_APulse_pLSB_PixSeq_2.text(),10)
+        Byte11_converti = int(self.ui.Set_APulse_pMSB_PixSeq_2.text(),10)
+        Byte12_converti = int(self.ui.Set_DPulse_pLSB_PixSeq_2.text(),10)
+        Byte13_converti = int(self.ui.Set_DPulse_pMSB_PixSeq_2.text(),10)
+        Byte14_converti = int(self.ui.Set_RdPixMaskLSB_PixSeq_2.text(),10)
+        Byte15_converti = int(self.ui.Set_RdPixMaskMSB_PixSeq_2.text(),10)
+        Byte16_converti = int(self.ui.Set_MaxFrameLSB_PixSeq_2.text(),10)
+        Byte17_converti = int(self.ui.Set_MaxFrameMSB_PixSeq_2.text(),10)
+        Byte18_converti = int(self.ui.Set_PolarityLSB_PixSeq_2.text(),10)
+        Byte19_converti = int(self.ui.Set_PolarityMSB_PixSeq_2.text(),10)
+        Byte20_converti = int(self.ui.Set_Marker1LSB_PixSeq_2.text(),10)
+        Byte21_converti = int(self.ui.Set_Marker1MSB_PixSeq_2.text(),10)
+        Byte22_converti = int(self.ui.Set_Marker2LSB_PixSeq_2.text(),10)
+        Byte23_converti = int(self.ui.Set_Marker2MSB_PixSeq_2.text(),10)
+        
+        ListeBytes = [Byte0_converti,Byte1_converti,Byte2_converti,Byte3_converti,Byte4_converti,
+                        Byte5_converti,Byte6_converti,Byte7_converti,Byte8_converti,Byte9_converti
+                        ,Byte10_converti,Byte11_converti,Byte12_converti,Byte13_converti,Byte14_converti
+                        ,Byte15_converti,Byte16_converti,Byte17_converti,Byte18_converti,Byte19_converti
+                        ,Byte20_converti,Byte21_converti,Byte22_converti,Byte23_converti]
+    
+        self.logger.info("Values to send :{}".format(ListeBytes))
+        VErr = PicmicHLF.FSetPixelSequencerRegs(ListeBytes)    
+
+        if VErr < 0 :
+            #Error
+            self.ui.statusbar.setStyleSheet("QStatusBar{background:red;color:white;font-weight:bold;}")      
+            self.ui.statusbar.showMessage('Set pixel sequencer FAILED',0) # le 0 est un temps en seconde 
+            pass
+        else:
+            # OK
+            self.ui.statusbar.setStyleSheet("QStatusBar{background:MidLight;color:black;font-weight:normal;}")      
+            self.ui.statusbar.showMessage('Set pixel sequencer successfull',0) # le 0 est un temps en seconde 
+            pass
+        
+        self.Flag_Set_PixelSequence = 1
+   
     
     #Execute when "Get Activated" is clicked 
     def get_PixSeq_Clicked(self) :
         """
             Registers Tab
                 Pixel Sequencer Tab
-                    Get button callback
+                    Get button callback MultiScan
         """
 
         VErr , returned_value = PicmicHLF.FGetPixelSequencerRegs()
@@ -2084,6 +2182,55 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             if(self.Flag_Set_PixelSequence == 1):
                 pass
     
+  
+      #Execute when "Get Activated" is clicked MultiScan
+    def get_PixSeq_ClickedMulti(self) :
+        """
+            Registers Tab
+                Pixel Sequencer Tab
+                    Get button callback
+        """
+
+        VErr , returned_value = PicmicHLF.FGetPixelSequencerRegs()
+
+        if VErr < 0 :
+            #Error
+            self.ui.statusbar.setStyleSheet("QStatusBar{background:red;color:white;font-weight:bold;}")      
+            self.ui.statusbar.showMessage('Get pixel sequencer FAILED',0) # le 0 est un temps en seconde 
+        else:
+            # OK
+            self.ui.statusbar.setStyleSheet("QStatusBar{background:MidLight;color:black;font-weight:normal;}")      
+            self.ui.statusbar.showMessage('Get pixel sequencer  successfull',0) # le 0 est un temps en seconde 
+
+            #returned_value[0] -> element 0 de la liste
+            self.ui.Get_FlushModule_PixSeq_2.setText('{:d}'.format( int(returned_value[0]) ))
+            self.ui.Get_NU1_Pix_PixSeq_2.setText('{:d}'.format( int(returned_value[1]) ))
+            self.ui.Get_MarkedMod_PixSeq_2.setText('{:d}'.format( int(returned_value[2]) ))
+            self.ui.Get_NU2_Pix_PixSeq_2.setText('{:d}'.format( int(returned_value[3]) ))
+            self.ui.Get_PulseMod_PixSeq_2.setText('{:d}'.format( int(returned_value[4]) ))
+            self.ui.Get_LoadWidth_PixSeq_2.setText('{:d}'.format( int(returned_value[5]) ))
+            self.ui.Get_Load_pLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[6]) ))
+            self.ui.Get_Load_PMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[7]) ))
+            self.ui.Get_Flush_PLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[8]) ))
+            self.ui.Get_Flush_PMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[9]) ))
+            self.ui.Get_APulse_pLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[10]) ))
+            self.ui.Get_APulse_pMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[11]) ))
+            self.ui.Get_DPulse_pLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[12]) ))
+            self.ui.Get_DPulse_pMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[13]) ))
+            self.ui.Get_RdPixMaskLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[14]) ))
+            self.ui.Get_RdPixMaskMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[15]) ))
+            self.ui.Get_MaxFrameLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[16]) ))
+            self.ui.Get_MaxFrameMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[17]) ))
+            self.ui.Get_PolarityLSB_PixSeq_2.setText('{:d}'.format( int(returned_value[18]) ))
+            self.ui.Get_PolarityMSB_PixSeq_2.setText('{:d}'.format( int(returned_value[19]) ))
+            self.ui.Get_Marker1LSB_PixSeq_2.setText('{:d}'.format( int(returned_value[20]) ))
+            self.ui.Get_Marker1MSB_PixSeq_2.setText('{:d}'.format( int(returned_value[21]) ))
+            self.ui.Get_Marker2LSB_PixSeq_2.setText('{:d}'.format( int(returned_value[22]) ))
+            self.ui.Get_Marker2MSB_PixSeq_2.setText('{:d}'.format( int(returned_value[23]) ))
+
+            if(self.Flag_Set_PixelSequence == 1):
+                pass
+  
     
     # Set / Get buttons : 
     def Set_Button_Test_Struct_Clicked(self) :
@@ -3572,6 +3719,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                 saves the caracterisation in two files :
                    - one with _DC suffix : the floating values use a comma as separator
                    - one with _DD suffix : the floating values use a dot as separator
+                   - two-dimensional Scan 
         
         """
         # loop parameters
@@ -3587,10 +3735,6 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         VFrameLength = self.ui.SBCarDisRPFrameLength.value()
 
         totalPixelList = []
-        
-        # Combox box index initialization
-        #self.ui.CoBCarDacDacSel.setCurrentIndex(1)
-        #self.ui.CoBCarDacDacSel1.setCurrentIndex(0)
 
         # set the dac registers with the starting values
         VDacRegIndex = self.ui.CoBCarDisDacSel.currentIndex()
@@ -3623,11 +3767,9 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
             dictDac = dict(zip(LstKeysDac, LstValDac))
             
-            
             # create outfile with scan vlues        
             VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_'+currentLoop+'_'+\
                 str(VCurrentDacValue1)+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
-
 
             # create the configuration file for the results
             ConfFileName = VFilePath +'/'+ VFileName+'.conf'
@@ -3674,8 +3816,6 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
             #Generate the global result file
             ResultArray = np.zeros(shape =(len(totalPixelList),VCurrStep),dtype=float)
-            #ResultFileNameDC = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DC.txt'
-            #ResultFileNameDD = VFilePath +'/'+ self.ui.LECarDisSPFileName.text()+str(VRunNb)+'_DD.txt'
             ResultFileNameDC = VFilePath +'/'+ VFileName+'_DC.txt'
             ResultFileNameDD = VFilePath +'/'+ VFileName+'_DD.txt'
             ResultFileDC = open (ResultFileNameDC,'w')
@@ -3725,6 +3865,24 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             ResultFileDC.close()
             ResultFileDD.close()
         self.ui.LECarDisRunStatus.setText('Discri caracterisation ended')
+
+
+    def MegaButtonClicked(self):
+        """
+            Carac Discri tab
+                run a discri caracterisation
+                saves the caracterisation in two files :
+                   - one with _DC suffix : the floating values use a comma as separator
+                   - one with _DD suffix : the floating values use a dot as separator
+                   - two-dimensional Scan and File Scan
+        
+        """
+        dim = self.ui.CoBoPulsingFileName.count() .         # get number of elements from combo Box Files
+        for i in range(dim) :                               # loop over the selected files
+            self.ui.CoBoPulsingFileName.setCurrentIndex(i)  # setting file indices in comboBox
+            self.SendPulsingToChipMulti()                   # send pulsing to chip
+            self.setPixSeq_ClickedMulti()                   # set Pixel Sequence
+            self.getPixSeq_ClickedMulti()                   # get Pixel Sequence 
 
 
     def CarDisInitAcq(self):

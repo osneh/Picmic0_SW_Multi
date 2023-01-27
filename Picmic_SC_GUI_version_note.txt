@@ -42,3 +42,9 @@ versions:
 - 0.5.7 / 08/12/2022 : added the saving of the pulsing registers values in the configuration file ( only usefull for the Carac Discri feature)
 
 - 0.5.7 / 25/01/2023 : added two dimensional scan in DAC Values. More information addded in conf file
+
+- 0.5.8 / 25/01/2023 :  - Changes in Car Dis Tab. 
+			- Loading values from conf file. 
+			- Add button to launch scan and set parameters 
+
+- 0.5.9 / 27/01/2023 :  - Loop over files. New GUI Version 
