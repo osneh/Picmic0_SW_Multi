@@ -3883,7 +3883,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.sBCarDisTestNo.setValue(i)               # increasing runNumber (set to file number) 
             self.SendPulsingToChipMulti()                   # send pulsing to chip
             self.setPixSeq_ClickedMulti()                   # set Pixel Sequence
-            self.getPixSeq_ClickedMulti()                   # get Pixel Sequence 
+            self.get_PixSeq_ClickedMulti()                   # get Pixel Sequence 
             self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop
 
 
