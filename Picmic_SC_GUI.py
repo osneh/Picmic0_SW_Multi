@@ -3745,6 +3745,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
         innerLoop = LstKeysDac[VDacRegIndex]
         currentLoop = LstKeysDac[VDacRegIndex1]
+        externalLoop = LstKeysDac[2]
 
         #VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
 
@@ -3769,7 +3770,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
             # create outfile with scan vlues        
             VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_'+currentLoop+'_'+\
-                str(VCurrentDacValue1)+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
+                str(VCurrentDacValue1)+'_VBN_'str(Dac2) +'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
 
             # create the configuration file for the results
             ConfFileName = VFilePath +'/'+ VFileName+'.conf'
@@ -3877,14 +3878,18 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                    - two-dimensional Scan and File Scan
         
         """
+        Dac2Vals = [55,56,57,58,59,60,61,62,63,64,65,66,67] 
+        dimDac2 = len(Dac2Vals)                              # get number of Dac2 Values
         dim = self.ui.CoBoPulsingFileName.count()            # get number of elements from combo Box Files
-        for i in range(dim) :                                # loop over the selected files
-            self.ui.CoBoPulsingFileName.setCurrentIndex(i)   # setting file indices in comboBox
-            self.ui.sBCarDisTestNo.setValue(i)               # increasing runNumber (set to file number) 
-            self.SendPulsingToChipMulti()                   # send pulsing to chip
-            self.setPixSeq_ClickedMulti()                   # set Pixel Sequence
-            self.get_PixSeq_ClickedMulti()                   # get Pixel Sequence 
-            self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop
+        for idx in range(dimDac2) : 
+            self.ui.LECarDisStValDac2.setText(Dac2Vals[idx])
+            for i in range(dim) :                                # loop over the selected files
+                self.ui.CoBoPulsingFileName.setCurrentIndex(i)   # setting file indices in comboBox
+                self.ui.sBCarDisTestNo.setValue(i)               # increasing runNumber (set to file number) 
+                self.SendPulsingToChipMulti()                   # send pulsing to chip
+                self.setPixSeq_ClickedMulti()                   # set Pixel Sequence
+                self.get_PixSeq_ClickedMulti()                   # get Pixel Sequence 
+                self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop
 
 
     def CarDisInitAcq(self):
