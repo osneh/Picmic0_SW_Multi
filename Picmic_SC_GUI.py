@@ -3896,7 +3896,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         ##        self.ui.LECarDisStValDac2.setText(str(Dac2Vals[idx]))
         ##        self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop
 
-        Dac2Vals = ["A9","AA","AB","AC","AD","AE","AF","A8"] 
+        ##Dac2Vals = ["A9","AA","AB","AC","AD","AE","AF","A8"] 
+        Dac2Vals = ["B8","B9","BA","BB","BC","BD","BE","BF","98","99","9A","9B","9C","9D","9E","9F","88","89","8A","8B","8C","8D","8E","8F"] 
         dimDac2 = len(Dac2Vals)                              # get number of Dac2 Values
         dim = self.ui.CoBoPulsingFileName.count()            # get number of elements from combo Box Files
         
