@@ -3745,8 +3745,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
 
         innerLoop = LstKeysDac[VDacRegIndex]
         currentLoop = LstKeysDac[VDacRegIndex1]
-        externalLoop = LstKeysDac[2]
-
+        #externalLoop = LstKeysDac[2]
+        externalLoop = str(self.ui.LEPulsingPPRegValue_2.text())
         #VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
 
         # set all default values for the DAC registers
@@ -3770,7 +3770,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             
             # create outfile with scan vlues        
             VFileName = self.ui.LECarDisSPFileName.text()+'_'+innerLoop+'_'+currentLoop+'_'+\
-                str(VCurrentDacValue1)+'_VBN_'str(Dac2) +'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
+                str(VCurrentDacValue1)+'_PPReg_'+str(self.ui.LEPulsingPPRegValue_2.text()) +'_Run'+str(VRunNb)##+'step' commented by Henso 13.01.2023
 
             # create the configuration file for the results
             ConfFileName = VFilePath +'/'+ VFileName+'.conf'
@@ -3781,8 +3781,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             ConfFile.writelines('[Pulsing]\n')
             ConfFile.writelines('PulsingPath = '+self.ui.leCarDisPulsingPath.text()+'\n')
             ConfFile.writelines('PulsingName = '+self.ui.leCarDisPulsingFileName.text()+'\n')
-            ConfFile.writelines('PulsedReg = 0x' + str(self.ui.LEPulsingPPRegValue.text())+'\n')
-            ConfFile.writelines('NoPulsedReg = 0x' + str(self.ui.LEPulsingNOTPRegValue.text())+'\n')
+            ConfFile.writelines('PulsedReg = 0x' + str(self.ui.LEPulsingPPRegValue_2.text())+'\n')
+            ConfFile.writelines('NoPulsedReg = 0x' + str(self.ui.LEPulsingNOTPRegValue_2.text())+'\n')
             ConfFile.writelines('\n[Registers]\n')
             ConfFile.writelines('VRefP = '+str(dictDac['VRefP'])+'\n')
             ConfFile.writelines('VRefN = '+str(dictDac['VRefN'])+'\n')
@@ -3846,6 +3846,7 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                 except :
                     self.logger.error('Error opening file :{}'.format(currentFileName))
                 lines = currentFile.readlines()
+                currentFile.close()                 # added by Henso 14.02.2023
                 for line in lines:
                     Data = line.split(';')
                     Row=int(Data[0])
@@ -3863,6 +3864,9 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                 LineToSaveDC = LineToSaveDD.replace('.',',') 
                 ResultFileDD.writelines(LineToSaveDD)
                 ResultFileDC.writelines(LineToSaveDC)
+                for f in os.listdir(VFilePath) :            ## added by Henso, Edouard 14.02.2023
+                    if (f[-4:] == '.bin' or f[-8:] == 'Norm.txt') :
+                        os.remove(os.path.join(VFilePath,f)) 
             ResultFileDC.close()
             ResultFileDD.close()
         self.ui.LECarDisRunStatus.setText('Discri caracterisation ended')
@@ -3878,19 +3882,36 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                    - two-dimensional Scan and File Scan
         
         """
-        Dac2Vals = [55,56,57,58,59,60,61,62,63,64,65,66,67] 
+        ##Dac2Vals = [63,64,65,66,67] 
+        ##dimDac2 = len(Dac2Vals)                              # get number of Dac2 Values
+        ##dim = self.ui.CoBoPulsingFileName.count()            # get number of elements from combo Box Files
+        
+        ##for i in range(dim) :                                 # loop over the selected files
+        ##    self.ui.CoBoPulsingFileName.setCurrentIndex(i)   # setting file indices in comboBox
+        ##    self.ui.sBCarDisTestNo.setValue(i)               # increasing runNumber (set to file number) 
+        ##    self.SendPulsingToChipMulti()                   # send pulsing to chip
+        ##    self.setPixSeq_ClickedMulti()                   # set Pixel Sequence
+        ##    self.get_PixSeq_ClickedMulti()                   # get Pixel Sequence 
+        ##    for idx in range(dimDac2) :                        # loop over VBN values
+        ##        self.ui.LECarDisStValDac2.setText(str(Dac2Vals[idx]))
+        ##        self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop
+
+        Dac2Vals = ["A9","AA","AB","AC","AD","AE","AF","A8"] 
         dimDac2 = len(Dac2Vals)                              # get number of Dac2 Values
         dim = self.ui.CoBoPulsingFileName.count()            # get number of elements from combo Box Files
-        for idx in range(dimDac2) : 
-            self.ui.LECarDisStValDac2.setText(Dac2Vals[idx])
-            for i in range(dim) :                                # loop over the selected files
+        
+        for idx in range(dimDac2) :                        # loop over VBN values
+            self.ui.LEPulsingPPRegValue_2.setText(str(Dac2Vals[idx]))
+            
+            for i in range(dim) :                                 # loop over the selected files
                 self.ui.CoBoPulsingFileName.setCurrentIndex(i)   # setting file indices in comboBox
                 self.ui.sBCarDisTestNo.setValue(i)               # increasing runNumber (set to file number) 
                 self.SendPulsingToChipMulti()                   # send pulsing to chip
                 self.setPixSeq_ClickedMulti()                   # set Pixel Sequence
                 self.get_PixSeq_ClickedMulti()                   # get Pixel Sequence 
-                self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop
 
+                self.BtCarDisRunCaracClicked()                  # Run Parametrization two-dimensional Loop        
+                    
 
     def CarDisInitAcq(self):
         """
