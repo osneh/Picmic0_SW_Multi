@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>3</number>
     </property>
     <property name="tabsClosable">
      <bool>false</bool>
@@ -871,7 +871,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="Global_Cmd_Tab">
        <attribute name="title">
@@ -2634,7 +2634,7 @@
        <widget class="QGroupBox" name="Pix_Conf_Col_Group">
         <property name="geometry">
          <rect>
-          <x>410</x>
+          <x>420</x>
           <y>10</y>
           <width>411</width>
           <height>201</height>
@@ -2822,7 +2822,7 @@
        <widget class="QGroupBox" name="Pix_Conf_Data_Group">
         <property name="geometry">
          <rect>
-          <x>160</x>
+          <x>300</x>
           <y>230</y>
           <width>531</width>
           <height>281</height>
@@ -3318,6 +3318,106 @@
         <property name="text">
          <string>Reset pixel matrix memories</string>
         </property>
+       </widget>
+       <widget class="QGroupBox" name="GBPulsing_master_calibrated">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>230</y>
+          <width>291</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Calibrated local configuration</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <widget class="QLabel" name="LblPulsingFileName_5">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>140</y>
+           <width>191</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>File(s) name(s) for the matrix setting</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="BtPulsingSendPulsingToChip_Calibrated">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>200</y>
+           <width>251</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:green
+</string>
+         </property>
+         <property name="text">
+          <string>Send pulsing to chip</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="BtPulsingFileSelection_Calibrated">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>40</y>
+           <width>251</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Files selection</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lePulsingPath_Calibrated">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>110</y>
+           <width>251</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>C:\Python\Picmic0_SW_Multi\Pulsing_Files</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="LblPulsingFileName_6">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>80</y>
+           <width>161</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Path for the matrix setting</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="CoBoPulsingFileName_Calibrated">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>160</y>
+           <width>251</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>cfg_mat128x54_08.txt</string>
+          </property>
+         </item>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="DAC_Tab">
