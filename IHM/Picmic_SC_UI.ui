@@ -3347,7 +3347,7 @@
           <string>File(s) name(s) for the matrix setting</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="BtSendPulsingToChip_Calibrated">
+        <widget class="QPushButton" name="BtSendSettingsToChip_Calibrated">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -3387,7 +3387,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>C:\Python\Picmic0_SW_Multi\Pulsing_Files</string>
+          <string>C:\Python\Picmic0_SW_Multi\Calibrated_Files</string>
          </property>
         </widget>
         <widget class="QLabel" name="LblPulsingFileName_6">
@@ -3413,7 +3413,7 @@
           </rect>
          </property>
          <property name="text">
-          <string>cfg_mat128x54_08.txt</string>
+          <string>Picmic0_chip5_VRefNX_VRefP50_VBN45.csv</string>
          </property>
         </widget>
        </widget>
