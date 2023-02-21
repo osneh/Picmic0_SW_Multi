@@ -3347,7 +3347,7 @@
           <string>File(s) name(s) for the matrix setting</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="BtPulsingSendPulsingToChip_Calibrated">
+        <widget class="QPushButton" name="BtSendPulsingToChip_Calibrated">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -3361,10 +3361,10 @@
 </string>
          </property>
          <property name="text">
-          <string>Send pulsing to chip</string>
+          <string>Set Calibration to the ways</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="BtPulsingFileSelection_Calibrated">
+        <widget class="QPushButton" name="BtFileSelection_Calibrated">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -3377,7 +3377,7 @@
           <string>Files selection</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lePulsingPath_Calibrated">
+        <widget class="QLineEdit" name="lePath_Calibrated">
          <property name="geometry">
           <rect>
            <x>20</x>
@@ -3403,7 +3403,7 @@
           <string>Path for the matrix setting</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lePulsingFileName_Calibrated">
+        <widget class="QLineEdit" name="leFileName_Calibrated">
          <property name="geometry">
           <rect>
            <x>20</x>
