@@ -9,7 +9,7 @@ Maintained by Matthieu Specht
 """
 
 __author__ = "Hugo Schott,Matthieu Specht, Henso Abreu"
-__version__ = '0.5.8'
+__version__ = '0.5.9'
 __maintainer__ = "Matthieu Specht, Henso Abreu"
 __email__ = "matthieu.specht@iphc.cnrs.fr, h.abreu@ip2i.in2p3.fr"
 __date__ = "2023-01-23"
@@ -59,6 +59,7 @@ import math
 import numpy as np
 import ctypes as ct
 import configparser    # for the ini file configuration retrieving 
+import csv
 
 
 LoggingFileName =  os.path.abspath(os.path.join(os.getcwd(),'logging','logging_SC.conf'))
@@ -284,12 +285,14 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.Set_ENA_D2P.clicked.connect(self.Set_ENA_D2P_Clicked)
         self.ui.Set_ENA_D1P.clicked.connect(self.Set_ENA_D1P_Clicked)
 
-        #   Pixel Conf Column buttons definiton
-        
-        #Set Button
+        # ##########################################  #
+        #       modification Henso 21.02.2023         #
+        # ##########################################  #
+       
+        #   Pixel Conf Column button definitions 
+        #Set Button COLS
         self.ui.Set_Button_Col_PixConf.clicked.connect(self.Set_Button_Col_PixConf_Clicked)
-   
-        #Get Button
+        #Get Button COLS
         self.ui.Get_Col_PixConf.clicked.connect(self.Get_Col_PixConf_Clicked)
         
         # Reset matrix button
@@ -299,11 +302,9 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.Radio_SelAllCol_PixConf.clicked.connect(self.Radio_SelAllCol_PixConf_Clicked)
         self.ui.Radio_DeselAllCol_PixConf.clicked.connect(self.Radio_DeselAllCol_PixConf_Clicked)
 
-        #   Pixel Conf ROW buttons definiton
-         
+        #   Pixel Conf ROW buttons definitions
         #Set Button
         self.ui.Set_Button_Row_PixConf.clicked.connect(self.Set_Button_Row_PixConf_Clicked)
-   
         #Get Button
         self.ui.Get_Row_PixConf.clicked.connect(self.Get_Row_PixConf_Clicked)
         
@@ -312,10 +313,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.Radio_SelAllRow_Row_PixConf.clicked.connect(self.Radio_SelAllRow_Row_PixConf_Clicked)      
         
         #   Pixel Conf DATA buttons definiton
-        
         #Set Button
         self.ui.Set_Button_Data_PixConf.clicked.connect(self.Set_Button_Data_PixConf_Clicked)
-   
         #Get Button
         self.ui.Get_Data_PixConf.clicked.connect(self.Get_Data_PixConf_Clicked)
         
@@ -327,6 +326,11 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.Set_SW1_Data_PixConf.clicked.connect(self.Set_SW1_Data_PixConf_Clicked)   
         self.ui.Set_ENA_CC_Data_PixConf.clicked.connect(self.Set_ENA_CC_Data_PixConf_Clicked)   
         self.ui.Set_ActivateVpulse_Data_PixConf.clicked.connect(self.Set_ActivateVpulse_Data_PixConf_Clicked)   
+        
+        #  loading calibrated file.
+        self.ui.BtFileSelection_Calibrated.clicked.connect(self.CalibratedFileSelection_Clicked) # Added by Henso 21.02.2023
+        #  Set Calibration.
+        self.ui.BtSendSettingsToChip_Calibrated.clicked.connect(self.BtSetCalibratedWays_Clicked) # Added by Henso 21.02.2023
             
         #    DAC 0 - 4 buttons definiton
 
@@ -1331,6 +1335,72 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         else:
             self.logger.error ('File Reading CANCELLED ')
 
+    # added by Henso 21.02.2023
+    def CalibratedFileSelection_Clicked(self):
+        """
+            callback for the File selection button of the Calibrated tab
+        """
+        VOldFilePath = os.path.join(os.getcwd(),  'Calibrated_Files')
+
+        VFDialog = QFileDialog(self)
+        VFDialog.setWindowTitle('Open Conf file')
+        VFDialog.setNameFilter('text Files (*.csv)')
+        VFDialog.setDirectory(VOldFilePath)
+        VFDialog.setFileMode(QFileDialog.ExistingFile)
+        
+        if VFDialog.exec_() == QDialog.Accepted:
+            VFileName = str(VFDialog.selectedFiles()[0])
+            if os.path.isfile(VFileName):
+                self.ui.lePath_Calibrated.setText(str(VFDialog.directory().path()))
+                self.ui.leFileName_Calibrated.setText(os.path.basename(VFileName))
+                #self.ui.TEPulsingFileComments.clear()
+                #self.ui.TEPulsingFileComments.append(CommentsFromFile)
+            else:
+                self.logger.error('File does not exist :%s',VFileName)
+        else:
+            self.logger.error ('Calibrated File Reading CANCELLED ')
+    
+    # added by Henso 21.02.2023        
+    def BtSetCalibratedWays_Clicked(self):
+        """
+            Callback file with calibrated iadj values Row, Col , local configuration
+        """
+        VFilePath = self.ui.lePath_Calibrated.text()
+        VFileName  = self.ui.leFileName_Calibrated.text()
+        thisFileName = VFilePath +'/'+VFileName
+        
+        with open(thisFileName,'r') as thisFile :
+            csvreader = csv.reader(thisFile)
+            headers = next(csvreader)
+            for row in csvreader :
+                r = row[0].strip()
+                c = row[1].strip()
+                name = row[2].strip()
+                val = "AF"
+                self.ui.Text_Set_Row_PixConf.setText(r)
+                self.ui.Text_Set_Col_PixConf.setText(c)
+                self.ui.Text_Set_Data_PixConf.setText(val)
+                
+                self.ui.Text_Set_Data_PixConf.textChanged.connect(self.Text_Set_Data_PixConf_textChanged)
+                
+                #   using Pixel Conf COL button functions
+                ##self.Set_Button_Col_PixConf_Clicked()       # Col Set Button
+                ##self.Get_Col_PixConf_Clicked()              # Col Get Button
+                
+                #   using Pixel Conf ROW button functions
+                ##self.Set_Button_Row_PixConf_Clicked()       # Row Set Button
+                ##self.Get_Row_PixConf_Clicked()              # Row Get Button
+                
+                #   using Pixel Conf DATA button functions
+                ##self.Set_Button_Data_PixConf_Clicked()      # Data Set Button
+                ##self.Get_Data_PixConf_Clicked()             # Data Get Button
+                
+                print('Row:',r,', Col:',c,', Set to :', val)
+        # set to no values 
+        self.ui.Text_Set_Row_PixConf.setText('')
+        self.ui.Text_Set_Col_PixConf.setText('')
+        self.ui.Text_Set_Data_PixConf.setText('0')
+        print('------------> Calibration applied <-------------')
     
     def LEPulsingPPRegValue_Changed(self) : #Bit 0 à 2
         """
@@ -2471,7 +2541,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                     Set Column pixel conf register button  callback
         """
      
-        input_PixConfCol = int(self.ui.Text_Set_Col_PixConf.text(),16) # get the current text
+        #input_PixConfCol = int(self.ui.Text_Set_Col_PixConf.text(),16) # get the current text
+        input_PixConfCol = int(self.ui.Text_Set_Col_PixConf.text(),10) # get the current text Henso 21.02.2023
 
         VErr = PicmicHLF.FSetPixConfColReg(input_PixConfCol) 
         
@@ -2507,7 +2578,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
             self.ui.statusbar.showMessage('Get Pix col conf successfull',0) # le 0 est un temps en seconde 
 
         
-            self.ui.Text_Get_Col_PixConf.setText('{:X}'.format( returned_value[0] ))
+            #self.ui.Text_Get_Col_PixConf.setText('{:X}'.format( returned_value[0] )) ## Henso 21.02.2023
+            self.ui.Text_Get_Col_PixConf.setText('{:d}'.format( returned_value[0] ))
 
             self.ui.Check_SelSelAllCol_PixConf.setChecked((returned_value[0] & 0x40)==0x40)
             self.ui.Check_SelDeselAllCol_PixConf.setChecked((returned_value[0] & 0x80)==0x80)
