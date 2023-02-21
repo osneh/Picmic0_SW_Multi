@@ -3403,21 +3403,6 @@
           <string>Path for the matrix setting</string>
          </property>
         </widget>
-        <widget class="QComboBox" name="CoBoPulsingFileName_Calibrated">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>160</y>
-           <width>251</width>
-           <height>22</height>
-          </rect>
-         </property>
-         <item>
-          <property name="text">
-           <string>cfg_mat128x54_08.txt</string>
-          </property>
-         </item>
-        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="DAC_Tab">
@@ -8219,6 +8204,19 @@
       </widget>
      </widget>
     </widget>
+   </widget>
+   <widget class="QLineEdit" name="lePulsingFileName_Calibrated">
+    <property name="geometry">
+     <rect>
+      <x>24</x>
+      <y>450</y>
+      <width>251</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>cfg_mat128x54_08.txt</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
