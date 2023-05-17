@@ -92,6 +92,31 @@ class Picmic_HighLevelFuncts():
             VStatus = "Command rejected => Arduino DUE is not connected => Execute menu cmd 20"
             self.logger.error(VStatus)
             return ( False, False, VStatus ) # return ( VQuit, VBadCmd, VStatus )
+
+
+
+    def FWrOneI2CRegs (self,RegAddr, RegAW8):
+        """
+            Write one I2C register
+            
+            param:
+                - RegAddr : register address 
+                - RegAW8 :  list of the registers values to set 
+
+        17/05/2023 M.SPECHT CNRS/IN2P3/IPHC/C4PI
+                
+        """
+
+        
+        VErr = PM0SC.FCmdWrOneReg ( RegAddr, self.VGRegOp, self.VGPrePostOp, self.VGPrePostParam, RegAW8 )
+        VStatus = "Reg op = {:s} - Write error = {:d}".format (self.VGStrRegOp[self.VGRegOp], VErr)
+        if VErr >= 0:
+            self.logger.info(VStatus)
+        else:
+            self.logger.error(VStatus)
+
+        return VErr
+
           
 
     # Set GLB_CMD

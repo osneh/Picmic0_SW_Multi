@@ -47,4 +47,6 @@ versions:
 			- Loading values from conf file. 
 			- Add button to launch scan and set parameters 
 
-- 0.5.9 / 27/01/2023 :  - Loop over files. New GUI Version 
+- 0.5.9 / 27/01/2023 :  - Loop over files. New GUI Version
+
+-0.5.10 / 17/5/2023 : MS  : added the possibility to save the I2C requests in a file. Request of Jihane Maalmi 

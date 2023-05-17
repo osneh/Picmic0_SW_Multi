@@ -1,0 +1,8 @@
+This is the Arduino Firmware updater procedure.
+
+
+Be sure that only the programming port of the Arduino board has been connected.
+
+Then you can run the batch file.
+
+The process takes roughly 12 seconds to finish.
