@@ -45,10 +45,10 @@ Another way to import module
 
 
 __author__ = "Gilles Claus"
-__version__ = '0.2.4'
+__version__ = '0.2.5'
 __maintainer__ = "Matthieu Specht"
 __email__ = "matthieu.specht@iphc.cnrs.fr"
-__date__ = "2022-11-22"
+__date__ = "2023-05-17"
 
 
 
