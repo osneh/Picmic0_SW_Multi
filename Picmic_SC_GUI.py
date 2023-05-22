@@ -9,10 +9,10 @@ Maintained by Matthieu Specht
 """
 
 __author__ = "Hugo Schott,Matthieu Specht, Henso Abreu"
-__version__ = '0.5.9'
+__version__ = '0.5.10'
 __maintainer__ = "Matthieu Specht, Henso Abreu"
 __email__ = "matthieu.specht@iphc.cnrs.fr, h.abreu@ip2i.in2p3.fr"
-__date__ = "2023-01-23"
+__date__ = "2023-05-17"
 __comment__ = "new version, performaing two-dimensional scan in DAC values"
 
 
@@ -194,6 +194,12 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         self.ui.statusbar.setStyleSheet("QStatusBar{background:MidLight;color:black;font-weight:normal;}")      
         
         self.ui.statusbar.showMessage('GUI started',0) # le 0 est un temps en seconde 
+        self.ui.leConfLoadPath.setText(os.path.join(os.getcwd(),'Conf_Files'))
+        self.ui.leRegsSavingPath.setText(os.path.join(os.getcwd(),'Gen_Files'))
+        self.ui.lePulsingPath.setText(os.path.join(os.getcwd(),'Pulsing_Files'))
+        self.ui.lePath_Calibrated.setText(os.path.join(os.getcwd(),'Calibrated_Files'))
+        self.ui.lePulsingPath_2.setText(os.path.join(os.getcwd(),'Pulsing_Files'))
+        self.ui.leCarDisSavePath.setText(os.path.join(os.getcwd(),'data/car_dis'))
 
         ########################################################################################################################
         ############################################ Main tab ####################################################
@@ -246,6 +252,9 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         ############################################ Registers Tab #####################################################
         ########################################################################################################################
    
+        self.ui.BtRegsSavingFileSelection.clicked.connect(self.Regs_Save_File_Select_Clicked)
+        self.ui.chBRegsRequestSavingEnable.clicked.connect(self.chBRegsRequestSavingEnableClicked)
+        self.ui.btRegsSaveReloadFile.clicked.connect(self.btRegsSaveReloadFileClicked)
         #   Global Command input Checkbox buttons definiton
         self.ui.Set_EnExtPulse_Global_Cmd.clicked.connect(self.EnExtPulse_Global_Cmd_Clicked)  
         self.ui.Set_ExtPulse_Global_Cmd.clicked.connect(self.Set_ExtPulse_Global_Cmd_Clicked) 
@@ -1929,6 +1938,97 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         #////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 
+
+    def Regs_Save_File_Select_Clicked(self):
+        """
+            Registers Tab
+                Save requests group
+                    File selection button callback
+        """
+
+        VOldFilePath = self.ui.leRegsSavingPath.text()
+
+        VFileName, _ = QFileDialog.getSaveFileName(self,'I2C Request saving file name',VOldFilePath,'text Files (*.txt)')
+        
+        if  VFileName != '': 
+                if (not ('.txt' in VFileName)):
+                    VFileName = VFileName.split('.')[0] # remove the extension if any
+                    VFileName = "".join((VFileName,".txt")); # add the correct extension        
+                self.logger.info("saving file name:{}".format(VFileName))
+                self.ui.leRegsSavingPath.setText(os.path.dirname(VFileName))
+                self.ui.leRegsSavingFileName.setText(os.path.basename(VFileName))
+                if self.ui.chBRegsRequestSavingEnable.isChecked():
+                    try :
+                        sc_p0_hlf.PM0SC.FSetRegsSavingFileName(VFileName,self.ui.LERegsSavingComment.text())
+                    except:
+                        self.logger.error("Configuration file writing FAILED")
+        else:
+            self.logger.error ('File Selection CANCELLED ')
+
+
+    def chBRegsRequestSavingEnableClicked(self):
+        """
+            Registers Tab
+                Save requests group
+                    Request saving enable checkbox callback
+        """
+        if self.ui.chBRegsRequestSavingEnable.isChecked():
+            # saving is enabled
+            VFileName = os.path.join(self.ui.leRegsSavingPath.text(),self.ui.leRegsSavingFileName.text())
+            sc_p0_hlf.PM0SC.FSetRegsSavingFileName(VFileName,self.ui.LERegsSavingComment.text())
+            sc_p0_hlf.PM0SC.FEnableRegsSavingInFile(1)
+        else:
+            # saving is disabled
+            sc_p0_hlf.PM0SC.FEnableRegsSavingInFile(0)
+    
+
+
+    def btRegsSaveReloadFileClicked(self):
+        """
+            Registers Tab
+                Save requests group
+                    Reload file button callback
+        """
+        VFileName = os.path.join(self.ui.leRegsSavingPath.text(),self.ui.leRegsSavingFileName.text())
+        if self.ui.chBRegsRequestSavingEnable.isChecked():
+            VEnabled = True
+        else:
+            VEnabled = False
+        sc_p0_hlf.PM0SC.FEnableRegsSavingInFile(0)
+        try:
+            # Open the file
+            with open(VFileName,"r") as infile:
+                for line in infile:
+                    if line[0] == ':':
+                        #comment line : line ignored
+                        pass
+                    else:
+                        AddrStr , ValueStr = line.split(",")
+                        PicmicHLF.FWrOneI2CRegs(int(AddrStr),[int(ValueStr)])
+                        self.logger.info("Sent the value :addr({0}):value {1}".format(int(AddrStr), int(ValueStr)))
+
+        except IOError as e:
+            print ("I/O error({0}): {1}".format(e.errno, e.strerror))
+            self.logger.error("I/O error({0}): {1}".format(e.errno, e.strerror))
+        except: #handle other exceptions such as attribute errors
+            #print ("Unexpected error:", sys.exc_info()[0])
+            self.logger.error ("Unexpected error")
+            pass
+
+        if VEnabled == True:
+            sc_p0_hlf.PM0SC.FEnableRegsSavingInFile(1)
+            
+
+            
+
+
+
+
+
+
+
+
+    
   
     
     """

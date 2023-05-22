@@ -1,0 +1,6 @@
+# exclude every logging files but not the logging directory
+/logging/*
+!/logging/.gitkeep
+/__pycache__/*
+/modules/__pycache__/*
+/DLL/__pycache__/*
