@@ -1393,16 +1393,16 @@ class Picmic_SC_GUI_Class (QMainWindow ):
                 self.ui.Text_Set_Data_PixConf.textChanged.connect(self.Text_Set_Data_PixConf_textChanged)
                 
                 #   using Pixel Conf COL button functions
-                ##self.Set_Button_Col_PixConf_Clicked()       # Col Set Button
-                ##self.Get_Col_PixConf_Clicked()              # Col Get Button
+                self.Set_Button_Col_PixConf_Clicked()       # Col Set Button
+                self.Get_Col_PixConf_Clicked()              # Col Get Button
                 
                 #   using Pixel Conf ROW button functions
-                ##self.Set_Button_Row_PixConf_Clicked()       # Row Set Button
-                ##self.Get_Row_PixConf_Clicked()              # Row Get Button
+                self.Set_Button_Row_PixConf_Clicked()       # Row Set Button
+                self.Get_Row_PixConf_Clicked()              # Row Get Button
                 
                 #   using Pixel Conf DATA button functions
-                ##self.Set_Button_Data_PixConf_Clicked()      # Data Set Button
-                ##self.Get_Data_PixConf_Clicked()             # Data Get Button
+                self.Set_Button_Data_PixConf_Clicked()      # Data Set Button
+                self.Get_Data_PixConf_Clicked()             # Data Get Button
                 
                 print('Row:',r,', Col:',c,', Set to :', val)
         # set to no values 
@@ -1867,6 +1867,8 @@ class Picmic_SC_GUI_Class (QMainWindow ):
         VPulsingReg = int(self.ui.LEPulsingPPRegValue.text(),16)        # Parameters pulse pixels
         VNotPulsingReg = int(self.ui.LEPulsingNOTPRegValue.text(),16)   # Parameters masked pixels
         VErr, BitMap,Comments,HitNb = PicmicHLF.FSetBitmapInPixMemFromFile(VPixelToSend,VPulsingFileName,VPulsingReg,VNotPulsingReg)
+        # MS mod : added the automatic sending of the sequencer registers
+        self.ui.setPixSeq.click()
         
         if VErr < 0 :
             #Error

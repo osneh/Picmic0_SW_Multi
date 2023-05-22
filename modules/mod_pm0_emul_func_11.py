@@ -524,7 +524,8 @@ def FSetBitMapFromFile(Param,VFileName,VPulsingReg,VNotPulsingReg,VRegOp, VPrePo
             # set the sequencer registers
 #  MS 18 05 22  test the increasing of the frame size            
 #            VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.PIX_SEQ.value, VRegOp, VPrePostOp, VPrePostParam, [0,0,0,0,0,16,2,3,0,1,12,1,100,12,251,255,0,0,55,67,3,4,36,37] )
-            VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.PIX_SEQ.value, VRegOp, VPrePostOp, VPrePostParam, [0,0,0,0,0,100,2,3,0,1,0,0,200,12,251,255,0,0,55,67,3,4,200,201] )
+            #VErr = PM0SC.FCmdSetWrReg ( PM0SC.TRegId.PIX_SEQ.value, VRegOp, VPrePostOp, VPrePostParam, [0,0,0,0,0,100,2,3,0,1,0,0,200,12,251,255,0,0,55,67,3,4,200,201] )
+            
             VStatus = "Reg op = {:s} - Write error = {:d}".format (VGStrRegOp[VRegOp], VErr)
             if VErr >= 0:
                 logger.debug(VStatus)
